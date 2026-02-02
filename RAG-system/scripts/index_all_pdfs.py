@@ -90,10 +90,9 @@ def index_pdf(pdf_path: Path, collection_name: str):
         # Upload du fichier
         with open(pdf_path, 'rb') as f:
             files = {'file': (pdf_path.name, f, 'application/pdf')}
+            # L'endpoint /upload attend seulement collection_name
             data = {
-                'collection_name': collection_name,
-                'chunk_size': 1000,
-                'chunk_overlap': 200
+                'collection_name': collection_name
             }
 
             print(f"   Upload en cours... (taille: {pdf_path.stat().st_size / 1024 / 1024:.1f} MB)")
@@ -106,7 +105,9 @@ def index_pdf(pdf_path: Path, collection_name: str):
 
             if response.status_code == 200:
                 result = response.json()
-                print(f"   ✅ Succès! {result.get('chunks_created', 0)} chunks créés")
+                total_chunks = result.get('total_chunks', 0)
+                print(f"   ✅ Succès! {total_chunks} chunks créés")
+                print(f"      Tables: {result.get('table_chunks', 0)}, Texte: {result.get('text_chunks', 0)}")
                 return True
             else:
                 print(f"   ❌ Erreur {response.status_code}: {response.text[:200]}")

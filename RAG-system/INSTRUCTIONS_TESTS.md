@@ -10,8 +10,8 @@
 
 ```bash
 # Terminal 1
-cd /Users/maximedutertre/Desktop/projet-perso/agent-business/RAG-system
-uvicorn api.main:app --reload
+cd /Users/maximedutertre/Desktop/projet-perso/agent-business/RAG-system/api
+python -m uvicorn main:app --reload
 ```
 
 Attendre le message: ✅ `Application startup complete.`
