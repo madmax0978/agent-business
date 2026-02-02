@@ -217,7 +217,7 @@ async def query_rag(request: QueryRequest):
                 ChunkResponse(
                     chunk_id=metadata["chunk_id"],
                     text=chunk,
-                    score=1 - distance,
+                    score=max(0.0, 1.0 - distance),
                     content_type=metadata.get("content_type", "unknown"),
                     num_tokens=metadata["num_tokens"],
                     metadata=metadata,

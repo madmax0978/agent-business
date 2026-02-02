@@ -120,7 +120,7 @@ class YahooFinanceService:
         Example:
             >>> service = YahooFinanceService()
             >>> info = service.get_stock_info("MC.PA")
-            >>> print(f"Prix: {info['current_price']} EUR")
+            >>> print(f"Prix: {info['currentPrice']} EUR")
         """
         cache_key = f"info_{ticker}"
 
@@ -143,13 +143,13 @@ class YahooFinanceService:
                 "name": info.get("longName", ""),
                 "sector": info.get("sector", ""),
                 "industry": info.get("industry", ""),
-                "current_price": info.get("currentPrice", 0),
+                "currentPrice": info.get("currentPrice", 0),
                 "previous_close": info.get("previousClose", 0),
                 "day_change_percent": (
                     (info.get("currentPrice", 0) - info.get("previousClose", 0))
                     / info.get("previousClose", 1) * 100
                 ),
-                "market_cap": info.get("marketCap", 0),
+                "marketCap": info.get("marketCap", 0),
                 "pe_ratio": info.get("trailingPE", None),
                 "forward_pe": info.get("forwardPE", None),
                 "dividend_yield": info.get("dividendYield", 0) * 100 if info.get("dividendYield") else 0,

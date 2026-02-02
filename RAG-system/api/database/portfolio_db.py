@@ -103,19 +103,20 @@ class PortfolioDatabase:
             existing = cursor.fetchone()
 
             if existing:
-                # Mise à jour avec moyenne pondérée
                 old_qty, old_price = existing
                 new_qty = old_qty + quantity
+                # Calcul PRU pur
                 new_avg_price = ((old_price * old_qty) + (price * quantity)) / new_qty
 
                 cursor.execute("""
                     UPDATE portfolio
                     SET quantity = ?,
                         avg_price = ?,
-                        current_value = ? * ?,
+                        current_price = ?,
+                        current_value = ? * ?, -- Prix d'achat * Nouvelle Quantité
                         last_updated = CURRENT_TIMESTAMP
                     WHERE user_id = ? AND ticker = ?
-                """, (new_qty, new_avg_price, new_avg_price, new_qty, user_id, ticker))
+                """, (new_qty, new_avg_price, price, price, new_qty, user_id, ticker))
             else:
                 # Nouvelle position
                 cursor.execute("""
@@ -228,18 +229,20 @@ class PortfolioDatabase:
                 info = yf_service.get_stock_info(ticker)
 
                 if info:
-                    current_price = info.get('current_price', 0)
-                    current_value = current_price * position['quantity']
-                    gain_loss = ((current_price - position['avg_price']) / position['avg_price']) * 100
+                    current_price = info.get('currentPrice', 0)
+                    
+                    if current_price > 0:
+                        current_value = current_price * position['quantity']
+                        gain_loss = ((current_price - position['avg_price']) / position['avg_price']) * 100
 
-                    cursor.execute("""
-                        UPDATE portfolio
-                        SET current_price = ?,
-                            current_value = ?,
-                            gain_loss_percent = ?,
-                            last_updated = CURRENT_TIMESTAMP
-                        WHERE id = ?
-                    """, (current_price, current_value, gain_loss, position['id']))
+                        cursor.execute("""
+                            UPDATE portfolio
+                            SET current_price = ?,
+                                current_value = ?,
+                                gain_loss_percent = ?,
+                                last_updated = CURRENT_TIMESTAMP
+                            WHERE id = ?
+                        """, (current_price, current_value, gain_loss, position['id']))
 
             conn.commit()
             conn.close()

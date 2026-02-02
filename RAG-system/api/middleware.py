@@ -173,7 +173,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
     Pour une solution production, utiliser Redis + SlowAPI ou similar.
     """
 
-    def __init__(self, app, requests_per_minute: int = 60):
+    def __init__(self, app, requests_per_minute: int = 120):
         """
         Initialise le rate limiter
 

@@ -267,7 +267,7 @@ class RateLimitSettings(BaseSettings):
         description="Activer le rate limiting"
     )
     requests_per_minute: int = Field(
-        default=60,
+        default=120,
         ge=1,
         description="Nombre de requêtes autorisées par minute"
     )
