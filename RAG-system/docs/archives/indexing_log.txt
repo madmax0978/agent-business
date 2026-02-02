@@ -1,0 +1,2902 @@
+[2026-01-19 18:46:01] [INFO] ================================================================================
+[2026-01-19 18:46:01] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 18:46:01] [INFO] ================================================================================
+[2026-01-19 18:46:01] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 18:46:01] [INFO]    Total de documents: 79
+[2026-01-19 18:46:01] [INFO]    Déjà traités: 0
+[2026-01-19 18:46:01] [INFO]    À traiter: 79
+[2026-01-19 18:46:01] [INFO]    Taille totale: 732.9 MB
+[2026-01-19 18:46:01] [INFO]    Temps estimé: 366 minutes (~6.1h)
+[2026-01-19 18:46:01] [INFO] 
+[2026-01-19 18:46:01] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 18:46:01] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 18:46:01] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 18:46:01] [INFO] 
+[2026-01-19 18:46:12] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 18:46:12] [INFO] ================================================================================
+[2026-01-19 18:46:12] [INFO] 📄 Document 1/79 (1.3%)
+[2026-01-19 18:46:12] [INFO] ================================================================================
+[2026-01-19 18:46:12] [INFO] 📄 Indexation: 2023-document-enregistrement-universel_tcm342-462018.pdf
+[2026-01-19 18:46:12] [INFO]    Taille: 14.3 MB
+[2026-01-19 18:46:12] [INFO]    Timeout: 429s (~7min)
+[2026-01-19 18:46:12] [INFO]    Collection: 2023_document_enregistrement_universel_tcm342_462018
+[2026-01-19 18:47:53] [ERROR] ❌ Erreur: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[2026-01-19 18:47:53] [INFO] 
+📊 Progression: 1/79 documents
+[2026-01-19 18:47:53] [INFO]    ✅ Succès: 0
+[2026-01-19 18:47:53] [INFO]    ❌ Échecs: 1
+[2026-01-19 18:47:53] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 18:47:53] [INFO]    ⏱️  Temps écoulé: 101.4s
+[2026-01-19 18:47:53] [INFO]    🔄 Restants: 78 documents
+
+[2026-01-19 18:47:53] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 18:47:55] [INFO] ================================================================================
+[2026-01-19 18:47:55] [INFO] 📄 Document 2/79 (2.5%)
+[2026-01-19 18:47:55] [INFO] ================================================================================
+[2026-01-19 18:47:55] [INFO] 📄 Indexation: 2023-sanofi-half-year-report.pdf
+[2026-01-19 18:47:55] [INFO]    Taille: 1.2 MB
+[2026-01-19 18:47:55] [INFO]    Timeout: 120s (~2min)
+[2026-01-19 18:47:55] [INFO]    Collection: 2023_sanofi_half_year_report
+[2026-01-19 18:49:55] [ERROR] ⏱️  Timeout après 120s - Le document est trop gros
+[2026-01-19 18:49:55] [INFO] 
+📊 Progression: 2/79 documents
+[2026-01-19 18:49:55] [INFO]    ✅ Succès: 0
+[2026-01-19 18:49:55] [INFO]    ❌ Échecs: 2
+[2026-01-19 18:49:55] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 18:49:55] [INFO]    ⏱️  Temps écoulé: 120.0s
+[2026-01-19 18:49:55] [INFO]    🔄 Restants: 77 documents
+
+[2026-01-19 18:49:55] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 18:49:57] [INFO] ================================================================================
+[2026-01-19 18:49:57] [INFO] 📄 Document 3/79 (3.8%)
+[2026-01-19 18:49:57] [INFO] ================================================================================
+[2026-01-19 18:49:57] [INFO] 📄 Indexation: 2024-document-enregistrement-universel_tcm342-510443.pdf
+[2026-01-19 18:49:57] [INFO]    Taille: 13.9 MB
+[2026-01-19 18:49:57] [INFO]    Timeout: 417s (~6min)
+[2026-01-19 18:49:57] [INFO]    Collection: 2024_document_enregistrement_universel_tcm342_510443
+[2026-01-19 18:54:00] [INFO] ================================================================================
+[2026-01-19 18:54:00] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 18:54:00] [INFO] ================================================================================
+[2026-01-19 18:54:05] [ERROR] ❌ Impossible de joindre l'API: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5)
+[2026-01-19 18:54:05] [ERROR] ⚠️  Lancez d'abord l'API: cd api && python -m uvicorn main:app --reload
+[2026-01-19 18:54:45] [INFO] ================================================================================
+[2026-01-19 18:54:45] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 18:54:45] [INFO] ================================================================================
+[2026-01-19 18:54:45] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 18:54:45] [INFO]    Total de documents: 79
+[2026-01-19 18:54:45] [INFO]    Déjà traités: 0
+[2026-01-19 18:54:45] [INFO]    À traiter: 3
+[2026-01-19 18:54:45] [INFO]    Taille totale: 29.4 MB
+[2026-01-19 18:54:45] [INFO]    Temps estimé: 29 minutes (~0.5h)
+[2026-01-19 18:54:45] [INFO] 
+[2026-01-19 18:54:45] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 18:54:45] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 18:54:45] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 18:54:45] [INFO] 
+[2026-01-19 18:54:47] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 18:54:47] [INFO] ================================================================================
+[2026-01-19 18:54:47] [INFO] 📄 Document 1/3 (33.3%)
+[2026-01-19 18:54:47] [INFO] ================================================================================
+[2026-01-19 18:54:47] [INFO] 📄 Indexation: 2023-document-enregistrement-universel_tcm342-462018.pdf
+[2026-01-19 18:54:47] [INFO]    Taille: 14.3 MB
+[2026-01-19 18:54:47] [INFO]    Timeout: 859s (~14min)
+[2026-01-19 18:54:47] [INFO]    Collection: 2023_document_enregistrement_universel_tcm342_462018
+[2026-01-19 19:03:56] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: ValueError: Batch size of 5876 is greater than max batch size of 5461"}
+[2026-01-19 19:03:56] [INFO] 
+📊 Progression: 1/3 documents
+[2026-01-19 19:03:56] [INFO]    ✅ Succès: 0
+[2026-01-19 19:03:56] [INFO]    ❌ Échecs: 1
+[2026-01-19 19:03:56] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 19:03:56] [INFO]    ⏱️  Temps écoulé: 548.5s
+[2026-01-19 19:03:56] [INFO]    🔄 Restants: 2 documents
+
+[2026-01-19 19:03:56] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 19:03:58] [INFO] ================================================================================
+[2026-01-19 19:03:58] [INFO] 📄 Document 2/3 (66.7%)
+[2026-01-19 19:03:58] [INFO] ================================================================================
+[2026-01-19 19:03:58] [INFO] 📄 Indexation: 2023-sanofi-half-year-report.pdf
+[2026-01-19 19:03:58] [INFO]    Taille: 1.2 MB
+[2026-01-19 19:03:58] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 19:03:58] [INFO]    Collection: 2023_sanofi_half_year_report
+[2026-01-19 19:05:31] [SUCCESS] ✅ Succès! Chunks: 431 (Tables: 211, Texte: 220)
+[2026-01-19 19:05:31] [INFO] 
+📊 Progression: 2/3 documents
+[2026-01-19 19:05:31] [INFO]    ✅ Succès: 1
+[2026-01-19 19:05:31] [INFO]    ❌ Échecs: 1
+[2026-01-19 19:05:31] [INFO]    📈 Taux de réussite: 50.0%
+[2026-01-19 19:05:31] [INFO]    ⏱️  Temps écoulé: 93.6s
+[2026-01-19 19:05:31] [INFO]    🔄 Restants: 1 documents
+
+[2026-01-19 19:05:31] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 19:05:33] [INFO] ================================================================================
+[2026-01-19 19:05:33] [INFO] 📄 Document 3/3 (100.0%)
+[2026-01-19 19:05:33] [INFO] ================================================================================
+[2026-01-19 19:05:33] [INFO] 📄 Indexation: 2024-document-enregistrement-universel_tcm342-510443.pdf
+[2026-01-19 19:05:33] [INFO]    Taille: 13.9 MB
+[2026-01-19 19:05:33] [INFO]    Timeout: 835s (~13min)
+[2026-01-19 19:05:33] [INFO]    Collection: 2024_document_enregistrement_universel_tcm342_510443
+[2026-01-19 19:17:33] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: ValueError: Batch size of 7288 is greater than max batch size of 5461"}
+[2026-01-19 19:17:33] [INFO] 
+📊 Progression: 3/3 documents
+[2026-01-19 19:17:33] [INFO]    ✅ Succès: 1
+[2026-01-19 19:17:33] [INFO]    ❌ Échecs: 2
+[2026-01-19 19:17:33] [INFO]    📈 Taux de réussite: 33.3%
+[2026-01-19 19:17:33] [INFO]    ⏱️  Temps écoulé: 719.6s
+[2026-01-19 19:17:33] [INFO]    🔄 Restants: 0 documents
+
+[2026-01-19 19:17:33] [INFO] ================================================================================
+[2026-01-19 19:17:33] [INFO] 🎉 INDEXATION TERMINÉE
+[2026-01-19 19:17:33] [INFO] ================================================================================
+[2026-01-19 19:17:33] [INFO] 
+📊 STATISTIQUES FINALES:
+[2026-01-19 19:17:33] [INFO]    Documents traités: 3
+[2026-01-19 19:17:33] [INFO]    ✅ Succès: 1
+[2026-01-19 19:17:33] [INFO]    ❌ Échecs: 2
+[2026-01-19 19:17:33] [INFO]    Taux de réussite: 33.3%
+[2026-01-19 19:17:33] [INFO]    ⏱️  Temps total: 22.8 minutes (0.4h)
+[2026-01-19 19:17:33] [INFO] 
+📁 Logs sauvegardés: indexing_log.txt
+[2026-01-19 19:17:33] [INFO] 📁 Progression sauvegardée: indexing_progress.json
+[2026-01-19 19:17:33] [INFO] 
+⚠️  2 document(s) ont échoué
+[2026-01-19 19:17:33] [INFO]    Consultez le fichier de log pour les détails
+[2026-01-19 19:25:30] [INFO] ================================================================================
+[2026-01-19 19:25:30] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 19:25:30] [INFO] ================================================================================
+[2026-01-19 19:25:30] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 19:25:30] [INFO]    Total de documents: 79
+[2026-01-19 19:25:30] [INFO]    Déjà traités: 1
+[2026-01-19 19:25:30] [INFO]    À traiter: 78
+[2026-01-19 19:25:30] [INFO]    Taille totale: 731.7 MB
+[2026-01-19 19:25:30] [INFO]    Temps estimé: 732 minutes (~12.2h)
+[2026-01-19 19:25:30] [INFO] 
+[2026-01-19 19:25:30] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 19:25:30] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 19:25:30] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 19:25:30] [INFO] 
+[2026-01-19 19:25:34] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 19:25:34] [INFO] ================================================================================
+[2026-01-19 19:25:34] [INFO] 📄 Document 1/78 (1.3%)
+[2026-01-19 19:25:34] [INFO] ================================================================================
+[2026-01-19 19:25:34] [INFO] 📄 Indexation: 2023-document-enregistrement-universel_tcm342-462018.pdf
+[2026-01-19 19:25:34] [INFO]    Taille: 14.3 MB
+[2026-01-19 19:25:34] [INFO]    Timeout: 859s (~14min)
+[2026-01-19 19:25:34] [INFO]    Collection: 2023_document_enregistrement_universel_tcm342_462018
+[2026-01-19 19:36:02] [SUCCESS] ✅ Succès! Chunks: 5876 (Tables: 2168, Texte: 3708)
+[2026-01-19 19:36:02] [INFO] 
+📊 Progression: 1/78 documents
+[2026-01-19 19:36:02] [INFO]    ✅ Succès: 1
+[2026-01-19 19:36:02] [INFO]    ❌ Échecs: 0
+[2026-01-19 19:36:02] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-19 19:36:02] [INFO]    ⏱️  Temps écoulé: 628.4s
+[2026-01-19 19:36:02] [INFO]    🔄 Restants: 77 documents
+
+[2026-01-19 19:36:02] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 19:36:04] [INFO] ================================================================================
+[2026-01-19 19:36:04] [INFO] 📄 Document 2/78 (2.6%)
+[2026-01-19 19:36:04] [INFO] ================================================================================
+[2026-01-19 19:36:04] [INFO] 📄 Indexation: 2024-document-enregistrement-universel_tcm342-510443.pdf
+[2026-01-19 19:36:04] [INFO]    Taille: 13.9 MB
+[2026-01-19 19:36:04] [INFO]    Timeout: 835s (~13min)
+[2026-01-19 19:36:04] [INFO]    Collection: 2024_document_enregistrement_universel_tcm342_510443
+[2026-01-19 19:47:38] [SUCCESS] ✅ Succès! Chunks: 7288 (Tables: 2874, Texte: 4414)
+[2026-01-19 19:47:38] [INFO] 
+📊 Progression: 2/78 documents
+[2026-01-19 19:47:38] [INFO]    ✅ Succès: 2
+[2026-01-19 19:47:38] [INFO]    ❌ Échecs: 0
+[2026-01-19 19:47:38] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-19 19:47:38] [INFO]    ⏱️  Temps écoulé: 694.1s
+[2026-01-19 19:47:38] [INFO]    🔄 Restants: 76 documents
+
+[2026-01-19 19:47:38] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 19:47:40] [INFO] ================================================================================
+[2026-01-19 19:47:40] [INFO] 📄 Document 3/78 (3.8%)
+[2026-01-19 19:47:40] [INFO] ================================================================================
+[2026-01-19 19:47:40] [INFO] 📄 Indexation: 20250220_Renault-Group_Communique-de-presse_Resultats-2024.pdf
+[2026-01-19 19:47:40] [INFO]    Taille: 0.2 MB
+[2026-01-19 19:47:40] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 19:47:40] [INFO]    Collection: 20250220_renault_group_communique_de_presse_resultats_2024
+[2026-01-19 19:47:47] [SUCCESS] ✅ Succès! Chunks: 43 (Tables: 5, Texte: 38)
+[2026-01-19 19:47:47] [INFO] 
+📊 Progression: 3/78 documents
+[2026-01-19 19:47:47] [INFO]    ✅ Succès: 3
+[2026-01-19 19:47:47] [INFO]    ❌ Échecs: 0
+[2026-01-19 19:47:47] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-19 19:47:47] [INFO]    ⏱️  Temps écoulé: 6.4s
+[2026-01-19 19:47:47] [INFO]    🔄 Restants: 75 documents
+
+[2026-01-19 19:47:47] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 19:47:49] [INFO] ================================================================================
+[2026-01-19 19:47:49] [INFO] 📄 Document 4/78 (5.1%)
+[2026-01-19 19:47:49] [INFO] ================================================================================
+[2026-01-19 19:47:49] [INFO] 📄 Indexation: 20250731_Communique-de-presse_Renault-Group_2025-S1.pdf
+[2026-01-19 19:47:49] [INFO]    Taille: 0.2 MB
+[2026-01-19 19:47:49] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 19:47:49] [INFO]    Collection: 20250731_communique_de_presse_renault_group_2025_s1
+[2026-01-19 19:47:54] [SUCCESS] ✅ Succès! Chunks: 36 (Tables: 2, Texte: 34)
+[2026-01-19 19:47:54] [INFO] 
+📊 Progression: 4/78 documents
+[2026-01-19 19:47:54] [INFO]    ✅ Succès: 4
+[2026-01-19 19:47:54] [INFO]    ❌ Échecs: 0
+[2026-01-19 19:47:54] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-19 19:47:54] [INFO]    ⏱️  Temps écoulé: 4.9s
+[2026-01-19 19:47:54] [INFO]    🔄 Restants: 74 documents
+
+[2026-01-19 19:47:54] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 19:47:56] [INFO] ================================================================================
+[2026-01-19 19:47:56] [INFO] 📄 Document 5/78 (6.4%)
+[2026-01-19 19:47:56] [INFO] ================================================================================
+[2026-01-19 19:47:56] [INFO] 📄 Indexation: 20251023_Communique-presse_Renault-Group_2025-Q3-Revenue.pdf
+[2026-01-19 19:47:56] [INFO]    Taille: 0.3 MB
+[2026-01-19 19:47:56] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 19:47:56] [INFO]    Collection: 20251023_communique_presse_renault_group_2025_q3_revenue
+[2026-01-19 19:48:04] [SUCCESS] ✅ Succès! Chunks: 44 (Tables: 7, Texte: 37)
+[2026-01-19 19:48:04] [INFO] 
+📊 Progression: 5/78 documents
+[2026-01-19 19:48:04] [INFO]    ✅ Succès: 5
+[2026-01-19 19:48:04] [INFO]    ❌ Échecs: 0
+[2026-01-19 19:48:04] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-19 19:48:04] [INFO]    ⏱️  Temps écoulé: 8.0s
+[2026-01-19 19:48:04] [INFO]    🔄 Restants: 73 documents
+
+[2026-01-19 19:48:04] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 19:48:06] [INFO] ================================================================================
+[2026-01-19 19:48:06] [INFO] 📄 Document 6/78 (7.7%)
+[2026-01-19 19:48:06] [INFO] ================================================================================
+[2026-01-19 19:48:06] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 19:48:06] [INFO]    Taille: 12.7 MB
+[2026-01-19 19:48:06] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 19:48:06] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 20:00:46] [ERROR] ⏱️  Timeout après 760s - Le document est trop gros
+[2026-01-19 20:00:46] [INFO] 
+📊 Progression: 6/78 documents
+[2026-01-19 20:00:46] [INFO]    ✅ Succès: 5
+[2026-01-19 20:00:46] [INFO]    ❌ Échecs: 1
+[2026-01-19 20:00:46] [INFO]    📈 Taux de réussite: 83.3%
+[2026-01-19 20:00:46] [INFO]    ⏱️  Temps écoulé: 760.0s
+[2026-01-19 20:00:46] [INFO]    🔄 Restants: 72 documents
+
+[2026-01-19 20:00:46] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 20:00:48] [INFO] ================================================================================
+[2026-01-19 20:00:48] [INFO] 📄 Document 7/78 (9.0%)
+[2026-01-19 20:00:48] [INFO] ================================================================================
+[2026-01-19 20:00:48] [INFO] 📄 Indexation: 2eme-amendement-au-document-d-enregistrement-universel-et-rapport-financier-annuel-2024.pdf
+[2026-01-19 20:00:48] [INFO]    Taille: 11.9 MB
+[2026-01-19 20:00:48] [INFO]    Timeout: 713s (~11min)
+[2026-01-19 20:00:48] [INFO]    Collection: 2eme_amendement_au_document_d_enregistrement_universel_et_rapport_financier_annuel_2024
+[2026-01-19 20:12:41] [ERROR] ⏱️  Timeout après 713s - Le document est trop gros
+[2026-01-19 20:12:41] [INFO] 
+📊 Progression: 7/78 documents
+[2026-01-19 20:12:41] [INFO]    ✅ Succès: 5
+[2026-01-19 20:12:41] [INFO]    ❌ Échecs: 2
+[2026-01-19 20:12:41] [INFO]    📈 Taux de réussite: 71.4%
+[2026-01-19 20:12:41] [INFO]    ⏱️  Temps écoulé: 713.0s
+[2026-01-19 20:12:41] [INFO]    🔄 Restants: 71 documents
+
+[2026-01-19 20:12:41] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 20:12:43] [INFO] ================================================================================
+[2026-01-19 20:12:43] [INFO] 📄 Document 8/78 (10.3%)
+[2026-01-19 20:12:43] [INFO] ================================================================================
+[2026-01-19 20:12:43] [INFO] 📄 Indexation: 3DS_DEU 2023_18032024.pdf
+[2026-01-19 20:12:43] [INFO]    Taille: 9.4 MB
+[2026-01-19 20:12:43] [INFO]    Timeout: 561s (~9min)
+[2026-01-19 20:12:43] [INFO]    Collection: 3ds_deu_2023_18032024
+[2026-01-19 20:19:32] [SUCCESS] ✅ Succès! Chunks: 3079 (Tables: 870, Texte: 2209)
+[2026-01-19 20:19:32] [INFO] 
+📊 Progression: 8/78 documents
+[2026-01-19 20:19:32] [INFO]    ✅ Succès: 6
+[2026-01-19 20:19:32] [INFO]    ❌ Échecs: 2
+[2026-01-19 20:19:32] [INFO]    📈 Taux de réussite: 75.0%
+[2026-01-19 20:19:32] [INFO]    ⏱️  Temps écoulé: 409.6s
+[2026-01-19 20:19:32] [INFO]    🔄 Restants: 70 documents
+
+[2026-01-19 20:19:32] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 20:19:34] [INFO] ================================================================================
+[2026-01-19 20:19:34] [INFO] 📄 Document 9/78 (11.5%)
+[2026-01-19 20:19:34] [INFO] ================================================================================
+[2026-01-19 20:19:34] [INFO] 📄 Indexation: 3DS_DEU 2024_18032025.pdf
+[2026-01-19 20:19:34] [INFO]    Taille: 11.1 MB
+[2026-01-19 20:19:34] [INFO]    Timeout: 665s (~11min)
+[2026-01-19 20:19:34] [INFO]    Collection: 3ds_deu_2024_18032025
+[2026-01-19 20:27:22] [SUCCESS] ✅ Succès! Chunks: 4136 (Tables: 1741, Texte: 2395)
+[2026-01-19 20:27:22] [INFO] 
+📊 Progression: 9/78 documents
+[2026-01-19 20:27:22] [INFO]    ✅ Succès: 7
+[2026-01-19 20:27:22] [INFO]    ❌ Échecs: 2
+[2026-01-19 20:27:22] [INFO]    📈 Taux de réussite: 77.8%
+[2026-01-19 20:27:22] [INFO]    ⏱️  Temps écoulé: 467.4s
+[2026-01-19 20:27:22] [INFO]    🔄 Restants: 69 documents
+
+[2026-01-19 20:27:22] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 20:27:24] [INFO] ================================================================================
+[2026-01-19 20:27:24] [INFO] 📄 Document 10/78 (12.8%)
+[2026-01-19 20:27:24] [INFO] ================================================================================
+[2026-01-19 20:27:24] [INFO] 📄 Indexation: Airbus Annual Report 2024.pdf
+[2026-01-19 20:27:24] [INFO]    Taille: 14.4 MB
+[2026-01-19 20:27:24] [INFO]    Timeout: 865s (~14min)
+[2026-01-19 20:27:24] [INFO]    Collection: airbus_annual_report_2024
+[2026-01-19 20:34:38] [SUCCESS] ✅ Succès! Chunks: 2504 (Tables: 1093, Texte: 1411)
+[2026-01-19 20:34:38] [INFO] 
+📊 Progression: 10/78 documents
+[2026-01-19 20:34:38] [INFO]    ✅ Succès: 8
+[2026-01-19 20:34:38] [INFO]    ❌ Échecs: 2
+[2026-01-19 20:34:38] [INFO]    📈 Taux de réussite: 80.0%
+[2026-01-19 20:34:38] [INFO]    ⏱️  Temps écoulé: 434.2s
+[2026-01-19 20:34:38] [INFO]    🔄 Restants: 68 documents
+
+[2026-01-19 20:34:38] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 20:34:40] [INFO] ================================================================================
+[2026-01-19 20:34:40] [INFO] 📄 Document 11/78 (14.1%)
+[2026-01-19 20:34:40] [INFO] ================================================================================
+[2026-01-19 20:34:40] [INFO] 📄 Indexation: Airbus Financial Statements 2024 (1).pdf
+[2026-01-19 20:34:40] [INFO]    Taille: 2.7 MB
+[2026-01-19 20:34:40] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 20:34:40] [INFO]    Collection: airbus_financial_statements_2024_(1)
+[2026-01-19 20:59:39] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: Validation error: name: Expected a name containing 3-512 characters from [a-zA-Z0-9._-], starting and ending with a character in [a-zA-Z0-9]. Got: airbus_financial_statements_2024_(1)"}
+[2026-01-19 20:59:39] [INFO] 
+📊 Progression: 11/78 documents
+[2026-01-19 20:59:39] [INFO]    ✅ Succès: 8
+[2026-01-19 20:59:39] [INFO]    ❌ Échecs: 3
+[2026-01-19 20:59:39] [INFO]    📈 Taux de réussite: 72.7%
+[2026-01-19 20:59:39] [INFO]    ⏱️  Temps écoulé: 1498.8s
+[2026-01-19 20:59:39] [INFO]    🔄 Restants: 67 documents
+
+[2026-01-19 20:59:39] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 20:59:41] [INFO] ================================================================================
+[2026-01-19 20:59:41] [INFO] 📄 Document 12/78 (15.4%)
+[2026-01-19 20:59:41] [INFO] ================================================================================
+[2026-01-19 20:59:41] [INFO] 📄 Indexation: Airbus-Annual-Report-2023-Overview.pdf
+[2026-01-19 20:59:41] [INFO]    Taille: 4.4 MB
+[2026-01-19 20:59:41] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 20:59:41] [INFO]    Collection: airbus_annual_report_2023_overview
+[2026-01-19 20:59:59] [SUCCESS] ✅ Succès! Chunks: 98 (Tables: 5, Texte: 93)
+[2026-01-19 20:59:59] [INFO] 
+📊 Progression: 12/78 documents
+[2026-01-19 20:59:59] [INFO]    ✅ Succès: 9
+[2026-01-19 20:59:59] [INFO]    ❌ Échecs: 3
+[2026-01-19 20:59:59] [INFO]    📈 Taux de réussite: 75.0%
+[2026-01-19 20:59:59] [INFO]    ⏱️  Temps écoulé: 17.9s
+[2026-01-19 20:59:59] [INFO]    🔄 Restants: 66 documents
+
+[2026-01-19 20:59:59] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:00:01] [INFO] ================================================================================
+[2026-01-19 21:00:01] [INFO] 📄 Document 13/78 (16.7%)
+[2026-01-19 21:00:01] [INFO] ================================================================================
+[2026-01-19 21:00:01] [INFO] 📄 Indexation: Airbus-Annual-Report-2023.pdf
+[2026-01-19 21:00:01] [INFO]    Taille: 11.5 MB
+[2026-01-19 21:00:01] [INFO]    Timeout: 689s (~11min)
+[2026-01-19 21:00:01] [INFO]    Collection: airbus_annual_report_2023
+[2026-01-19 21:01:46] [INFO] ================================================================================
+[2026-01-19 21:01:46] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:01:46] [INFO] ================================================================================
+[2026-01-19 21:01:46] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 21:01:46] [INFO]    Total de documents: 79
+[2026-01-19 21:01:46] [INFO]    Déjà traités: 10
+[2026-01-19 21:01:46] [INFO]    À traiter: 69
+[2026-01-19 21:01:46] [INFO]    Taille totale: 663.5 MB
+[2026-01-19 21:01:46] [INFO]    Temps estimé: 663 minutes (~11.1h)
+[2026-01-19 21:01:46] [INFO] 
+[2026-01-19 21:01:46] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 21:01:46] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 21:01:46] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 21:01:46] [INFO] 
+[2026-01-19 21:03:19] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 21:03:19] [INFO] ================================================================================
+[2026-01-19 21:03:19] [INFO] 📄 Document 1/69 (1.4%)
+[2026-01-19 21:03:19] [INFO] ================================================================================
+[2026-01-19 21:03:19] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 21:03:19] [INFO]    Taille: 12.7 MB
+[2026-01-19 21:03:19] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 21:03:19] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 21:03:20] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:03:20] [INFO] 
+📊 Progression: 1/69 documents
+[2026-01-19 21:03:20] [INFO]    ✅ Succès: 0
+[2026-01-19 21:03:20] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:03:20] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:03:20] [INFO]    ⏱️  Temps écoulé: 0.8s
+[2026-01-19 21:03:20] [INFO]    🔄 Restants: 68 documents
+
+[2026-01-19 21:03:20] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:03:22] [INFO] ================================================================================
+[2026-01-19 21:03:22] [INFO] 📄 Document 2/69 (2.9%)
+[2026-01-19 21:03:22] [INFO] ================================================================================
+[2026-01-19 21:03:22] [INFO] 📄 Indexation: 2eme-amendement-au-document-d-enregistrement-universel-et-rapport-financier-annuel-2024.pdf
+[2026-01-19 21:03:22] [INFO]    Taille: 11.9 MB
+[2026-01-19 21:03:22] [INFO]    Timeout: 713s (~11min)
+[2026-01-19 21:03:22] [INFO]    Collection: 2eme_amendement_au_document_d_enregistrement_universel_et_rapport_financier_annuel_2024
+[2026-01-19 21:03:22] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:03:22] [INFO] 
+📊 Progression: 2/69 documents
+[2026-01-19 21:03:22] [INFO]    ✅ Succès: 0
+[2026-01-19 21:03:22] [INFO]    ❌ Échecs: 2
+[2026-01-19 21:03:22] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:03:22] [INFO]    ⏱️  Temps écoulé: 0.2s
+[2026-01-19 21:03:22] [INFO]    🔄 Restants: 67 documents
+
+[2026-01-19 21:03:22] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:03:24] [INFO] ================================================================================
+[2026-01-19 21:03:24] [INFO] 📄 Document 3/69 (4.3%)
+[2026-01-19 21:03:24] [INFO] ================================================================================
+[2026-01-19 21:03:24] [INFO] 📄 Indexation: Airbus Financial Statements 2024 (1).pdf
+[2026-01-19 21:03:24] [INFO]    Taille: 2.7 MB
+[2026-01-19 21:03:24] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 21:03:24] [INFO]    Collection: airbus_financial_statements_2024_(1)
+[2026-01-19 21:03:24] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:03:24] [INFO] 
+📊 Progression: 3/69 documents
+[2026-01-19 21:03:24] [INFO]    ✅ Succès: 0
+[2026-01-19 21:03:24] [INFO]    ❌ Échecs: 3
+[2026-01-19 21:03:24] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:03:24] [INFO]    ⏱️  Temps écoulé: 0.1s
+[2026-01-19 21:03:24] [INFO]    🔄 Restants: 66 documents
+
+[2026-01-19 21:03:24] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:03:26] [INFO] ================================================================================
+[2026-01-19 21:03:26] [INFO] 📄 Document 4/69 (5.8%)
+[2026-01-19 21:03:26] [INFO] ================================================================================
+[2026-01-19 21:03:26] [INFO] 📄 Indexation: Airbus-Annual-Report-2023.pdf
+[2026-01-19 21:03:26] [INFO]    Taille: 11.5 MB
+[2026-01-19 21:03:26] [INFO]    Timeout: 689s (~11min)
+[2026-01-19 21:03:26] [INFO]    Collection: airbus_annual_report_2023
+[2026-01-19 21:03:27] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:03:27] [INFO] 
+📊 Progression: 4/69 documents
+[2026-01-19 21:03:27] [INFO]    ✅ Succès: 0
+[2026-01-19 21:03:27] [INFO]    ❌ Échecs: 4
+[2026-01-19 21:03:27] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:03:27] [INFO]    ⏱️  Temps écoulé: 0.2s
+[2026-01-19 21:03:27] [INFO]    🔄 Restants: 65 documents
+
+[2026-01-19 21:03:27] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:03:29] [INFO] ================================================================================
+[2026-01-19 21:03:29] [INFO] 📄 Document 5/69 (7.2%)
+[2026-01-19 21:03:29] [INFO] ================================================================================
+[2026-01-19 21:03:29] [INFO] 📄 Indexation: CFR_URD_2024_FR_250327_MEL_0_0.pdf
+[2026-01-19 21:03:29] [INFO]    Taille: 10.0 MB
+[2026-01-19 21:03:29] [INFO]    Timeout: 598s (~9min)
+[2026-01-19 21:03:29] [INFO]    Collection: cfr_urd_2024_fr_250327_mel_0_0
+[2026-01-19 21:03:29] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:03:29] [INFO] 
+📊 Progression: 5/69 documents
+[2026-01-19 21:03:29] [INFO]    ✅ Succès: 0
+[2026-01-19 21:03:29] [INFO]    ❌ Échecs: 5
+[2026-01-19 21:03:29] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:03:29] [INFO]    ⏱️  Temps écoulé: 0.2s
+[2026-01-19 21:03:29] [INFO]    🔄 Restants: 64 documents
+
+[2026-01-19 21:03:29] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:03:31] [INFO] ================================================================================
+[2026-01-19 21:03:31] [INFO] 📄 Document 6/69 (8.7%)
+[2026-01-19 21:03:31] [INFO] ================================================================================
+[2026-01-19 21:03:31] [INFO] 📄 Indexation: Capgemini_-_2024-03-29_-_Document_d_Enregistrement_Universel_2023.pdf
+[2026-01-19 21:03:31] [INFO]    Taille: 12.6 MB
+[2026-01-19 21:04:47] [INFO] ================================================================================
+[2026-01-19 21:04:47] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:04:47] [INFO] ================================================================================
+[2026-01-19 21:04:47] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 21:04:47] [INFO]    Total de documents: 79
+[2026-01-19 21:04:47] [INFO]    Déjà traités: 10
+[2026-01-19 21:04:47] [INFO]    À traiter: 69
+[2026-01-19 21:04:47] [INFO]    Taille totale: 663.5 MB
+[2026-01-19 21:04:47] [INFO]    Temps estimé: 663 minutes (~11.1h)
+[2026-01-19 21:04:47] [INFO] 
+[2026-01-19 21:04:47] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 21:04:47] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 21:04:47] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 21:04:47] [INFO] 
+[2026-01-19 21:04:58] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 21:04:58] [INFO] ================================================================================
+[2026-01-19 21:04:58] [INFO] 📄 Document 1/69 (1.4%)
+[2026-01-19 21:04:58] [INFO] ================================================================================
+[2026-01-19 21:04:58] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 21:04:58] [INFO]    Taille: 12.7 MB
+[2026-01-19 21:04:58] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 21:04:58] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 21:04:58] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:04:58] [INFO] 
+📊 Progression: 1/69 documents
+[2026-01-19 21:04:58] [INFO]    ✅ Succès: 0
+[2026-01-19 21:04:58] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:04:58] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:04:58] [INFO]    ⏱️  Temps écoulé: 0.2s
+[2026-01-19 21:04:58] [INFO]    🔄 Restants: 68 documents
+
+[2026-01-19 21:04:58] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:05:00] [INFO] ================================================================================
+[2026-01-19 21:05:00] [INFO] 📄 Document 2/69 (2.9%)
+[2026-01-19 21:05:00] [INFO] ================================================================================
+[2026-01-19 21:05:00] [INFO] 📄 Indexation: 2eme-amendement-au-document-d-enregistrement-universel-et-rapport-financier-annuel-2024.pdf
+[2026-01-19 21:05:00] [INFO]    Taille: 11.9 MB
+[2026-01-19 21:05:00] [INFO]    Timeout: 713s (~11min)
+[2026-01-19 21:05:00] [INFO]    Collection: 2eme_amendement_au_document_d_enregistrement_universel_et_rapport_financier_annuel_2024
+[2026-01-19 21:05:00] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:05:00] [INFO] 
+📊 Progression: 2/69 documents
+[2026-01-19 21:05:00] [INFO]    ✅ Succès: 0
+[2026-01-19 21:05:00] [INFO]    ❌ Échecs: 2
+[2026-01-19 21:05:00] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:05:00] [INFO]    ⏱️  Temps écoulé: 0.2s
+[2026-01-19 21:05:00] [INFO]    🔄 Restants: 67 documents
+
+[2026-01-19 21:05:00] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:05:35] [INFO] ================================================================================
+[2026-01-19 21:05:35] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:05:35] [INFO] ================================================================================
+[2026-01-19 21:05:35] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 21:05:35] [INFO]    Total de documents: 79
+[2026-01-19 21:05:35] [INFO]    Déjà traités: 10
+[2026-01-19 21:05:35] [INFO]    À traiter: 69
+[2026-01-19 21:05:35] [INFO]    Taille totale: 663.5 MB
+[2026-01-19 21:05:35] [INFO]    Temps estimé: 663 minutes (~11.1h)
+[2026-01-19 21:05:35] [INFO] 
+[2026-01-19 21:05:35] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 21:05:35] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 21:05:35] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 21:05:35] [INFO] 
+[2026-01-19 21:05:36] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 21:05:36] [INFO] ================================================================================
+[2026-01-19 21:05:36] [INFO] 📄 Document 1/69 (1.4%)
+[2026-01-19 21:05:36] [INFO] ================================================================================
+[2026-01-19 21:05:36] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 21:05:36] [INFO]    Taille: 12.7 MB
+[2026-01-19 21:05:36] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 21:05:36] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 21:05:37] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:05:37] [INFO] 
+📊 Progression: 1/69 documents
+[2026-01-19 21:05:37] [INFO]    ✅ Succès: 0
+[2026-01-19 21:05:37] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:05:37] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:05:37] [INFO]    ⏱️  Temps écoulé: 0.6s
+[2026-01-19 21:05:37] [INFO]    🔄 Restants: 68 documents
+
+[2026-01-19 21:05:37] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:05:39] [INFO] ================================================================================
+[2026-01-19 21:05:39] [INFO] 📄 Document 2/69 (2.9%)
+[2026-01-19 21:05:39] [INFO] ================================================================================
+[2026-01-19 21:05:39] [INFO] 📄 Indexation: 2eme-amendement-au-document-d-enregistrement-universel-et-rapport-financier-annuel-2024.pdf
+[2026-01-19 21:05:39] [INFO]    Taille: 11.9 MB
+[2026-01-19 21:05:39] [INFO]    Timeout: 713s (~11min)
+[2026-01-19 21:05:39] [INFO]    Collection: 2eme_amendement_au_document_d_enregistrement_universel_et_rapport_financier_annuel_2024
+[2026-01-19 21:05:39] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:05:39] [INFO] 
+📊 Progression: 2/69 documents
+[2026-01-19 21:05:39] [INFO]    ✅ Succès: 0
+[2026-01-19 21:05:39] [INFO]    ❌ Échecs: 2
+[2026-01-19 21:05:39] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:05:39] [INFO]    ⏱️  Temps écoulé: 0.2s
+[2026-01-19 21:05:39] [INFO]    🔄 Restants: 67 documents
+
+[2026-01-19 21:05:39] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:09:35] [INFO] ================================================================================
+[2026-01-19 21:09:35] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:09:35] [INFO] ================================================================================
+[2026-01-19 21:09:35] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 21:09:35] [INFO]    Total de documents: 79
+[2026-01-19 21:09:35] [INFO]    Déjà traités: 10
+[2026-01-19 21:09:35] [INFO]    À traiter: 69
+[2026-01-19 21:09:35] [INFO]    Taille totale: 663.5 MB
+[2026-01-19 21:09:35] [INFO]    Temps estimé: 663 minutes (~11.1h)
+[2026-01-19 21:09:35] [INFO] 
+[2026-01-19 21:09:35] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 21:09:35] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 21:09:35] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 21:09:35] [INFO] 
+[2026-01-19 21:09:38] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 21:09:38] [INFO] ================================================================================
+[2026-01-19 21:09:38] [INFO] 📄 Document 1/69 (1.4%)
+[2026-01-19 21:09:38] [INFO] ================================================================================
+[2026-01-19 21:09:38] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 21:09:38] [INFO]    Taille: 12.7 MB
+[2026-01-19 21:09:38] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 21:09:38] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 21:09:38] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:09:38] [INFO] 
+📊 Progression: 1/69 documents
+[2026-01-19 21:09:38] [INFO]    ✅ Succès: 0
+[2026-01-19 21:09:38] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:09:38] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:09:38] [INFO]    ⏱️  Temps écoulé: 0.6s
+[2026-01-19 21:09:38] [INFO]    🔄 Restants: 68 documents
+
+[2026-01-19 21:09:38] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:09:40] [INFO] ================================================================================
+[2026-01-19 21:09:40] [INFO] 📄 Document 2/69 (2.9%)
+[2026-01-19 21:09:40] [INFO] ================================================================================
+[2026-01-19 21:09:40] [INFO] 📄 Indexation: 2eme-amendement-au-document-d-enregistrement-universel-et-rapport-financier-annuel-2024.pdf
+[2026-01-19 21:09:40] [INFO]    Taille: 11.9 MB
+[2026-01-19 21:09:40] [INFO]    Timeout: 713s (~11min)
+[2026-01-19 21:09:40] [INFO]    Collection: 2eme_amendement_au_document_d_enregistrement_universel_et_rapport_financier_annuel_2024
+[2026-01-19 21:11:57] [INFO] ================================================================================
+[2026-01-19 21:11:57] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:11:57] [INFO] ================================================================================
+[2026-01-19 21:11:57] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 21:11:57] [INFO]    Total de documents: 79
+[2026-01-19 21:11:57] [INFO]    Déjà traités: 10
+[2026-01-19 21:11:57] [INFO]    À traiter: 69
+[2026-01-19 21:11:57] [INFO]    Taille totale: 663.5 MB
+[2026-01-19 21:11:57] [INFO]    Temps estimé: 663 minutes (~11.1h)
+[2026-01-19 21:11:57] [INFO] 
+[2026-01-19 21:11:57] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 21:11:57] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 21:11:57] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 21:11:57] [INFO] 
+[2026-01-19 21:11:59] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 21:11:59] [INFO] ================================================================================
+[2026-01-19 21:11:59] [INFO] 📄 Document 1/69 (1.4%)
+[2026-01-19 21:11:59] [INFO] ================================================================================
+[2026-01-19 21:11:59] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 21:11:59] [INFO]    Taille: 12.7 MB
+[2026-01-19 21:11:59] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 21:11:59] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 21:12:00] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:12:00] [INFO] 
+📊 Progression: 1/69 documents
+[2026-01-19 21:12:00] [INFO]    ✅ Succès: 0
+[2026-01-19 21:12:00] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:12:00] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:12:00] [INFO]    ⏱️  Temps écoulé: 0.6s
+[2026-01-19 21:12:00] [INFO]    🔄 Restants: 68 documents
+
+[2026-01-19 21:12:00] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:12:02] [INFO] ================================================================================
+[2026-01-19 21:12:02] [INFO] 📄 Document 2/69 (2.9%)
+[2026-01-19 21:12:02] [INFO] ================================================================================
+[2026-01-19 21:12:02] [INFO] 📄 Indexation: 2eme-amendement-au-document-d-enregistrement-universel-et-rapport-financier-annuel-2024.pdf
+[2026-01-19 21:12:02] [INFO]    Taille: 11.9 MB
+[2026-01-19 21:12:02] [INFO]    Timeout: 713s (~11min)
+[2026-01-19 21:12:02] [INFO]    Collection: 2eme_amendement_au_document_d_enregistrement_universel_et_rapport_financier_annuel_2024
+[2026-01-19 21:12:02] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:12:02] [INFO] 
+📊 Progression: 2/69 documents
+[2026-01-19 21:12:02] [INFO]    ✅ Succès: 0
+[2026-01-19 21:12:02] [INFO]    ❌ Échecs: 2
+[2026-01-19 21:12:02] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:12:02] [INFO]    ⏱️  Temps écoulé: 0.2s
+[2026-01-19 21:12:02] [INFO]    🔄 Restants: 67 documents
+
+[2026-01-19 21:12:02] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:12:04] [INFO] ================================================================================
+[2026-01-19 21:12:04] [INFO] 📄 Document 3/69 (4.3%)
+[2026-01-19 21:12:04] [INFO] ================================================================================
+[2026-01-19 21:12:04] [INFO] 📄 Indexation: Airbus Financial Statements 2024 (1).pdf
+[2026-01-19 21:12:04] [INFO]    Taille: 2.7 MB
+[2026-01-19 21:12:04] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 21:12:04] [INFO]    Collection: airbus_financial_statements_2024_(1)
+[2026-01-19 21:15:07] [INFO] ================================================================================
+[2026-01-19 21:15:07] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:15:07] [INFO] ================================================================================
+[2026-01-19 21:15:07] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 21:15:07] [INFO]    Total de documents: 79
+[2026-01-19 21:15:07] [INFO]    Déjà traités: 10
+[2026-01-19 21:15:07] [INFO]    À traiter: 1
+[2026-01-19 21:15:07] [INFO]    Taille totale: 12.7 MB
+[2026-01-19 21:15:07] [INFO]    Temps estimé: 13 minutes (~0.2h)
+[2026-01-19 21:15:07] [INFO] 
+[2026-01-19 21:15:07] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 21:15:07] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 21:15:07] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 21:15:07] [INFO] 
+[2026-01-19 21:15:09] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 21:15:09] [INFO] ================================================================================
+[2026-01-19 21:15:09] [INFO] 📄 Document 1/1 (100.0%)
+[2026-01-19 21:15:09] [INFO] ================================================================================
+[2026-01-19 21:15:09] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 21:15:09] [INFO]    Taille: 12.7 MB
+[2026-01-19 21:15:09] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 21:15:09] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 21:15:09] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: DocumentConverter.__init__() got an unexpected keyword argument 'pipeline_options'"}
+[2026-01-19 21:15:09] [INFO] 
+📊 Progression: 1/1 documents
+[2026-01-19 21:15:09] [INFO]    ✅ Succès: 0
+[2026-01-19 21:15:09] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:15:09] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:15:09] [INFO]    ⏱️  Temps écoulé: 0.0s
+[2026-01-19 21:15:09] [INFO]    🔄 Restants: 0 documents
+
+[2026-01-19 21:15:09] [INFO] ================================================================================
+[2026-01-19 21:15:09] [INFO] 🎉 INDEXATION TERMINÉE
+[2026-01-19 21:15:09] [INFO] ================================================================================
+[2026-01-19 21:15:09] [INFO] 
+📊 STATISTIQUES FINALES:
+[2026-01-19 21:15:09] [INFO]    Documents traités: 1
+[2026-01-19 21:15:09] [INFO]    ✅ Succès: 0
+[2026-01-19 21:15:09] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:15:09] [INFO]    Taux de réussite: 0.0%
+[2026-01-19 21:15:09] [INFO]    ⏱️  Temps total: 0.0 minutes (0.0h)
+[2026-01-19 21:15:09] [INFO] 
+📁 Logs sauvegardés: indexing_log.txt
+[2026-01-19 21:15:09] [INFO] 📁 Progression sauvegardée: indexing_progress.json
+[2026-01-19 21:15:09] [INFO] 
+⚠️  1 document(s) ont échoué
+[2026-01-19 21:15:09] [INFO]    Consultez le fichier de log pour les détails
+[2026-01-19 21:15:47] [INFO] ================================================================================
+[2026-01-19 21:15:47] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:15:47] [INFO] ================================================================================
+[2026-01-19 21:15:47] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 21:15:47] [INFO]    Total de documents: 79
+[2026-01-19 21:15:47] [INFO]    Déjà traités: 10
+[2026-01-19 21:15:47] [INFO]    À traiter: 69
+[2026-01-19 21:15:47] [INFO]    Taille totale: 663.5 MB
+[2026-01-19 21:15:47] [INFO]    Temps estimé: 663 minutes (~11.1h)
+[2026-01-19 21:15:47] [INFO] 
+[2026-01-19 21:15:47] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 21:15:47] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 21:15:47] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 21:15:47] [INFO] 
+[2026-01-19 21:15:48] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 21:15:48] [INFO] ================================================================================
+[2026-01-19 21:15:48] [INFO] 📄 Document 1/69 (1.4%)
+[2026-01-19 21:15:48] [INFO] ================================================================================
+[2026-01-19 21:15:48] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 21:15:48] [INFO]    Taille: 12.7 MB
+[2026-01-19 21:15:48] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 21:15:48] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 21:15:48] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: DocumentConverter.__init__() got an unexpected keyword argument 'pipeline_options'"}
+[2026-01-19 21:15:48] [INFO] 
+📊 Progression: 1/69 documents
+[2026-01-19 21:15:48] [INFO]    ✅ Succès: 0
+[2026-01-19 21:15:48] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:15:48] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:15:48] [INFO]    ⏱️  Temps écoulé: 0.0s
+[2026-01-19 21:15:48] [INFO]    🔄 Restants: 68 documents
+
+[2026-01-19 21:15:48] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:16:53] [INFO] ================================================================================
+[2026-01-19 21:16:53] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:16:53] [INFO] ================================================================================
+[2026-01-19 21:16:53] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 21:16:53] [INFO]    Total de documents: 79
+[2026-01-19 21:16:53] [INFO]    Déjà traités: 10
+[2026-01-19 21:16:53] [INFO]    À traiter: 1
+[2026-01-19 21:16:53] [INFO]    Taille totale: 12.7 MB
+[2026-01-19 21:16:53] [INFO]    Temps estimé: 13 minutes (~0.2h)
+[2026-01-19 21:16:53] [INFO] 
+[2026-01-19 21:16:53] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 21:16:53] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 21:16:53] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 21:16:53] [INFO] 
+[2026-01-19 21:16:55] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 21:16:55] [INFO] ================================================================================
+[2026-01-19 21:16:55] [INFO] 📄 Document 1/1 (100.0%)
+[2026-01-19 21:16:55] [INFO] ================================================================================
+[2026-01-19 21:16:55] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 21:16:55] [INFO]    Taille: 12.7 MB
+[2026-01-19 21:16:55] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 21:16:55] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 21:16:55] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: 'PdfPipelineOptions' object has no attribute 'backend'"}
+[2026-01-19 21:16:55] [INFO] 
+📊 Progression: 1/1 documents
+[2026-01-19 21:16:55] [INFO]    ✅ Succès: 0
+[2026-01-19 21:16:55] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:16:55] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:16:55] [INFO]    ⏱️  Temps écoulé: 0.0s
+[2026-01-19 21:16:55] [INFO]    🔄 Restants: 0 documents
+
+[2026-01-19 21:16:55] [INFO] ================================================================================
+[2026-01-19 21:16:55] [INFO] 🎉 INDEXATION TERMINÉE
+[2026-01-19 21:16:55] [INFO] ================================================================================
+[2026-01-19 21:16:55] [INFO] 
+📊 STATISTIQUES FINALES:
+[2026-01-19 21:16:55] [INFO]    Documents traités: 1
+[2026-01-19 21:16:55] [INFO]    ✅ Succès: 0
+[2026-01-19 21:16:55] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:16:55] [INFO]    Taux de réussite: 0.0%
+[2026-01-19 21:16:55] [INFO]    ⏱️  Temps total: 0.0 minutes (0.0h)
+[2026-01-19 21:16:55] [INFO] 
+📁 Logs sauvegardés: indexing_log.txt
+[2026-01-19 21:16:55] [INFO] 📁 Progression sauvegardée: indexing_progress.json
+[2026-01-19 21:16:55] [INFO] 
+⚠️  1 document(s) ont échoué
+[2026-01-19 21:16:55] [INFO]    Consultez le fichier de log pour les détails
+[2026-01-19 21:19:22] [INFO] ================================================================================
+[2026-01-19 21:19:22] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:19:22] [INFO] ================================================================================
+[2026-01-19 21:19:22] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 21:19:22] [INFO]    Total de documents: 79
+[2026-01-19 21:19:22] [INFO]    Déjà traités: 10
+[2026-01-19 21:19:22] [INFO]    À traiter: 69
+[2026-01-19 21:19:22] [INFO]    Taille totale: 663.5 MB
+[2026-01-19 21:19:22] [INFO]    Temps estimé: 663 minutes (~11.1h)
+[2026-01-19 21:19:22] [INFO] 
+[2026-01-19 21:19:22] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 21:19:22] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 21:19:22] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 21:19:22] [INFO] 
+[2026-01-19 21:19:24] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 21:19:24] [INFO] ================================================================================
+[2026-01-19 21:19:24] [INFO] 📄 Document 1/69 (1.4%)
+[2026-01-19 21:19:24] [INFO] ================================================================================
+[2026-01-19 21:19:24] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 21:19:24] [INFO]    Taille: 12.7 MB
+[2026-01-19 21:19:24] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 21:19:24] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 21:19:25] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:19:25] [INFO] 
+📊 Progression: 1/69 documents
+[2026-01-19 21:19:25] [INFO]    ✅ Succès: 0
+[2026-01-19 21:19:25] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:19:25] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:19:25] [INFO]    ⏱️  Temps écoulé: 0.6s
+[2026-01-19 21:19:25] [INFO]    🔄 Restants: 68 documents
+
+[2026-01-19 21:19:25] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:19:27] [INFO] ================================================================================
+[2026-01-19 21:19:27] [INFO] 📄 Document 2/69 (2.9%)
+[2026-01-19 21:19:27] [INFO] ================================================================================
+[2026-01-19 21:19:27] [INFO] 📄 Indexation: 2eme-amendement-au-document-d-enregistrement-universel-et-rapport-financier-annuel-2024.pdf
+[2026-01-19 21:19:27] [INFO]    Taille: 11.9 MB
+[2026-01-19 21:19:27] [INFO]    Timeout: 713s (~11min)
+[2026-01-19 21:19:27] [INFO]    Collection: 2eme_amendement_au_document_d_enregistrement_universel_et_rapport_financier_annuel_2024
+[2026-01-19 21:19:27] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: The checkpoint you are trying to load has model type `rt_detr_v2` but Transformers does not recognize this architecture. This could be because of an issue with the checkpoint, or because your version of Transformers is out of date."}
+[2026-01-19 21:19:27] [INFO] 
+📊 Progression: 2/69 documents
+[2026-01-19 21:19:27] [INFO]    ✅ Succès: 0
+[2026-01-19 21:19:27] [INFO]    ❌ Échecs: 2
+[2026-01-19 21:19:27] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:19:27] [INFO]    ⏱️  Temps écoulé: 0.2s
+[2026-01-19 21:19:27] [INFO]    🔄 Restants: 67 documents
+
+[2026-01-19 21:19:27] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:21:04] [INFO] ================================================================================
+[2026-01-19 21:21:04] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:21:04] [INFO] ================================================================================
+[2026-01-19 21:21:04] [ERROR] ❌ Impossible de joindre l'API: HTTPConnectionPool(host='localhost', port=8000): Max retries exceeded with url: /health (Caused by NewConnectionError("HTTPConnection(host='localhost', port=8000): Failed to establish a new connection: [Errno 61] Connection refused"))
+[2026-01-19 21:21:04] [ERROR] ⚠️  Lancez d'abord l'API: cd api && python -m uvicorn main:app --reload
+[2026-01-19 21:21:26] [INFO] ================================================================================
+[2026-01-19 21:21:26] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 21:21:26] [INFO] ================================================================================
+[2026-01-19 21:21:26] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 21:21:26] [INFO]    Total de documents: 79
+[2026-01-19 21:21:26] [INFO]    Déjà traités: 10
+[2026-01-19 21:21:26] [INFO]    À traiter: 69
+[2026-01-19 21:21:26] [INFO]    Taille totale: 663.5 MB
+[2026-01-19 21:21:26] [INFO]    Temps estimé: 663 minutes (~11.1h)
+[2026-01-19 21:21:26] [INFO] 
+[2026-01-19 21:21:26] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 21:21:26] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 21:21:26] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 21:21:26] [INFO] 
+[2026-01-19 21:21:32] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 21:21:32] [INFO] ================================================================================
+[2026-01-19 21:21:32] [INFO] 📄 Document 1/69 (1.4%)
+[2026-01-19 21:21:32] [INFO] ================================================================================
+[2026-01-19 21:21:32] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 21:21:32] [INFO]    Taille: 12.7 MB
+[2026-01-19 21:21:32] [INFO]    Timeout: 760s (~12min)
+[2026-01-19 21:21:32] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-19 21:34:12] [ERROR] ⏱️  Timeout après 760s - Le document est trop gros
+[2026-01-19 21:34:12] [INFO] 
+📊 Progression: 1/69 documents
+[2026-01-19 21:34:12] [INFO]    ✅ Succès: 0
+[2026-01-19 21:34:12] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:34:12] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-19 21:34:12] [INFO]    ⏱️  Temps écoulé: 760.0s
+[2026-01-19 21:34:12] [INFO]    🔄 Restants: 68 documents
+
+[2026-01-19 21:34:12] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:34:14] [INFO] ================================================================================
+[2026-01-19 21:34:14] [INFO] 📄 Document 2/69 (2.9%)
+[2026-01-19 21:34:14] [INFO] ================================================================================
+[2026-01-19 21:34:14] [INFO] 📄 Indexation: 2eme-amendement-au-document-d-enregistrement-universel-et-rapport-financier-annuel-2024.pdf
+[2026-01-19 21:34:14] [INFO]    Taille: 11.9 MB
+[2026-01-19 21:34:14] [INFO]    Timeout: 713s (~11min)
+[2026-01-19 21:34:14] [INFO]    Collection: 2eme_amendement_au_document_d_enregistrement_universel_et_rapport_financier_annuel_2024
+[2026-01-19 21:45:08] [SUCCESS] ✅ Succès! Chunks: 2318 (Tables: 1370, Texte: 948)
+[2026-01-19 21:45:08] [INFO] 
+📊 Progression: 2/69 documents
+[2026-01-19 21:45:08] [INFO]    ✅ Succès: 1
+[2026-01-19 21:45:08] [INFO]    ❌ Échecs: 1
+[2026-01-19 21:45:08] [INFO]    📈 Taux de réussite: 50.0%
+[2026-01-19 21:45:08] [INFO]    ⏱️  Temps écoulé: 653.9s
+[2026-01-19 21:45:08] [INFO]    🔄 Restants: 67 documents
+
+[2026-01-19 21:45:08] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:45:10] [INFO] ================================================================================
+[2026-01-19 21:45:10] [INFO] 📄 Document 3/69 (4.3%)
+[2026-01-19 21:45:10] [INFO] ================================================================================
+[2026-01-19 21:45:10] [INFO] 📄 Indexation: Airbus Financial Statements 2024 (1).pdf
+[2026-01-19 21:45:10] [INFO]    Taille: 2.7 MB
+[2026-01-19 21:45:10] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 21:45:10] [INFO]    Collection: airbus_financial_statements_2024_(1)
+[2026-01-19 21:47:47] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: Validation error: name: Expected a name containing 3-512 characters from [a-zA-Z0-9._-], starting and ending with a character in [a-zA-Z0-9]. Got: airbus_financial_statements_2024_(1)"}
+[2026-01-19 21:47:47] [INFO] 
+📊 Progression: 3/69 documents
+[2026-01-19 21:47:47] [INFO]    ✅ Succès: 1
+[2026-01-19 21:47:47] [INFO]    ❌ Échecs: 2
+[2026-01-19 21:47:47] [INFO]    📈 Taux de réussite: 33.3%
+[2026-01-19 21:47:47] [INFO]    ⏱️  Temps écoulé: 157.7s
+[2026-01-19 21:47:47] [INFO]    🔄 Restants: 66 documents
+
+[2026-01-19 21:47:47] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:47:49] [INFO] ================================================================================
+[2026-01-19 21:47:49] [INFO] 📄 Document 4/69 (5.8%)
+[2026-01-19 21:47:49] [INFO] ================================================================================
+[2026-01-19 21:47:49] [INFO] 📄 Indexation: Airbus-Annual-Report-2023.pdf
+[2026-01-19 21:47:49] [INFO]    Taille: 11.5 MB
+[2026-01-19 21:47:49] [INFO]    Timeout: 689s (~11min)
+[2026-01-19 21:47:49] [INFO]    Collection: airbus_annual_report_2023
+[2026-01-19 21:53:55] [SUCCESS] ✅ Succès! Chunks: 2678 (Tables: 1047, Texte: 1631)
+[2026-01-19 21:53:55] [INFO] 
+📊 Progression: 4/69 documents
+[2026-01-19 21:53:55] [INFO]    ✅ Succès: 2
+[2026-01-19 21:53:55] [INFO]    ❌ Échecs: 2
+[2026-01-19 21:53:55] [INFO]    📈 Taux de réussite: 50.0%
+[2026-01-19 21:53:55] [INFO]    ⏱️  Temps écoulé: 365.5s
+[2026-01-19 21:53:55] [INFO]    🔄 Restants: 65 documents
+
+[2026-01-19 21:53:55] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 21:53:57] [INFO] ================================================================================
+[2026-01-19 21:53:57] [INFO] 📄 Document 5/69 (7.2%)
+[2026-01-19 21:53:57] [INFO] ================================================================================
+[2026-01-19 21:53:57] [INFO] 📄 Indexation: CFR_URD_2024_FR_250327_MEL_0_0.pdf
+[2026-01-19 21:53:57] [INFO]    Taille: 10.0 MB
+[2026-01-19 21:53:57] [INFO]    Timeout: 598s (~9min)
+[2026-01-19 21:53:57] [INFO]    Collection: cfr_urd_2024_fr_250327_mel_0_0
+[2026-01-19 22:03:55] [ERROR] ⏱️  Timeout après 598s - Le document est trop gros
+[2026-01-19 22:03:55] [INFO] 
+📊 Progression: 5/69 documents
+[2026-01-19 22:03:55] [INFO]    ✅ Succès: 2
+[2026-01-19 22:03:55] [INFO]    ❌ Échecs: 3
+[2026-01-19 22:03:55] [INFO]    📈 Taux de réussite: 40.0%
+[2026-01-19 22:03:55] [INFO]    ⏱️  Temps écoulé: 598.0s
+[2026-01-19 22:03:55] [INFO]    🔄 Restants: 64 documents
+
+[2026-01-19 22:03:55] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 22:03:57] [INFO] ================================================================================
+[2026-01-19 22:03:57] [INFO] 📄 Document 6/69 (8.7%)
+[2026-01-19 22:03:57] [INFO] ================================================================================
+[2026-01-19 22:03:57] [INFO] 📄 Indexation: Capgemini_-_2024-03-29_-_Document_d_Enregistrement_Universel_2023.pdf
+[2026-01-19 22:03:57] [INFO]    Taille: 12.6 MB
+[2026-01-19 22:03:57] [INFO]    Timeout: 757s (~12min)
+[2026-01-19 22:03:57] [INFO]    Collection: capgemini___2024_03_29___document_d_enregistrement_universel_2023
+[2026-01-19 22:11:34] [SUCCESS] ✅ Succès! Chunks: 4343 (Tables: 1236, Texte: 3107)
+[2026-01-19 22:11:34] [INFO] 
+📊 Progression: 6/69 documents
+[2026-01-19 22:11:34] [INFO]    ✅ Succès: 3
+[2026-01-19 22:11:34] [INFO]    ❌ Échecs: 3
+[2026-01-19 22:11:34] [INFO]    📈 Taux de réussite: 50.0%
+[2026-01-19 22:11:34] [INFO]    ⏱️  Temps écoulé: 457.6s
+[2026-01-19 22:11:34] [INFO]    🔄 Restants: 63 documents
+
+[2026-01-19 22:11:34] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 22:11:36] [INFO] ================================================================================
+[2026-01-19 22:11:36] [INFO] 📄 Document 7/69 (10.1%)
+[2026-01-19 22:11:36] [INFO] ================================================================================
+[2026-01-19 22:11:36] [INFO] 📄 Indexation: Capgemini_-_2024-05-16_-_Rapport_Annuel_Intégré_2023.pdf
+[2026-01-19 22:11:36] [INFO]    Taille: 14.9 MB
+[2026-01-19 22:11:36] [INFO]    Timeout: 896s (~14min)
+[2026-01-19 22:11:36] [INFO]    Collection: capgemini___2024_05_16___rapport_annuel_intégré_2023
+[2026-01-19 22:12:11] [ERROR] ❌ Erreur API: 500 - {"detail":"Erreur lors de l'indexation: Validation error: name: Expected a name containing 3-512 characters from [a-zA-Z0-9._-], starting and ending with a character in [a-zA-Z0-9]. Got: capgemini___2024_05_16___rapport_annuel_intégré_2023"}
+[2026-01-19 22:12:11] [INFO] 
+📊 Progression: 7/69 documents
+[2026-01-19 22:12:11] [INFO]    ✅ Succès: 3
+[2026-01-19 22:12:11] [INFO]    ❌ Échecs: 4
+[2026-01-19 22:12:11] [INFO]    📈 Taux de réussite: 42.9%
+[2026-01-19 22:12:11] [INFO]    ⏱️  Temps écoulé: 34.9s
+[2026-01-19 22:12:11] [INFO]    🔄 Restants: 62 documents
+
+[2026-01-19 22:12:11] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 22:12:13] [INFO] ================================================================================
+[2026-01-19 22:12:13] [INFO] 📄 Document 8/69 (11.6%)
+[2026-01-19 22:12:13] [INFO] ================================================================================
+[2026-01-19 22:12:13] [INFO] 📄 Indexation: Capgemini_-_2025-03-21_-_Document_d_Enregistrement_Universel_2024.pdf
+[2026-01-19 22:12:13] [INFO]    Taille: 13.6 MB
+[2026-01-19 22:12:13] [INFO]    Timeout: 815s (~13min)
+[2026-01-19 22:12:13] [INFO]    Collection: capgemini___2025_03_21___document_d_enregistrement_universel_2024
+[2026-01-19 22:22:04] [ERROR] ❌ Erreur: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[2026-01-19 22:22:04] [INFO] 
+📊 Progression: 8/69 documents
+[2026-01-19 22:22:04] [INFO]    ✅ Succès: 3
+[2026-01-19 22:22:04] [INFO]    ❌ Échecs: 5
+[2026-01-19 22:22:04] [INFO]    📈 Taux de réussite: 37.5%
+[2026-01-19 22:22:04] [INFO]    ⏱️  Temps écoulé: 590.7s
+[2026-01-19 22:22:04] [INFO]    🔄 Restants: 61 documents
+
+[2026-01-19 22:22:04] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 22:22:06] [INFO] ================================================================================
+[2026-01-19 22:22:06] [INFO] 📄 Document 9/69 (13.0%)
+[2026-01-19 22:22:06] [INFO] ================================================================================
+[2026-01-19 22:22:06] [INFO] 📄 Indexation: Capgemini_-_2025-05-07_-_Rapport-Annuel-Integre-2024.pdf
+[2026-01-19 22:22:06] [INFO]    Taille: 15.2 MB
+[2026-01-19 22:22:06] [INFO]    Timeout: 909s (~15min)
+[2026-01-19 22:22:06] [INFO]    Collection: capgemini___2025_05_07___rapport_annuel_integre_2024
+[2026-01-19 22:42:34] [ERROR] ⏱️  Timeout après 909s - Le document est trop gros
+[2026-01-19 22:42:34] [INFO] 
+📊 Progression: 9/69 documents
+[2026-01-19 22:42:34] [INFO]    ✅ Succès: 3
+[2026-01-19 22:42:34] [INFO]    ❌ Échecs: 6
+[2026-01-19 22:42:34] [INFO]    📈 Taux de réussite: 33.3%
+[2026-01-19 22:42:34] [INFO]    ⏱️  Temps écoulé: 1227.6s
+[2026-01-19 22:42:34] [INFO]    🔄 Restants: 60 documents
+
+[2026-01-19 22:42:34] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 22:42:36] [INFO] ================================================================================
+[2026-01-19 22:42:36] [INFO] 📄 Document 10/69 (14.5%)
+[2026-01-19 22:42:36] [INFO] ================================================================================
+[2026-01-19 22:42:36] [INFO] 📄 Indexation: Document d'enregistrement universel 2023 (PDF)_10.pdf
+[2026-01-19 22:42:36] [INFO]    Taille: 10.7 MB
+[2026-01-19 22:42:36] [INFO]    Timeout: 641s (~10min)
+[2026-01-19 22:42:36] [INFO]    Collection: document_d'enregistrement_universel_2023_(pdf)_10
+[2026-01-19 22:57:22] [ERROR] ⏱️  Timeout après 641s - Le document est trop gros
+[2026-01-19 22:57:22] [INFO] 
+📊 Progression: 10/69 documents
+[2026-01-19 22:57:22] [INFO]    ✅ Succès: 3
+[2026-01-19 22:57:22] [INFO]    ❌ Échecs: 7
+[2026-01-19 22:57:22] [INFO]    📈 Taux de réussite: 30.0%
+[2026-01-19 22:57:22] [INFO]    ⏱️  Temps écoulé: 886.6s
+[2026-01-19 22:57:22] [INFO]    🔄 Restants: 59 documents
+
+[2026-01-19 22:57:22] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 22:57:24] [INFO] ================================================================================
+[2026-01-19 22:57:24] [INFO] 📄 Document 11/69 (15.9%)
+[2026-01-19 22:57:24] [INFO] ================================================================================
+[2026-01-19 22:57:24] [INFO] 📄 Indexation: Documents financiers  - 31 décembre 2024.pdf
+[2026-01-19 22:57:24] [INFO]    Taille: 1.8 MB
+[2026-01-19 22:57:24] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 22:57:24] [INFO]    Collection: documents_financiers____31_décembre_2024
+[2026-01-19 23:02:24] [ERROR] ⏱️  Timeout après 300s - Le document est trop gros
+[2026-01-19 23:02:24] [INFO] 
+📊 Progression: 11/69 documents
+[2026-01-19 23:02:24] [INFO]    ✅ Succès: 3
+[2026-01-19 23:02:24] [INFO]    ❌ Échecs: 8
+[2026-01-19 23:02:24] [INFO]    📈 Taux de réussite: 27.3%
+[2026-01-19 23:02:24] [INFO]    ⏱️  Temps écoulé: 300.0s
+[2026-01-19 23:02:24] [INFO]    🔄 Restants: 58 documents
+
+[2026-01-19 23:02:24] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 23:02:26] [INFO] ================================================================================
+[2026-01-19 23:02:26] [INFO] 📄 Document 12/69 (17.4%)
+[2026-01-19 23:02:26] [INFO] ================================================================================
+[2026-01-19 23:02:26] [INFO] 📄 Indexation: ENGIE_RI_2023_FR-1605_2.pdf
+[2026-01-19 23:02:26] [INFO]    Taille: 8.9 MB
+[2026-01-19 23:02:26] [INFO]    Timeout: 534s (~8min)
+[2026-01-19 23:02:26] [INFO]    Collection: engie_ri_2023_fr_1605_2
+[2026-01-19 23:11:20] [ERROR] ⏱️  Timeout après 534s - Le document est trop gros
+[2026-01-19 23:11:20] [INFO] 
+📊 Progression: 12/69 documents
+[2026-01-19 23:11:20] [INFO]    ✅ Succès: 3
+[2026-01-19 23:11:20] [INFO]    ❌ Échecs: 9
+[2026-01-19 23:11:20] [INFO]    📈 Taux de réussite: 25.0%
+[2026-01-19 23:11:20] [INFO]    ⏱️  Temps écoulé: 534.0s
+[2026-01-19 23:11:20] [INFO]    🔄 Restants: 57 documents
+
+[2026-01-19 23:11:20] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 23:11:22] [INFO] ================================================================================
+[2026-01-19 23:11:22] [INFO] 📄 Document 13/69 (18.8%)
+[2026-01-19 23:11:22] [INFO] ================================================================================
+[2026-01-19 23:11:22] [INFO] 📄 Indexation: Engie RI_Version FR_2105.pdf
+[2026-01-19 23:11:22] [INFO]    Taille: 6.7 MB
+[2026-01-19 23:11:22] [INFO]    Timeout: 403s (~6min)
+[2026-01-19 23:11:22] [INFO]    Collection: engie_ri_version_fr_2105
+[2026-01-19 23:18:05] [ERROR] ⏱️  Timeout après 403s - Le document est trop gros
+[2026-01-19 23:18:05] [INFO] 
+📊 Progression: 13/69 documents
+[2026-01-19 23:18:05] [INFO]    ✅ Succès: 3
+[2026-01-19 23:18:05] [INFO]    ❌ Échecs: 10
+[2026-01-19 23:18:05] [INFO]    📈 Taux de réussite: 23.1%
+[2026-01-19 23:18:05] [INFO]    ⏱️  Temps écoulé: 403.0s
+[2026-01-19 23:18:05] [INFO]    🔄 Restants: 56 documents
+
+[2026-01-19 23:18:05] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 23:18:07] [INFO] ================================================================================
+[2026-01-19 23:18:07] [INFO] 📄 Document 14/69 (20.3%)
+[2026-01-19 23:18:07] [INFO] ================================================================================
+[2026-01-19 23:18:07] [INFO] 📄 Indexation: FY 2023 FR Vdef.pdf
+[2026-01-19 23:18:07] [INFO]    Taille: 1.3 MB
+[2026-01-19 23:18:07] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 23:18:07] [INFO]    Collection: fy_2023_fr_vdef
+[2026-01-19 23:23:07] [ERROR] ⏱️  Timeout après 300s - Le document est trop gros
+[2026-01-19 23:23:07] [INFO] 
+📊 Progression: 14/69 documents
+[2026-01-19 23:23:07] [INFO]    ✅ Succès: 3
+[2026-01-19 23:23:07] [INFO]    ❌ Échecs: 11
+[2026-01-19 23:23:07] [INFO]    📈 Taux de réussite: 21.4%
+[2026-01-19 23:23:07] [INFO]    ⏱️  Temps écoulé: 300.0s
+[2026-01-19 23:23:07] [INFO]    🔄 Restants: 55 documents
+
+[2026-01-19 23:23:07] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-19 23:23:09] [INFO] ================================================================================
+[2026-01-19 23:23:09] [INFO] 📄 Document 15/69 (21.7%)
+[2026-01-19 23:23:09] [INFO] ================================================================================
+[2026-01-19 23:23:09] [INFO] 📄 Indexation: FY 2024 FR Vdef.pdf
+[2026-01-19 23:23:09] [INFO]    Taille: 1.0 MB
+[2026-01-19 23:23:09] [INFO]    Timeout: 300s (~5min)
+[2026-01-19 23:23:09] [INFO]    Collection: fy_2024_fr_vdef
+[2026-01-19 23:23:43] [INFO] ================================================================================
+[2026-01-19 23:23:43] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 23:23:43] [INFO] ================================================================================
+[2026-01-19 23:23:48] [ERROR] ❌ Impossible de joindre l'API: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5)
+[2026-01-19 23:23:48] [ERROR] ⚠️  Lancez d'abord l'API: cd api && python -m uvicorn main:app --reload
+[2026-01-19 23:24:16] [INFO] ================================================================================
+[2026-01-19 23:24:16] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 23:24:16] [INFO] ================================================================================
+[2026-01-19 23:24:16] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 23:24:16] [INFO]    Total de documents: 79
+[2026-01-19 23:24:16] [INFO]    Déjà traités: 13
+[2026-01-19 23:24:16] [INFO]    À traiter: 66
+[2026-01-19 23:24:16] [INFO]    Taille totale: 627.5 MB
+[2026-01-19 23:24:16] [INFO]    Temps estimé: 627 minutes (~10.5h)
+[2026-01-19 23:24:16] [INFO] 
+[2026-01-19 23:24:16] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 23:24:16] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 23:24:16] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 23:24:16] [INFO] 
+[2026-01-19 23:34:56] [INFO] ================================================================================
+[2026-01-19 23:34:56] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-19 23:34:56] [INFO] ================================================================================
+[2026-01-19 23:34:56] [INFO] 
+📊 STATISTIQUES:
+[2026-01-19 23:34:56] [INFO]    Total de documents: 79
+[2026-01-19 23:34:56] [INFO]    Déjà traités: 11
+[2026-01-19 23:34:56] [INFO]    À traiter: 68
+[2026-01-19 23:34:56] [INFO]    Taille totale: 655.7 MB
+[2026-01-19 23:34:56] [INFO]    Temps estimé: 1311 minutes (~21.9h)
+[2026-01-19 23:34:56] [INFO] 
+[2026-01-19 23:34:56] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-19 23:34:56] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-19 23:34:56] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-19 23:34:56] [INFO] 
+[2026-01-19 23:35:04] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-19 23:35:04] [INFO] ================================================================================
+[2026-01-19 23:35:04] [INFO] 📄 Document 1/68 (1.5%)
+[2026-01-19 23:35:04] [INFO] ================================================================================
+[2026-01-19 23:35:04] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-19 23:35:04] [INFO]    Taille: 12.7 MB
+[2026-01-19 23:35:04] [INFO]    Timeout: 1521s (~25min)
+[2026-01-19 23:35:04] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-20 08:14:41] [INFO] ================================================================================
+[2026-01-20 08:14:41] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-20 08:14:41] [INFO] ================================================================================
+[2026-01-20 08:14:41] [INFO] 
+📊 STATISTIQUES:
+[2026-01-20 08:14:41] [INFO]    Total de documents: 79
+[2026-01-20 08:14:41] [INFO]    Déjà traités: 11
+[2026-01-20 08:14:41] [INFO]    À traiter: 68
+[2026-01-20 08:14:41] [INFO]    Taille totale: 655.7 MB
+[2026-01-20 08:14:41] [INFO]    Temps estimé: 1311 minutes (~21.9h)
+[2026-01-20 08:14:41] [INFO] 
+[2026-01-20 08:14:41] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-20 08:14:41] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-20 08:14:41] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-20 08:14:41] [INFO] 
+[2026-01-20 08:14:47] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-20 08:14:47] [INFO] ================================================================================
+[2026-01-20 08:14:47] [INFO] 📄 Document 1/68 (1.5%)
+[2026-01-20 08:14:47] [INFO] ================================================================================
+[2026-01-20 08:14:47] [INFO] 📄 Indexation: 250327_hermes_urd2024_fr.pdf
+[2026-01-20 08:14:47] [INFO]    Taille: 12.7 MB
+[2026-01-20 08:14:47] [INFO]    Timeout: 1521s (~25min)
+[2026-01-20 08:14:47] [INFO]    Collection: 250327_hermes_urd2024_fr
+[2026-01-20 08:28:19] [SUCCESS] ✅ Succès! Chunks: 5009 (Tables: 1992, Texte: 3017)
+[2026-01-20 08:28:19] [INFO] 
+📊 Progression: 1/68 documents
+[2026-01-20 08:28:19] [INFO]    ✅ Succès: 1
+[2026-01-20 08:28:19] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:28:19] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:28:19] [INFO]    ⏱️  Temps écoulé: 812.3s
+[2026-01-20 08:28:19] [INFO]    🔄 Restants: 67 documents
+
+[2026-01-20 08:28:19] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:28:21] [INFO] ================================================================================
+[2026-01-20 08:28:21] [INFO] 📄 Document 2/68 (2.9%)
+[2026-01-20 08:28:21] [INFO] ================================================================================
+[2026-01-20 08:28:21] [INFO] 📄 Indexation: Airbus Financial Statements 2024 (1).pdf
+[2026-01-20 08:28:21] [INFO]    Taille: 2.7 MB
+[2026-01-20 08:28:21] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 08:28:21] [INFO]    Collection: airbus_financial_statements_2024_1
+[2026-01-20 08:31:18] [SUCCESS] ✅ Succès! Chunks: 752 (Tables: 446, Texte: 306)
+[2026-01-20 08:31:18] [INFO] 
+📊 Progression: 2/68 documents
+[2026-01-20 08:31:18] [INFO]    ✅ Succès: 2
+[2026-01-20 08:31:18] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:31:18] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:31:18] [INFO]    ⏱️  Temps écoulé: 177.2s
+[2026-01-20 08:31:18] [INFO]    🔄 Restants: 66 documents
+
+[2026-01-20 08:31:18] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:31:20] [INFO] ================================================================================
+[2026-01-20 08:31:20] [INFO] 📄 Document 3/68 (4.4%)
+[2026-01-20 08:31:20] [INFO] ================================================================================
+[2026-01-20 08:31:20] [INFO] 📄 Indexation: Airliquiderapport-annuel-integre-2024.pdf
+[2026-01-20 08:31:20] [INFO]    Taille: 32.4 MB
+[2026-01-20 08:31:20] [INFO]    Timeout: 3889s (~64min)
+[2026-01-20 08:31:20] [INFO]    Collection: airliquiderapport_annuel_integre_2024
+[2026-01-20 08:32:06] [SUCCESS] ✅ Succès! Chunks: 293 (Tables: 24, Texte: 269)
+[2026-01-20 08:32:06] [INFO] 
+📊 Progression: 3/68 documents
+[2026-01-20 08:32:06] [INFO]    ✅ Succès: 3
+[2026-01-20 08:32:06] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:32:06] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:32:06] [INFO]    ⏱️  Temps écoulé: 46.0s
+[2026-01-20 08:32:06] [INFO]    🔄 Restants: 65 documents
+
+[2026-01-20 08:32:06] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:32:08] [INFO] ================================================================================
+[2026-01-20 08:32:08] [INFO] 📄 Document 4/68 (5.9%)
+[2026-01-20 08:32:08] [INFO] ================================================================================
+[2026-01-20 08:32:08] [INFO] 📄 Indexation: Capgemini_-_2024-05-16_-_Rapport_Annuel_Intégré_2023.pdf
+[2026-01-20 08:32:08] [INFO]    Taille: 14.9 MB
+[2026-01-20 08:32:08] [INFO]    Timeout: 1793s (~29min)
+[2026-01-20 08:32:08] [INFO]    Collection: capgemini_2024_05_16_rapport_annuel_integre_2023
+[2026-01-20 08:32:38] [SUCCESS] ✅ Succès! Chunks: 339 (Tables: 14, Texte: 325)
+[2026-01-20 08:32:38] [INFO] 
+📊 Progression: 4/68 documents
+[2026-01-20 08:32:38] [INFO]    ✅ Succès: 4
+[2026-01-20 08:32:38] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:32:38] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:32:38] [INFO]    ⏱️  Temps écoulé: 29.7s
+[2026-01-20 08:32:38] [INFO]    🔄 Restants: 64 documents
+
+[2026-01-20 08:32:38] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:32:40] [INFO] ================================================================================
+[2026-01-20 08:32:40] [INFO] 📄 Document 5/68 (7.4%)
+[2026-01-20 08:32:40] [INFO] ================================================================================
+[2026-01-20 08:32:40] [INFO] 📄 Indexation: Capgemini_-_2025-03-21_-_Document_d_Enregistrement_Universel_2024.pdf
+[2026-01-20 08:32:40] [INFO]    Taille: 13.6 MB
+[2026-01-20 08:32:40] [INFO]    Timeout: 1631s (~27min)
+[2026-01-20 08:32:40] [INFO]    Collection: capgemini_2025_03_21_document_d_enregistrement_universel_2024
+[2026-01-20 08:43:28] [SUCCESS] ✅ Succès! Chunks: 5586 (Tables: 2057, Texte: 3529)
+[2026-01-20 08:43:28] [INFO] 
+📊 Progression: 5/68 documents
+[2026-01-20 08:43:28] [INFO]    ✅ Succès: 5
+[2026-01-20 08:43:28] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:43:28] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:43:28] [INFO]    ⏱️  Temps écoulé: 647.7s
+[2026-01-20 08:43:28] [INFO]    🔄 Restants: 63 documents
+
+[2026-01-20 08:43:28] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:43:30] [INFO] ================================================================================
+[2026-01-20 08:43:30] [INFO] 📄 Document 6/68 (8.8%)
+[2026-01-20 08:43:30] [INFO] ================================================================================
+[2026-01-20 08:43:30] [INFO] 📄 Indexation: Capgemini_-_2025-05-07_-_Rapport-Annuel-Integre-2024.pdf
+[2026-01-20 08:43:30] [INFO]    Taille: 15.2 MB
+[2026-01-20 08:43:30] [INFO]    Timeout: 1818s (~30min)
+[2026-01-20 08:43:30] [INFO]    Collection: capgemini_2025_05_07_rapport_annuel_integre_2024
+[2026-01-20 08:44:06] [SUCCESS] ✅ Succès! Chunks: 375 (Tables: 34, Texte: 341)
+[2026-01-20 08:44:06] [INFO] 
+📊 Progression: 6/68 documents
+[2026-01-20 08:44:06] [INFO]    ✅ Succès: 6
+[2026-01-20 08:44:06] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:44:06] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:44:06] [INFO]    ⏱️  Temps écoulé: 36.4s
+[2026-01-20 08:44:06] [INFO]    🔄 Restants: 62 documents
+
+[2026-01-20 08:44:06] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:44:08] [INFO] ================================================================================
+[2026-01-20 08:44:08] [INFO] 📄 Document 7/68 (10.3%)
+[2026-01-20 08:44:08] [INFO] ================================================================================
+[2026-01-20 08:44:08] [INFO] 📄 Indexation: ENGIE_RI_2023_FR-1605_2.pdf
+[2026-01-20 08:44:08] [INFO]    Taille: 8.9 MB
+[2026-01-20 08:44:08] [INFO]    Timeout: 1068s (~17min)
+[2026-01-20 08:44:08] [INFO]    Collection: engie_ri_2023_fr_1605_2
+[2026-01-20 08:45:00] [SUCCESS] ✅ Succès! Chunks: 756 (Tables: 106, Texte: 650)
+[2026-01-20 08:45:00] [INFO] 
+📊 Progression: 7/68 documents
+[2026-01-20 08:45:00] [INFO]    ✅ Succès: 7
+[2026-01-20 08:45:00] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:45:00] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:45:00] [INFO]    ⏱️  Temps écoulé: 52.2s
+[2026-01-20 08:45:00] [INFO]    🔄 Restants: 61 documents
+
+[2026-01-20 08:45:00] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:45:02] [INFO] ================================================================================
+[2026-01-20 08:45:02] [INFO] 📄 Document 8/68 (11.8%)
+[2026-01-20 08:45:02] [INFO] ================================================================================
+[2026-01-20 08:45:02] [INFO] 📄 Indexation: Engie RI_Version FR_2105.pdf
+[2026-01-20 08:45:02] [INFO]    Taille: 6.7 MB
+[2026-01-20 08:45:02] [INFO]    Timeout: 807s (~13min)
+[2026-01-20 08:45:02] [INFO]    Collection: engie_ri_version_fr_2105
+[2026-01-20 08:46:08] [SUCCESS] ✅ Succès! Chunks: 1107 (Tables: 177, Texte: 930)
+[2026-01-20 08:46:08] [INFO] 
+📊 Progression: 8/68 documents
+[2026-01-20 08:46:08] [INFO]    ✅ Succès: 8
+[2026-01-20 08:46:08] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:46:08] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:46:08] [INFO]    ⏱️  Temps écoulé: 66.0s
+[2026-01-20 08:46:08] [INFO]    🔄 Restants: 60 documents
+
+[2026-01-20 08:46:08] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:46:10] [INFO] ================================================================================
+[2026-01-20 08:46:10] [INFO] 📄 Document 9/68 (13.2%)
+[2026-01-20 08:46:10] [INFO] ================================================================================
+[2026-01-20 08:46:10] [INFO] 📄 Indexation: KERING_RA_24_ALL_FR_PP_96dpi_d1d38ca7d3.pdf
+[2026-01-20 08:46:10] [INFO]    Taille: 8.8 MB
+[2026-01-20 08:46:10] [INFO]    Timeout: 1055s (~17min)
+[2026-01-20 08:46:10] [INFO]    Collection: kering_ra_24_all_fr_pp_96dpi_d1d38ca7d3
+[2026-01-20 08:46:51] [SUCCESS] ✅ Succès! Chunks: 239 (Tables: 11, Texte: 228)
+[2026-01-20 08:46:51] [INFO] 
+📊 Progression: 9/68 documents
+[2026-01-20 08:46:51] [INFO]    ✅ Succès: 9
+[2026-01-20 08:46:51] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:46:51] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:46:51] [INFO]    ⏱️  Temps écoulé: 40.9s
+[2026-01-20 08:46:51] [INFO]    🔄 Restants: 59 documents
+
+[2026-01-20 08:46:51] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:46:53] [INFO] ================================================================================
+[2026-01-20 08:46:53] [INFO] 📄 Document 10/68 (14.7%)
+[2026-01-20 08:46:53] [INFO] ================================================================================
+[2026-01-20 08:46:53] [INFO] 📄 Indexation: Kering_Document_financier_2023_e44ac4f47b.pdf
+[2026-01-20 08:46:53] [INFO]    Taille: 2.7 MB
+[2026-01-20 08:46:53] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 08:46:53] [INFO]    Collection: kering_document_financier_2023_e44ac4f47b
+[2026-01-20 08:49:47] [SUCCESS] ✅ Succès! Chunks: 656 (Tables: 313, Texte: 343)
+[2026-01-20 08:49:47] [INFO] 
+📊 Progression: 10/68 documents
+[2026-01-20 08:49:47] [INFO]    ✅ Succès: 10
+[2026-01-20 08:49:47] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:49:47] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:49:47] [INFO]    ⏱️  Temps écoulé: 174.2s
+[2026-01-20 08:49:47] [INFO]    🔄 Restants: 58 documents
+
+[2026-01-20 08:49:47] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:49:49] [INFO] ================================================================================
+[2026-01-20 08:49:49] [INFO] 📄 Document 11/68 (16.2%)
+[2026-01-20 08:49:49] [INFO] ================================================================================
+[2026-01-20 08:49:49] [INFO] 📄 Indexation: LOREAL_Rapport_Annuel_2021.pdf
+[2026-01-20 08:49:49] [INFO]    Taille: 6.7 MB
+[2026-01-20 08:49:49] [INFO]    Timeout: 799s (~13min)
+[2026-01-20 08:49:49] [INFO]    Collection: loreal_rapport_annuel_2021
+[2026-01-20 08:50:06] [SUCCESS] ✅ Succès! Chunks: 92 (Tables: 1, Texte: 91)
+[2026-01-20 08:50:06] [INFO] 
+📊 Progression: 11/68 documents
+[2026-01-20 08:50:06] [INFO]    ✅ Succès: 11
+[2026-01-20 08:50:06] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:50:06] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:50:06] [INFO]    ⏱️  Temps écoulé: 16.8s
+[2026-01-20 08:50:06] [INFO]    🔄 Restants: 57 documents
+
+[2026-01-20 08:50:06] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:50:08] [INFO] ================================================================================
+[2026-01-20 08:50:08] [INFO] 📄 Document 12/68 (17.6%)
+[2026-01-20 08:50:08] [INFO] ================================================================================
+[2026-01-20 08:50:08] [INFO] 📄 Indexation: LOREAL_Rapport_Annuel_2022.pdf
+[2026-01-20 08:50:08] [INFO]    Taille: 6.1 MB
+[2026-01-20 08:50:08] [INFO]    Timeout: 735s (~12min)
+[2026-01-20 08:50:08] [INFO]    Collection: loreal_rapport_annuel_2022
+[2026-01-20 08:50:23] [SUCCESS] ✅ Succès! Chunks: 95 (Tables: 0, Texte: 95)
+[2026-01-20 08:50:23] [INFO] 
+📊 Progression: 12/68 documents
+[2026-01-20 08:50:23] [INFO]    ✅ Succès: 12
+[2026-01-20 08:50:23] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:50:23] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:50:23] [INFO]    ⏱️  Temps écoulé: 15.0s
+[2026-01-20 08:50:23] [INFO]    🔄 Restants: 56 documents
+
+[2026-01-20 08:50:23] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:50:25] [INFO] ================================================================================
+[2026-01-20 08:50:25] [INFO] 📄 Document 13/68 (19.1%)
+[2026-01-20 08:50:25] [INFO] ================================================================================
+[2026-01-20 08:50:25] [INFO] 📄 Indexation: LOREAL_Rapport_Annuel_2023.pdf
+[2026-01-20 08:50:25] [INFO]    Taille: 6.0 MB
+[2026-01-20 08:50:25] [INFO]    Timeout: 724s (~12min)
+[2026-01-20 08:50:25] [INFO]    Collection: loreal_rapport_annuel_2023
+[2026-01-20 08:50:40] [SUCCESS] ✅ Succès! Chunks: 95 (Tables: 0, Texte: 95)
+[2026-01-20 08:50:40] [INFO] 
+📊 Progression: 13/68 documents
+[2026-01-20 08:50:40] [INFO]    ✅ Succès: 13
+[2026-01-20 08:50:40] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:50:40] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:50:40] [INFO]    ⏱️  Temps écoulé: 14.7s
+[2026-01-20 08:50:40] [INFO]    🔄 Restants: 55 documents
+
+[2026-01-20 08:50:40] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:50:42] [INFO] ================================================================================
+[2026-01-20 08:50:42] [INFO] 📄 Document 14/68 (20.6%)
+[2026-01-20 08:50:42] [INFO] ================================================================================
+[2026-01-20 08:50:42] [INFO] 📄 Indexation: LVMH_Rapport Annuel 2024_FR.pdf
+[2026-01-20 08:50:42] [INFO]    Taille: 29.3 MB
+[2026-01-20 08:50:42] [INFO]    Timeout: 3520s (~58min)
+[2026-01-20 08:50:42] [INFO]    Collection: lvmh_rapport_annuel_2024_fr
+[2026-01-20 08:52:23] [SUCCESS] ✅ Succès! Chunks: 433 (Tables: 24, Texte: 409)
+[2026-01-20 08:52:23] [INFO] 
+📊 Progression: 14/68 documents
+[2026-01-20 08:52:23] [INFO]    ✅ Succès: 14
+[2026-01-20 08:52:23] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:52:23] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:52:23] [INFO]    ⏱️  Temps écoulé: 101.1s
+[2026-01-20 08:52:23] [INFO]    🔄 Restants: 54 documents
+
+[2026-01-20 08:52:23] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:52:25] [INFO] ================================================================================
+[2026-01-20 08:52:25] [INFO] 📄 Document 15/68 (22.1%)
+[2026-01-20 08:52:25] [INFO] ================================================================================
+[2026-01-20 08:52:25] [INFO] 📄 Indexation: LVMH_Rapport financier semestriel 2024.pdf
+[2026-01-20 08:52:25] [INFO]    Taille: 1.5 MB
+[2026-01-20 08:52:25] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 08:52:25] [INFO]    Collection: lvmh_rapport_financier_semestriel_2024
+[2026-01-20 08:54:11] [SUCCESS] ✅ Succès! Chunks: 411 (Tables: 216, Texte: 195)
+[2026-01-20 08:54:11] [INFO] 
+📊 Progression: 15/68 documents
+[2026-01-20 08:54:11] [INFO]    ✅ Succès: 15
+[2026-01-20 08:54:11] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:54:11] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:54:11] [INFO]    ⏱️  Temps écoulé: 106.4s
+[2026-01-20 08:54:11] [INFO]    🔄 Restants: 53 documents
+
+[2026-01-20 08:54:11] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:54:13] [INFO] ================================================================================
+[2026-01-20 08:54:13] [INFO] 📄 Document 16/68 (23.5%)
+[2026-01-20 08:54:13] [INFO] ================================================================================
+[2026-01-20 08:54:13] [INFO] 📄 Indexation: LVMH_Rapport_Annuel_2023.pdf
+[2026-01-20 08:54:13] [INFO]    Taille: 30.4 MB
+[2026-01-20 08:54:13] [INFO]    Timeout: 3643s (~60min)
+[2026-01-20 08:54:13] [INFO]    Collection: lvmh_rapport_annuel_2023
+[2026-01-20 08:56:06] [SUCCESS] ✅ Succès! Chunks: 455 (Tables: 22, Texte: 433)
+[2026-01-20 08:56:06] [INFO] 
+📊 Progression: 16/68 documents
+[2026-01-20 08:56:06] [INFO]    ✅ Succès: 16
+[2026-01-20 08:56:06] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:56:06] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:56:06] [INFO]    ⏱️  Temps écoulé: 112.7s
+[2026-01-20 08:56:06] [INFO]    🔄 Restants: 52 documents
+
+[2026-01-20 08:56:06] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:56:08] [INFO] ================================================================================
+[2026-01-20 08:56:08] [INFO] 📄 Document 17/68 (25.0%)
+[2026-01-20 08:56:08] [INFO] ================================================================================
+[2026-01-20 08:56:08] [INFO] 📄 Indexation: Pernod_AR24_FRENCH.pdf
+[2026-01-20 08:56:08] [INFO]    Taille: 23.2 MB
+[2026-01-20 08:56:08] [INFO]    Timeout: 2784s (~46min)
+[2026-01-20 08:56:08] [INFO]    Collection: pernod_ar24_french
+[2026-01-20 08:57:30] [SUCCESS] ✅ Succès! Chunks: 469 (Tables: 6, Texte: 463)
+[2026-01-20 08:57:30] [INFO] 
+📊 Progression: 17/68 documents
+[2026-01-20 08:57:30] [INFO]    ✅ Succès: 17
+[2026-01-20 08:57:30] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:57:30] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:57:30] [INFO]    ⏱️  Temps écoulé: 82.1s
+[2026-01-20 08:57:30] [INFO]    🔄 Restants: 51 documents
+
+[2026-01-20 08:57:30] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:57:32] [INFO] ================================================================================
+[2026-01-20 08:57:32] [INFO] 📄 Document 18/68 (26.5%)
+[2026-01-20 08:57:32] [INFO] ================================================================================
+[2026-01-20 08:57:32] [INFO] 📄 Indexation: Pernod_Ricard_IAR25_FRENCH.pdf
+[2026-01-20 08:57:32] [INFO]    Taille: 16.4 MB
+[2026-01-20 08:57:32] [INFO]    Timeout: 1972s (~32min)
+[2026-01-20 08:57:32] [INFO]    Collection: pernod_ricard_iar25_french
+[2026-01-20 08:58:33] [SUCCESS] ✅ Succès! Chunks: 436 (Tables: 7, Texte: 429)
+[2026-01-20 08:58:33] [INFO] 
+📊 Progression: 18/68 documents
+[2026-01-20 08:58:33] [INFO]    ✅ Succès: 18
+[2026-01-20 08:58:33] [INFO]    ❌ Échecs: 0
+[2026-01-20 08:58:33] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 08:58:33] [INFO]    ⏱️  Temps écoulé: 60.4s
+[2026-01-20 08:58:33] [INFO]    🔄 Restants: 50 documents
+
+[2026-01-20 08:58:33] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 08:58:35] [INFO] ================================================================================
+[2026-01-20 08:58:35] [INFO] 📄 Document 19/68 (27.9%)
+[2026-01-20 08:58:35] [INFO] ================================================================================
+[2026-01-20 08:58:35] [INFO] 📄 Indexation: Plaquette décembre 2023 mise en ligne FR.pdf
+[2026-01-20 08:58:35] [INFO]    Taille: 1.2 MB
+[2026-01-20 08:58:35] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 08:58:35] [INFO]    Collection: plaquette_dcembre_2023_mise_en_ligne_fr
+[2026-01-20 09:01:15] [SUCCESS] ✅ Succès! Chunks: 714 (Tables: 287, Texte: 427)
+[2026-01-20 09:01:16] [INFO] 
+📊 Progression: 19/68 documents
+[2026-01-20 09:01:16] [INFO]    ✅ Succès: 19
+[2026-01-20 09:01:16] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:01:16] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:01:16] [INFO]    ⏱️  Temps écoulé: 161.0s
+[2026-01-20 09:01:16] [INFO]    🔄 Restants: 49 documents
+
+[2026-01-20 09:01:16] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:01:18] [INFO] ================================================================================
+[2026-01-20 09:01:18] [INFO] 📄 Document 20/68 (29.4%)
+[2026-01-20 09:01:18] [INFO] ================================================================================
+[2026-01-20 09:01:18] [INFO] 📄 Indexation: SGrapport-integre-2022-2023.pdf
+[2026-01-20 09:01:18] [INFO]    Taille: 5.7 MB
+[2026-01-20 09:01:18] [INFO]    Timeout: 689s (~11min)
+[2026-01-20 09:01:18] [INFO]    Collection: sgrapport_integre_2022_2023
+[2026-01-20 09:02:04] [SUCCESS] ✅ Succès! Chunks: 378 (Tables: 24, Texte: 354)
+[2026-01-20 09:02:04] [INFO] 
+📊 Progression: 20/68 documents
+[2026-01-20 09:02:04] [INFO]    ✅ Succès: 20
+[2026-01-20 09:02:04] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:02:04] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:02:04] [INFO]    ⏱️  Temps écoulé: 46.4s
+[2026-01-20 09:02:04] [INFO]    🔄 Restants: 48 documents
+
+[2026-01-20 09:02:04] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:02:06] [INFO] ================================================================================
+[2026-01-20 09:02:06] [INFO] 📄 Document 21/68 (30.9%)
+[2026-01-20 09:02:06] [INFO] ================================================================================
+[2026-01-20 09:02:06] [INFO] 📄 Indexation: SGrapport-integre-2023-2024.pdf
+[2026-01-20 09:02:06] [INFO]    Taille: 5.1 MB
+[2026-01-20 09:02:06] [INFO]    Timeout: 606s (~10min)
+[2026-01-20 09:02:06] [INFO]    Collection: sgrapport_integre_2023_2024
+[2026-01-20 09:02:39] [SUCCESS] ✅ Succès! Chunks: 326 (Tables: 41, Texte: 285)
+[2026-01-20 09:02:39] [INFO] 
+📊 Progression: 21/68 documents
+[2026-01-20 09:02:39] [INFO]    ✅ Succès: 21
+[2026-01-20 09:02:39] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:02:39] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:02:39] [INFO]    ⏱️  Temps écoulé: 33.5s
+[2026-01-20 09:02:39] [INFO]    🔄 Restants: 47 documents
+
+[2026-01-20 09:02:39] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:02:41] [INFO] ================================================================================
+[2026-01-20 09:02:41] [INFO] 📄 Document 22/68 (32.4%)
+[2026-01-20 09:02:41] [INFO] ================================================================================
+[2026-01-20 09:02:41] [INFO] 📄 Indexation: STM 20-F 2024-2025-02-27-22-14.pdf
+[2026-01-20 09:02:41] [INFO]    Taille: 2.9 MB
+[2026-01-20 09:02:41] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 09:02:41] [INFO]    Collection: stm_20_f_2024_2025_02_27_22_14
+[2026-01-20 09:06:10] [SUCCESS] ✅ Succès! Chunks: 1239 (Tables: 362, Texte: 877)
+[2026-01-20 09:06:10] [INFO] 
+📊 Progression: 22/68 documents
+[2026-01-20 09:06:10] [INFO]    ✅ Succès: 22
+[2026-01-20 09:06:10] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:06:10] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:06:10] [INFO]    ⏱️  Temps écoulé: 208.2s
+[2026-01-20 09:06:10] [INFO]    🔄 Restants: 46 documents
+
+[2026-01-20 09:06:10] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:06:12] [INFO] ================================================================================
+[2026-01-20 09:06:12] [INFO] 📄 Document 23/68 (33.8%)
+[2026-01-20 09:06:12] [INFO] ================================================================================
+[2026-01-20 09:06:12] [INFO] 📄 Indexation: STM_SAR_Master+-+Semiannual+2025.pdf
+[2026-01-20 09:06:12] [INFO]    Taille: 1.0 MB
+[2026-01-20 09:06:12] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 09:06:12] [INFO]    Collection: stm_sar_master_semiannual2025
+[2026-01-20 09:07:17] [SUCCESS] ✅ Succès! Chunks: 317 (Tables: 101, Texte: 216)
+[2026-01-20 09:07:17] [INFO] 
+📊 Progression: 23/68 documents
+[2026-01-20 09:07:17] [INFO]    ✅ Succès: 23
+[2026-01-20 09:07:17] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:07:17] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:07:17] [INFO]    ⏱️  Temps écoulé: 65.8s
+[2026-01-20 09:07:17] [INFO]    🔄 Restants: 45 documents
+
+[2026-01-20 09:07:17] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:07:19] [INFO] ================================================================================
+[2026-01-20 09:07:20] [INFO] 📄 Document 24/68 (35.3%)
+[2026-01-20 09:07:20] [INFO] ================================================================================
+[2026-01-20 09:07:20] [INFO] 📄 Indexation: Saint-Gobain RI 2024 pap FRE lite.pdf
+[2026-01-20 09:07:20] [INFO]    Taille: 11.3 MB
+[2026-01-20 09:07:20] [INFO]    Timeout: 1356s (~22min)
+[2026-01-20 09:07:20] [INFO]    Collection: saint_gobain_ri_2024_pap_fre_lite
+[2026-01-20 09:08:24] [SUCCESS] ✅ Succès! Chunks: 406 (Tables: 0, Texte: 406)
+[2026-01-20 09:08:24] [INFO] 
+📊 Progression: 24/68 documents
+[2026-01-20 09:08:24] [INFO]    ✅ Succès: 24
+[2026-01-20 09:08:24] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:08:24] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:08:24] [INFO]    ⏱️  Temps écoulé: 64.4s
+[2026-01-20 09:08:24] [INFO]    🔄 Restants: 44 documents
+
+[2026-01-20 09:08:24] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:08:26] [INFO] ================================================================================
+[2026-01-20 09:08:26] [INFO] 📄 Document 25/68 (36.8%)
+[2026-01-20 09:08:26] [INFO] ================================================================================
+[2026-01-20 09:08:26] [INFO] 📄 Indexation: Saint-Gobain_2024_DEU_VF.pdf
+[2026-01-20 09:08:26] [INFO]    Taille: 13.4 MB
+[2026-01-20 09:08:26] [INFO]    Timeout: 1605s (~26min)
+[2026-01-20 09:08:26] [INFO]    Collection: saint_gobain_2024_deu_vf
+[2026-01-20 09:19:11] [SUCCESS] ✅ Succès! Chunks: 4490 (Tables: 1896, Texte: 2594)
+[2026-01-20 09:19:11] [INFO] 
+📊 Progression: 25/68 documents
+[2026-01-20 09:19:11] [INFO]    ✅ Succès: 25
+[2026-01-20 09:19:11] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:19:11] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:19:11] [INFO]    ⏱️  Temps écoulé: 645.2s
+[2026-01-20 09:19:11] [INFO]    🔄 Restants: 43 documents
+
+[2026-01-20 09:19:11] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:19:13] [INFO] ================================================================================
+[2026-01-20 09:19:13] [INFO] 📄 Document 26/68 (38.2%)
+[2026-01-20 09:19:13] [INFO] ================================================================================
+[2026-01-20 09:19:13] [INFO] 📄 Indexation: TotalEnergies_DEU_2022_VF.pdf
+[2026-01-20 09:19:13] [INFO]    Taille: 35.8 MB
+[2026-01-20 09:19:13] [INFO]    Timeout: 4297s (~71min)
+[2026-01-20 09:19:13] [INFO]    Collection: totalenergies_deu_2022_vf
+[2026-01-20 09:39:12] [SUCCESS] ✅ Succès! Chunks: 6941 (Tables: 2848, Texte: 4093)
+[2026-01-20 09:39:12] [INFO] 
+📊 Progression: 26/68 documents
+[2026-01-20 09:39:12] [INFO]    ✅ Succès: 26
+[2026-01-20 09:39:12] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:39:12] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:39:12] [INFO]    ⏱️  Temps écoulé: 1199.2s
+[2026-01-20 09:39:12] [INFO]    🔄 Restants: 42 documents
+
+[2026-01-20 09:39:12] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:39:14] [INFO] ================================================================================
+[2026-01-20 09:39:14] [INFO] 📄 Document 27/68 (39.7%)
+[2026-01-20 09:39:14] [INFO] ================================================================================
+[2026-01-20 09:39:14] [INFO] 📄 Indexation: aN0RSp5xUNkB1Wma_axa_rapport_financier_semestriel_2023c.pdf
+[2026-01-20 09:39:14] [INFO]    Taille: 5.6 MB
+[2026-01-20 09:39:14] [INFO]    Timeout: 671s (~11min)
+[2026-01-20 09:39:14] [INFO]    Collection: an0rsp5xunkb1wma_axa_rapport_financier_semestriel_2023c
+[2026-01-20 09:42:40] [SUCCESS] ✅ Succès! Chunks: 1066 (Tables: 523, Texte: 543)
+[2026-01-20 09:42:40] [INFO] 
+📊 Progression: 27/68 documents
+[2026-01-20 09:42:40] [INFO]    ✅ Succès: 27
+[2026-01-20 09:42:40] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:42:40] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:42:40] [INFO]    ⏱️  Temps écoulé: 205.8s
+[2026-01-20 09:42:40] [INFO]    🔄 Restants: 41 documents
+
+[2026-01-20 09:42:40] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:42:42] [INFO] ================================================================================
+[2026-01-20 09:42:42] [INFO] 📄 Document 28/68 (41.2%)
+[2026-01-20 09:42:42] [INFO] ================================================================================
+[2026-01-20 09:42:42] [INFO] 📄 Indexation: aN0S-p5xUNkB1WqD_axa_ri2024_accessible_vf.pdf
+[2026-01-20 09:42:42] [INFO]    Taille: 3.1 MB
+[2026-01-20 09:42:42] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 09:42:42] [INFO]    Collection: an0s_p5xunkb1wqd_axa_ri2024_accessible_vf
+[2026-01-20 09:43:16] [SUCCESS] ✅ Succès! Chunks: 229 (Tables: 9, Texte: 220)
+[2026-01-20 09:43:16] [INFO] 
+📊 Progression: 28/68 documents
+[2026-01-20 09:43:16] [INFO]    ✅ Succès: 28
+[2026-01-20 09:43:16] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:43:16] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:43:16] [INFO]    ⏱️  Temps écoulé: 33.5s
+[2026-01-20 09:43:16] [INFO]    🔄 Restants: 40 documents
+
+[2026-01-20 09:43:16] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:43:18] [INFO] ================================================================================
+[2026-01-20 09:43:18] [INFO] 📄 Document 29/68 (42.6%)
+[2026-01-20 09:43:18] [INFO] ================================================================================
+[2026-01-20 09:43:18] [INFO] 📄 Indexation: aN0Ty55xUNkB1Wr3_axa_rapport_financier_semestriel_2025.pdf
+[2026-01-20 09:43:18] [INFO]    Taille: 3.3 MB
+[2026-01-20 09:43:18] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 09:43:18] [INFO]    Collection: an0ty55xunkb1wr3_axa_rapport_financier_semestriel_2025
+[2026-01-20 09:46:09] [SUCCESS] ✅ Succès! Chunks: 651 (Tables: 444, Texte: 207)
+[2026-01-20 09:46:09] [INFO] 
+📊 Progression: 29/68 documents
+[2026-01-20 09:46:09] [INFO]    ✅ Succès: 29
+[2026-01-20 09:46:09] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:46:09] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:46:09] [INFO]    ⏱️  Temps écoulé: 171.7s
+[2026-01-20 09:46:09] [INFO]    🔄 Restants: 39 documents
+
+[2026-01-20 09:46:09] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:46:11] [INFO] ================================================================================
+[2026-01-20 09:46:11] [INFO] 📄 Document 30/68 (44.1%)
+[2026-01-20 09:46:11] [INFO] ================================================================================
+[2026-01-20 09:46:11] [INFO] 📄 Indexation: aNzwH55xUNkB1VH5_axa_urd2023_accessibleb_vf.pdf
+[2026-01-20 09:46:11] [INFO]    Taille: 12.3 MB
+[2026-01-20 09:46:11] [INFO]    Timeout: 1481s (~24min)
+[2026-01-20 09:46:11] [INFO]    Collection: anzwh55xunkb1vh5_axa_urd2023_accessibleb_vf
+[2026-01-20 09:56:55] [SUCCESS] ✅ Succès! Chunks: 4854 (Tables: 1678, Texte: 3176)
+[2026-01-20 09:56:55] [INFO] 
+📊 Progression: 30/68 documents
+[2026-01-20 09:56:55] [INFO]    ✅ Succès: 30
+[2026-01-20 09:56:55] [INFO]    ❌ Échecs: 0
+[2026-01-20 09:56:55] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 09:56:55] [INFO]    ⏱️  Temps écoulé: 643.3s
+[2026-01-20 09:56:55] [INFO]    🔄 Restants: 38 documents
+
+[2026-01-20 09:56:55] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 09:56:57] [INFO] ================================================================================
+[2026-01-20 09:56:57] [INFO] 📄 Document 31/68 (45.6%)
+[2026-01-20 09:56:57] [INFO] ================================================================================
+[2026-01-20 09:56:57] [INFO] 📄 Indexation: aNzwI55xUNkB1VH7_axa_urd2024_accessible_vf.pdf
+[2026-01-20 09:56:57] [INFO]    Taille: 23.2 MB
+[2026-01-20 09:56:57] [INFO]    Timeout: 2782s (~46min)
+[2026-01-20 09:56:57] [INFO]    Collection: anzwi55xunkb1vh7_axa_urd2024_accessible_vf
+[2026-01-20 10:08:26] [SUCCESS] ✅ Succès! Chunks: 5054 (Tables: 1891, Texte: 3163)
+[2026-01-20 10:08:26] [INFO] 
+📊 Progression: 31/68 documents
+[2026-01-20 10:08:26] [INFO]    ✅ Succès: 31
+[2026-01-20 10:08:26] [INFO]    ❌ Échecs: 0
+[2026-01-20 10:08:26] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 10:08:26] [INFO]    ⏱️  Temps écoulé: 689.5s
+[2026-01-20 10:08:26] [INFO]    🔄 Restants: 37 documents
+
+[2026-01-20 10:08:26] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 10:08:28] [INFO] ================================================================================
+[2026-01-20 10:08:28] [INFO] 📄 Document 32/68 (47.1%)
+[2026-01-20 10:08:28] [INFO] ================================================================================
+[2026-01-20 10:08:28] [INFO] 📄 Indexation: aireliquiderapport-annuel-2022.pdf
+[2026-01-20 10:08:28] [INFO]    Taille: 18.1 MB
+[2026-01-20 10:08:28] [INFO]    Timeout: 2175s (~36min)
+[2026-01-20 10:08:28] [INFO]    Collection: aireliquiderapport_annuel_2022
+[2026-01-20 10:09:05] [SUCCESS] ✅ Succès! Chunks: 247 (Tables: 9, Texte: 238)
+[2026-01-20 10:09:05] [INFO] 
+📊 Progression: 32/68 documents
+[2026-01-20 10:09:05] [INFO]    ✅ Succès: 32
+[2026-01-20 10:09:05] [INFO]    ❌ Échecs: 0
+[2026-01-20 10:09:05] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 10:09:05] [INFO]    ⏱️  Temps écoulé: 37.0s
+[2026-01-20 10:09:05] [INFO]    🔄 Restants: 36 documents
+
+[2026-01-20 10:09:05] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 10:09:07] [INFO] ================================================================================
+[2026-01-20 10:09:07] [INFO] 📄 Document 33/68 (48.5%)
+[2026-01-20 10:09:07] [INFO] ================================================================================
+[2026-01-20 10:09:07] [INFO] 📄 Indexation: airliquiderapport-annuel-2023-1.pdf
+[2026-01-20 10:09:07] [INFO]    Taille: 9.6 MB
+[2026-01-20 10:09:07] [INFO]    Timeout: 1156s (~19min)
+[2026-01-20 10:09:07] [INFO]    Collection: airliquiderapport_annuel_2023_1
+[2026-01-20 10:09:46] [SUCCESS] ✅ Succès! Chunks: 260 (Tables: 9, Texte: 251)
+[2026-01-20 10:09:46] [INFO] 
+📊 Progression: 33/68 documents
+[2026-01-20 10:09:46] [INFO]    ✅ Succès: 33
+[2026-01-20 10:09:46] [INFO]    ❌ Échecs: 0
+[2026-01-20 10:09:46] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 10:09:46] [INFO]    ⏱️  Temps écoulé: 38.9s
+[2026-01-20 10:09:46] [INFO]    🔄 Restants: 35 documents
+
+[2026-01-20 10:09:46] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 10:09:48] [INFO] ================================================================================
+[2026-01-20 10:09:48] [INFO] 📄 Document 34/68 (50.0%)
+[2026-01-20 10:09:48] [INFO] ================================================================================
+[2026-01-20 10:09:48] [INFO] 📄 Indexation: bnpamendement-1t25-v01-a4.pdf
+[2026-01-20 10:09:48] [INFO]    Taille: 7.3 MB
+[2026-01-20 10:09:48] [INFO]    Timeout: 870s (~14min)
+[2026-01-20 10:09:48] [INFO]    Collection: bnpamendement_1t25_v01_a4
+[2026-01-20 10:12:15] [SUCCESS] ✅ Succès! Chunks: 557 (Tables: 307, Texte: 250)
+[2026-01-20 10:12:15] [INFO] 
+📊 Progression: 34/68 documents
+[2026-01-20 10:12:15] [INFO]    ✅ Succès: 34
+[2026-01-20 10:12:15] [INFO]    ❌ Échecs: 0
+[2026-01-20 10:12:15] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 10:12:15] [INFO]    ⏱️  Temps écoulé: 146.9s
+[2026-01-20 10:12:15] [INFO]    🔄 Restants: 34 documents
+
+[2026-01-20 10:12:15] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 10:12:17] [INFO] ================================================================================
+[2026-01-20 10:12:17] [INFO] 📄 Document 35/68 (51.5%)
+[2026-01-20 10:12:17] [INFO] ================================================================================
+[2026-01-20 10:12:17] [INFO] 📄 Indexation: bnpamendement-fr-28-10.25.pdf
+[2026-01-20 10:12:17] [INFO]    Taille: 7.1 MB
+[2026-01-20 10:12:17] [INFO]    Timeout: 849s (~14min)
+[2026-01-20 10:12:17] [INFO]    Collection: bnpamendement_fr_28_10.25
+[2026-01-20 10:14:41] [SUCCESS] ✅ Succès! Chunks: 448 (Tables: 286, Texte: 162)
+[2026-01-20 10:14:41] [INFO] 
+📊 Progression: 35/68 documents
+[2026-01-20 10:14:41] [INFO]    ✅ Succès: 35
+[2026-01-20 10:14:41] [INFO]    ❌ Échecs: 0
+[2026-01-20 10:14:41] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 10:14:41] [INFO]    ⏱️  Temps écoulé: 144.4s
+[2026-01-20 10:14:41] [INFO]    🔄 Restants: 33 documents
+
+[2026-01-20 10:14:41] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 10:14:43] [INFO] ================================================================================
+[2026-01-20 10:14:43] [INFO] 📄 Document 36/68 (52.9%)
+[2026-01-20 10:14:43] [INFO] ================================================================================
+[2026-01-20 10:14:43] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2023-1.pdf
+[2026-01-20 10:14:43] [INFO]    Taille: 6.2 MB
+[2026-01-20 10:14:43] [INFO]    Timeout: 747s (~12min)
+[2026-01-20 10:14:43] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2023_1
+[2026-01-20 10:27:10] [ERROR] ⏱️  Timeout après 747s - Le document est trop gros
+[2026-01-20 10:27:11] [INFO] 
+📊 Progression: 36/68 documents
+[2026-01-20 10:27:11] [INFO]    ✅ Succès: 35
+[2026-01-20 10:27:11] [INFO]    ❌ Échecs: 1
+[2026-01-20 10:27:11] [INFO]    📈 Taux de réussite: 97.2%
+[2026-01-20 10:27:11] [INFO]    ⏱️  Temps écoulé: 747.0s
+[2026-01-20 10:27:11] [INFO]    🔄 Restants: 32 documents
+
+[2026-01-20 10:27:11] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 10:27:13] [INFO] ================================================================================
+[2026-01-20 10:27:13] [INFO] 📄 Document 37/68 (54.4%)
+[2026-01-20 10:27:13] [INFO] ================================================================================
+[2026-01-20 10:27:13] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2024-pdf.pdf
+[2026-01-20 10:27:13] [INFO]    Taille: 15.7 MB
+[2026-01-20 10:27:13] [INFO]    Timeout: 1888s (~31min)
+[2026-01-20 10:27:13] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2024_pdf
+[2026-01-20 10:27:29] [INFO] ================================================================================
+[2026-01-20 10:27:29] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-20 10:27:29] [INFO] ================================================================================
+[2026-01-20 10:27:34] [ERROR] ❌ Impossible de joindre l'API: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=5)
+[2026-01-20 10:27:34] [ERROR] ⚠️  Lancez d'abord l'API: cd api && python -m uvicorn main:app --reload
+[2026-01-20 10:28:25] [INFO] ================================================================================
+[2026-01-20 10:28:25] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-20 10:28:25] [INFO] ================================================================================
+[2026-01-20 10:28:25] [INFO] 
+📊 STATISTIQUES:
+[2026-01-20 10:28:25] [INFO]    Total de documents: 79
+[2026-01-20 10:28:25] [INFO]    Déjà traités: 46
+[2026-01-20 10:28:25] [INFO]    À traiter: 33
+[2026-01-20 10:28:25] [INFO]    Taille totale: 251.4 MB
+[2026-01-20 10:28:25] [INFO]    Temps estimé: 503 minutes (~8.4h)
+[2026-01-20 10:28:25] [INFO] 
+[2026-01-20 10:28:25] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-20 10:28:25] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-20 10:28:25] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-20 10:28:25] [INFO] 
+[2026-01-20 10:42:36] [INFO] ================================================================================
+[2026-01-20 10:42:36] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-20 10:42:36] [INFO] ================================================================================
+[2026-01-20 10:42:36] [INFO] 
+📊 STATISTIQUES:
+[2026-01-20 10:42:36] [INFO]    Total de documents: 79
+[2026-01-20 10:42:36] [INFO]    Déjà traités: 46
+[2026-01-20 10:42:36] [INFO]    À traiter: 33
+[2026-01-20 10:42:36] [INFO]    Taille totale: 251.4 MB
+[2026-01-20 10:42:36] [INFO]    Temps estimé: 503 minutes (~8.4h)
+[2026-01-20 10:42:36] [INFO] 
+[2026-01-20 10:42:36] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-20 10:42:36] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-20 10:42:36] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-20 10:42:36] [INFO] 
+[2026-01-20 10:42:41] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-20 10:42:41] [INFO] ================================================================================
+[2026-01-20 10:42:41] [INFO] 📄 Document 1/33 (3.0%)
+[2026-01-20 10:42:41] [INFO] ================================================================================
+[2026-01-20 10:42:41] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2023-1.pdf
+[2026-01-20 10:42:41] [INFO]    Taille: 6.2 MB
+[2026-01-20 10:42:41] [INFO]    Timeout: 747s (~12min)
+[2026-01-20 10:42:41] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2023_1
+[2026-01-20 10:55:08] [ERROR] ⏱️  Timeout après 747s - Le document est trop gros
+[2026-01-20 10:55:08] [INFO] 
+📊 Progression: 1/33 documents
+[2026-01-20 10:55:08] [INFO]    ✅ Succès: 0
+[2026-01-20 10:55:08] [INFO]    ❌ Échecs: 1
+[2026-01-20 10:55:08] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-20 10:55:08] [INFO]    ⏱️  Temps écoulé: 747.0s
+[2026-01-20 10:55:08] [INFO]    🔄 Restants: 32 documents
+
+[2026-01-20 10:55:08] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 10:55:10] [INFO] ================================================================================
+[2026-01-20 10:55:10] [INFO] 📄 Document 2/33 (6.1%)
+[2026-01-20 10:55:10] [INFO] ================================================================================
+[2026-01-20 10:55:10] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2024-pdf.pdf
+[2026-01-20 10:55:10] [INFO]    Taille: 15.7 MB
+[2026-01-20 10:55:10] [INFO]    Timeout: 1888s (~31min)
+[2026-01-20 10:55:10] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2024_pdf
+[2026-01-20 11:26:38] [ERROR] ⏱️  Timeout après 1888s - Le document est trop gros
+[2026-01-20 11:26:38] [INFO] 
+📊 Progression: 2/33 documents
+[2026-01-20 11:26:38] [INFO]    ✅ Succès: 0
+[2026-01-20 11:26:38] [INFO]    ❌ Échecs: 2
+[2026-01-20 11:26:38] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-20 11:26:38] [INFO]    ⏱️  Temps écoulé: 1888.0s
+[2026-01-20 11:26:38] [INFO]    🔄 Restants: 31 documents
+
+[2026-01-20 11:26:38] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 11:26:40] [INFO] ================================================================================
+[2026-01-20 11:26:40] [INFO] 📄 Document 3/33 (9.1%)
+[2026-01-20 11:26:40] [INFO] ================================================================================
+[2026-01-20 11:26:40] [INFO] 📄 Indexation: bouyguesrapport-integre-2023-fr.pdf
+[2026-01-20 11:26:40] [INFO]    Taille: 11.6 MB
+[2026-01-20 11:26:40] [INFO]    Timeout: 1395s (~23min)
+[2026-01-20 11:26:40] [INFO]    Collection: bouyguesrapport_integre_2023_fr
+[2026-01-20 15:46:34] [INFO] ================================================================================
+[2026-01-20 15:46:34] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-20 15:46:34] [INFO] ================================================================================
+[2026-01-20 15:46:34] [INFO] 
+📊 STATISTIQUES:
+[2026-01-20 15:46:34] [INFO]    Total de documents: 79
+[2026-01-20 15:46:34] [INFO]    Déjà traités: 46
+[2026-01-20 15:46:34] [INFO]    À traiter: 33
+[2026-01-20 15:46:34] [INFO]    Taille totale: 251.4 MB
+[2026-01-20 15:46:34] [INFO]    Temps estimé: 503 minutes (~8.4h)
+[2026-01-20 15:46:34] [INFO] 
+[2026-01-20 15:46:34] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-20 15:46:34] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-20 15:46:34] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-20 15:46:34] [INFO] 
+[2026-01-20 15:46:38] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-20 15:46:38] [INFO] ================================================================================
+[2026-01-20 15:46:38] [INFO] 📄 Document 1/33 (3.0%)
+[2026-01-20 15:46:38] [INFO] ================================================================================
+[2026-01-20 15:46:38] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2023-1.pdf
+[2026-01-20 15:46:38] [INFO]    Taille: 6.2 MB
+[2026-01-20 15:46:38] [INFO]    Timeout: 747s (~12min)
+[2026-01-20 15:46:38] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2023_1
+[2026-01-20 15:59:05] [ERROR] ⏱️  Timeout après 747s - Le document est trop gros
+[2026-01-20 15:59:05] [INFO] 
+📊 Progression: 1/33 documents
+[2026-01-20 15:59:05] [INFO]    ✅ Succès: 0
+[2026-01-20 15:59:05] [INFO]    ❌ Échecs: 1
+[2026-01-20 15:59:05] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-20 15:59:05] [INFO]    ⏱️  Temps écoulé: 747.0s
+[2026-01-20 15:59:05] [INFO]    🔄 Restants: 32 documents
+
+[2026-01-20 15:59:05] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 15:59:07] [INFO] ================================================================================
+[2026-01-20 15:59:07] [INFO] 📄 Document 2/33 (6.1%)
+[2026-01-20 15:59:07] [INFO] ================================================================================
+[2026-01-20 15:59:07] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2024-pdf.pdf
+[2026-01-20 15:59:07] [INFO]    Taille: 15.7 MB
+[2026-01-20 15:59:07] [INFO]    Timeout: 1888s (~31min)
+[2026-01-20 15:59:07] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2024_pdf
+[2026-01-20 16:13:59] [INFO] ================================================================================
+[2026-01-20 16:13:59] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-20 16:13:59] [INFO] ================================================================================
+[2026-01-20 16:13:59] [INFO] 
+📊 STATISTIQUES:
+[2026-01-20 16:13:59] [INFO]    Total de documents: 79
+[2026-01-20 16:13:59] [INFO]    Déjà traités: 46
+[2026-01-20 16:13:59] [INFO]    À traiter: 33
+[2026-01-20 16:13:59] [INFO]    Taille totale: 251.4 MB
+[2026-01-20 16:13:59] [INFO]    Temps estimé: 503 minutes (~8.4h)
+[2026-01-20 16:13:59] [INFO] 
+[2026-01-20 16:13:59] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-20 16:13:59] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-20 16:13:59] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-20 16:13:59] [INFO] 
+[2026-01-20 16:14:01] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-20 16:14:01] [INFO] ================================================================================
+[2026-01-20 16:14:01] [INFO] 📄 Document 1/33 (3.0%)
+[2026-01-20 16:14:01] [INFO] ================================================================================
+[2026-01-20 16:14:01] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2023-1.pdf
+[2026-01-20 16:14:01] [INFO]    Taille: 6.2 MB
+[2026-01-20 16:14:01] [INFO]    Timeout: 747s (~12min)
+[2026-01-20 16:14:01] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2023_1
+[2026-01-20 16:26:28] [ERROR] ⏱️  Timeout après 747s - Le document est trop gros
+[2026-01-20 16:26:28] [INFO] 
+📊 Progression: 1/33 documents
+[2026-01-20 16:26:28] [INFO]    ✅ Succès: 0
+[2026-01-20 16:26:28] [INFO]    ❌ Échecs: 1
+[2026-01-20 16:26:28] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-20 16:26:28] [INFO]    ⏱️  Temps écoulé: 747.0s
+[2026-01-20 16:26:28] [INFO]    🔄 Restants: 32 documents
+
+[2026-01-20 16:26:28] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 16:26:30] [INFO] ================================================================================
+[2026-01-20 16:26:30] [INFO] 📄 Document 2/33 (6.1%)
+[2026-01-20 16:26:30] [INFO] ================================================================================
+[2026-01-20 16:26:30] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2024-pdf.pdf
+[2026-01-20 16:26:30] [INFO]    Taille: 15.7 MB
+[2026-01-20 16:26:30] [INFO]    Timeout: 1888s (~31min)
+[2026-01-20 16:26:30] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2024_pdf
+[2026-01-20 16:57:58] [ERROR] ⏱️  Timeout après 1888s - Le document est trop gros
+[2026-01-20 16:57:58] [INFO] 
+📊 Progression: 2/33 documents
+[2026-01-20 16:57:58] [INFO]    ✅ Succès: 0
+[2026-01-20 16:57:58] [INFO]    ❌ Échecs: 2
+[2026-01-20 16:57:58] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-20 16:57:58] [INFO]    ⏱️  Temps écoulé: 1888.0s
+[2026-01-20 16:57:58] [INFO]    🔄 Restants: 31 documents
+
+[2026-01-20 16:57:58] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 16:58:00] [INFO] ================================================================================
+[2026-01-20 16:58:00] [INFO] 📄 Document 3/33 (9.1%)
+[2026-01-20 16:58:00] [INFO] ================================================================================
+[2026-01-20 16:58:00] [INFO] 📄 Indexation: bouyguesrapport-integre-2023-fr.pdf
+[2026-01-20 16:58:00] [INFO]    Taille: 11.6 MB
+[2026-01-20 16:58:00] [INFO]    Timeout: 1395s (~23min)
+[2026-01-20 16:58:00] [INFO]    Collection: bouyguesrapport_integre_2023_fr
+[2026-01-20 17:53:31] [INFO] ================================================================================
+[2026-01-20 17:53:31] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-20 17:53:31] [INFO] ================================================================================
+[2026-01-20 17:53:31] [INFO] 
+📊 STATISTIQUES:
+[2026-01-20 17:53:31] [INFO]    Total de documents: 79
+[2026-01-20 17:53:31] [INFO]    Déjà traités: 46
+[2026-01-20 17:53:31] [INFO]    À traiter: 33
+[2026-01-20 17:53:31] [INFO]    Taille totale: 251.4 MB
+[2026-01-20 17:53:31] [INFO]    Temps estimé: 503 minutes (~8.4h)
+[2026-01-20 17:53:31] [INFO] 
+[2026-01-20 17:53:31] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-20 17:53:31] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-20 17:53:31] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-20 17:53:31] [INFO] 
+[2026-01-20 17:53:34] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-20 17:53:34] [INFO] ================================================================================
+[2026-01-20 17:53:34] [INFO] 📄 Document 1/33 (3.0%)
+[2026-01-20 17:53:34] [INFO] ================================================================================
+[2026-01-20 17:53:34] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2023-1.pdf
+[2026-01-20 17:53:34] [INFO]    Taille: 6.2 MB
+[2026-01-20 17:53:34] [INFO]    Timeout: 747s (~12min)
+[2026-01-20 17:53:34] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2023_1
+[2026-01-20 18:06:01] [ERROR] ⏱️  Timeout après 747s - Le document est trop gros
+[2026-01-20 18:06:01] [INFO] 
+📊 Progression: 1/33 documents
+[2026-01-20 18:06:01] [INFO]    ✅ Succès: 0
+[2026-01-20 18:06:01] [INFO]    ❌ Échecs: 1
+[2026-01-20 18:06:01] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-20 18:06:01] [INFO]    ⏱️  Temps écoulé: 747.0s
+[2026-01-20 18:06:01] [INFO]    🔄 Restants: 32 documents
+
+[2026-01-20 18:06:01] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 18:06:03] [INFO] ================================================================================
+[2026-01-20 18:06:03] [INFO] 📄 Document 2/33 (6.1%)
+[2026-01-20 18:06:03] [INFO] ================================================================================
+[2026-01-20 18:06:03] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2024-pdf.pdf
+[2026-01-20 18:06:03] [INFO]    Taille: 15.7 MB
+[2026-01-20 18:06:03] [INFO]    Timeout: 1888s (~31min)
+[2026-01-20 18:06:03] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2024_pdf
+[2026-01-20 18:37:31] [ERROR] ⏱️  Timeout après 1888s - Le document est trop gros
+[2026-01-20 18:37:31] [INFO] 
+📊 Progression: 2/33 documents
+[2026-01-20 18:37:31] [INFO]    ✅ Succès: 0
+[2026-01-20 18:37:31] [INFO]    ❌ Échecs: 2
+[2026-01-20 18:37:31] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-20 18:37:31] [INFO]    ⏱️  Temps écoulé: 1888.0s
+[2026-01-20 18:37:31] [INFO]    🔄 Restants: 31 documents
+
+[2026-01-20 18:37:31] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 18:37:33] [INFO] ================================================================================
+[2026-01-20 18:37:33] [INFO] 📄 Document 3/33 (9.1%)
+[2026-01-20 18:37:33] [INFO] ================================================================================
+[2026-01-20 18:37:33] [INFO] 📄 Indexation: bouyguesrapport-integre-2023-fr.pdf
+[2026-01-20 18:37:33] [INFO]    Taille: 11.6 MB
+[2026-01-20 18:37:33] [INFO]    Timeout: 1395s (~23min)
+[2026-01-20 18:37:33] [INFO]    Collection: bouyguesrapport_integre_2023_fr
+[2026-01-20 18:46:51] [SUCCESS] ✅ Succès! Chunks: 449 (Tables: 19, Texte: 430)
+[2026-01-20 18:46:51] [INFO] 
+📊 Progression: 3/33 documents
+[2026-01-20 18:46:51] [INFO]    ✅ Succès: 1
+[2026-01-20 18:46:51] [INFO]    ❌ Échecs: 2
+[2026-01-20 18:46:51] [INFO]    📈 Taux de réussite: 33.3%
+[2026-01-20 18:46:51] [INFO]    ⏱️  Temps écoulé: 557.6s
+[2026-01-20 18:46:51] [INFO]    🔄 Restants: 30 documents
+
+[2026-01-20 18:46:51] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 18:46:53] [INFO] ================================================================================
+[2026-01-20 18:46:53] [INFO] 📄 Document 4/33 (12.1%)
+[2026-01-20 18:46:53] [INFO] ================================================================================
+[2026-01-20 18:46:53] [INFO] 📄 Indexation: carefourCFR_URD_2024_FR_250327_MEL_0_0.pdf
+[2026-01-20 18:46:53] [INFO]    Taille: 10.0 MB
+[2026-01-20 18:46:53] [INFO]    Timeout: 1196s (~19min)
+[2026-01-20 18:46:53] [INFO]    Collection: carefourcfr_urd_2024_fr_250327_mel_0_0
+[2026-01-20 18:55:23] [ERROR] ❌ Erreur: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[2026-01-20 18:55:23] [INFO] 
+📊 Progression: 4/33 documents
+[2026-01-20 18:55:23] [INFO]    ✅ Succès: 1
+[2026-01-20 18:55:23] [INFO]    ❌ Échecs: 3
+[2026-01-20 18:55:23] [INFO]    📈 Taux de réussite: 25.0%
+[2026-01-20 18:55:23] [INFO]    ⏱️  Temps écoulé: 509.7s
+[2026-01-20 18:55:23] [INFO]    🔄 Restants: 29 documents
+
+[2026-01-20 18:55:23] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 18:55:25] [INFO] ================================================================================
+[2026-01-20 18:55:25] [INFO] 📄 Document 5/33 (15.2%)
+[2026-01-20 18:55:25] [INFO] ================================================================================
+[2026-01-20 18:55:25] [INFO] 📄 Indexation: carefourDocument d'enregistrement universel 2023 (PDF)_10.pdf
+[2026-01-20 18:55:25] [INFO]    Taille: 10.7 MB
+[2026-01-20 18:55:25] [INFO]    Timeout: 1283s (~21min)
+[2026-01-20 18:55:25] [INFO]    Collection: carefourdocument_denregistrement_universel_2023_pdf_10
+[2026-01-20 18:56:17] [INFO] ================================================================================
+[2026-01-20 18:56:17] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-20 18:56:17] [INFO] ================================================================================
+[2026-01-20 18:56:17] [INFO] 
+📊 STATISTIQUES:
+[2026-01-20 18:56:17] [INFO]    Total de documents: 79
+[2026-01-20 18:56:17] [INFO]    Déjà traités: 47
+[2026-01-20 18:56:17] [INFO]    À traiter: 32
+[2026-01-20 18:56:17] [INFO]    Taille totale: 239.7 MB
+[2026-01-20 18:56:17] [INFO]    Temps estimé: 479 minutes (~8.0h)
+[2026-01-20 18:56:17] [INFO] 
+[2026-01-20 18:56:17] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-20 18:56:17] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-20 18:56:17] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-20 18:56:17] [INFO] 
+[2026-01-20 18:56:21] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-20 18:56:21] [INFO] ================================================================================
+[2026-01-20 18:56:21] [INFO] 📄 Document 1/32 (3.1%)
+[2026-01-20 18:56:21] [INFO] ================================================================================
+[2026-01-20 18:56:21] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2023-1.pdf
+[2026-01-20 18:56:21] [INFO]    Taille: 6.2 MB
+[2026-01-20 18:56:21] [INFO]    Timeout: 747s (~12min)
+[2026-01-20 18:56:21] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2023_1
+[2026-01-20 19:08:48] [ERROR] ⏱️  Timeout après 747s - Le document est trop gros
+[2026-01-20 19:08:48] [INFO] 
+📊 Progression: 1/32 documents
+[2026-01-20 19:08:48] [INFO]    ✅ Succès: 0
+[2026-01-20 19:08:48] [INFO]    ❌ Échecs: 1
+[2026-01-20 19:08:48] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-20 19:08:48] [INFO]    ⏱️  Temps écoulé: 747.0s
+[2026-01-20 19:08:48] [INFO]    🔄 Restants: 31 documents
+
+[2026-01-20 19:08:48] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 19:08:50] [INFO] ================================================================================
+[2026-01-20 19:08:50] [INFO] 📄 Document 2/32 (6.2%)
+[2026-01-20 19:08:50] [INFO] ================================================================================
+[2026-01-20 19:08:50] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2024-pdf.pdf
+[2026-01-20 19:08:50] [INFO]    Taille: 15.7 MB
+[2026-01-20 19:08:50] [INFO]    Timeout: 1888s (~31min)
+[2026-01-20 19:08:50] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2024_pdf
+[2026-01-20 19:40:18] [ERROR] ⏱️  Timeout après 1888s - Le document est trop gros
+[2026-01-20 19:40:18] [INFO] 
+📊 Progression: 2/32 documents
+[2026-01-20 19:40:18] [INFO]    ✅ Succès: 0
+[2026-01-20 19:40:18] [INFO]    ❌ Échecs: 2
+[2026-01-20 19:40:18] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-20 19:40:18] [INFO]    ⏱️  Temps écoulé: 1888.0s
+[2026-01-20 19:40:18] [INFO]    🔄 Restants: 30 documents
+
+[2026-01-20 19:40:18] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 19:40:20] [INFO] ================================================================================
+[2026-01-20 19:40:20] [INFO] 📄 Document 3/32 (9.4%)
+[2026-01-20 19:40:20] [INFO] ================================================================================
+[2026-01-20 19:40:20] [INFO] 📄 Indexation: carefourCFR_URD_2024_FR_250327_MEL_0_0.pdf
+[2026-01-20 19:40:20] [INFO]    Taille: 10.0 MB
+[2026-01-20 19:40:20] [INFO]    Timeout: 1196s (~19min)
+[2026-01-20 19:40:20] [INFO]    Collection: carefourcfr_urd_2024_fr_250327_mel_0_0
+[2026-01-20 20:00:16] [ERROR] ⏱️  Timeout après 1196s - Le document est trop gros
+[2026-01-20 20:00:16] [INFO] 
+📊 Progression: 3/32 documents
+[2026-01-20 20:00:16] [INFO]    ✅ Succès: 0
+[2026-01-20 20:00:16] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:00:16] [INFO]    📈 Taux de réussite: 0.0%
+[2026-01-20 20:00:16] [INFO]    ⏱️  Temps écoulé: 1196.0s
+[2026-01-20 20:00:16] [INFO]    🔄 Restants: 29 documents
+
+[2026-01-20 20:00:16] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:00:18] [INFO] ================================================================================
+[2026-01-20 20:00:18] [INFO] 📄 Document 4/32 (12.5%)
+[2026-01-20 20:00:18] [INFO] ================================================================================
+[2026-01-20 20:00:18] [INFO] 📄 Indexation: carefourDocument d'enregistrement universel 2023 (PDF)_10.pdf
+[2026-01-20 20:00:18] [INFO]    Taille: 10.7 MB
+[2026-01-20 20:00:18] [INFO]    Timeout: 1283s (~21min)
+[2026-01-20 20:00:18] [INFO]    Collection: carefourdocument_denregistrement_universel_2023_pdf_10
+[2026-01-20 20:09:39] [SUCCESS] ✅ Succès! Chunks: 4147 (Tables: 1882, Texte: 2265)
+[2026-01-20 20:09:39] [INFO] 
+📊 Progression: 4/32 documents
+[2026-01-20 20:09:39] [INFO]    ✅ Succès: 1
+[2026-01-20 20:09:39] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:09:39] [INFO]    📈 Taux de réussite: 25.0%
+[2026-01-20 20:09:39] [INFO]    ⏱️  Temps écoulé: 560.5s
+[2026-01-20 20:09:39] [INFO]    🔄 Restants: 28 documents
+
+[2026-01-20 20:09:39] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:09:41] [INFO] ================================================================================
+[2026-01-20 20:09:41] [INFO] 📄 Document 5/32 (15.6%)
+[2026-01-20 20:09:41] [INFO] ================================================================================
+[2026-01-20 20:09:41] [INFO] 📄 Indexation: danone2024accessibleversion.pdf
+[2026-01-20 20:09:41] [INFO]    Taille: 7.4 MB
+[2026-01-20 20:09:41] [INFO]    Timeout: 889s (~14min)
+[2026-01-20 20:09:41] [INFO]    Collection: danone2024accessibleversion
+[2026-01-20 20:18:11] [SUCCESS] ✅ Succès! Chunks: 4765 (Tables: 2103, Texte: 2662)
+[2026-01-20 20:18:11] [INFO] 
+📊 Progression: 5/32 documents
+[2026-01-20 20:18:11] [INFO]    ✅ Succès: 2
+[2026-01-20 20:18:11] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:18:11] [INFO]    📈 Taux de réussite: 40.0%
+[2026-01-20 20:18:11] [INFO]    ⏱️  Temps écoulé: 510.7s
+[2026-01-20 20:18:11] [INFO]    🔄 Restants: 27 documents
+
+[2026-01-20 20:18:11] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:18:13] [INFO] ================================================================================
+[2026-01-20 20:18:13] [INFO] 📄 Document 6/32 (18.8%)
+[2026-01-20 20:18:13] [INFO] ================================================================================
+[2026-01-20 20:18:13] [INFO] 📄 Indexation: danoneiar2024.pdf
+[2026-01-20 20:18:13] [INFO]    Taille: 13.7 MB
+[2026-01-20 20:18:13] [INFO]    Timeout: 1643s (~27min)
+[2026-01-20 20:18:13] [INFO]    Collection: danoneiar2024
+[2026-01-20 20:18:43] [SUCCESS] ✅ Succès! Chunks: 175 (Tables: 23, Texte: 152)
+[2026-01-20 20:18:43] [INFO] 
+📊 Progression: 6/32 documents
+[2026-01-20 20:18:43] [INFO]    ✅ Succès: 3
+[2026-01-20 20:18:43] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:18:43] [INFO]    📈 Taux de réussite: 50.0%
+[2026-01-20 20:18:43] [INFO]    ⏱️  Temps écoulé: 29.2s
+[2026-01-20 20:18:43] [INFO]    🔄 Restants: 26 documents
+
+[2026-01-20 20:18:43] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:18:45] [INFO] ================================================================================
+[2026-01-20 20:18:45] [INFO] 📄 Document 7/32 (21.9%)
+[2026-01-20 20:18:45] [INFO] ================================================================================
+[2026-01-20 20:18:45] [INFO] 📄 Indexation: danonerapportfinanciersemestriel2025.pdf
+[2026-01-20 20:18:45] [INFO]    Taille: 4.3 MB
+[2026-01-20 20:18:45] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:18:45] [INFO]    Collection: danonerapportfinanciersemestriel2025
+[2026-01-20 20:19:31] [SUCCESS] ✅ Succès! Chunks: 235 (Tables: 122, Texte: 113)
+[2026-01-20 20:19:31] [INFO] 
+📊 Progression: 7/32 documents
+[2026-01-20 20:19:31] [INFO]    ✅ Succès: 4
+[2026-01-20 20:19:31] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:19:31] [INFO]    📈 Taux de réussite: 57.1%
+[2026-01-20 20:19:31] [INFO]    ⏱️  Temps écoulé: 46.0s
+[2026-01-20 20:19:31] [INFO]    🔄 Restants: 25 documents
+
+[2026-01-20 20:19:31] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:19:33] [INFO] ================================================================================
+[2026-01-20 20:19:33] [INFO] 📄 Document 8/32 (25.0%)
+[2026-01-20 20:19:33] [INFO] ================================================================================
+[2026-01-20 20:19:33] [INFO] 📄 Indexation: deudanone2023.pdf
+[2026-01-20 20:19:33] [INFO]    Taille: 3.4 MB
+[2026-01-20 20:19:33] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:19:33] [INFO]    Collection: deudanone2023
+[2026-01-20 20:26:59] [SUCCESS] ✅ Succès! Chunks: 4013 (Tables: 1962, Texte: 2051)
+[2026-01-20 20:26:59] [INFO] 
+📊 Progression: 8/32 documents
+[2026-01-20 20:26:59] [INFO]    ✅ Succès: 5
+[2026-01-20 20:26:59] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:26:59] [INFO]    📈 Taux de réussite: 62.5%
+[2026-01-20 20:26:59] [INFO]    ⏱️  Temps écoulé: 446.7s
+[2026-01-20 20:26:59] [INFO]    🔄 Restants: 24 documents
+
+[2026-01-20 20:26:59] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:27:01] [INFO] ================================================================================
+[2026-01-20 20:27:01] [INFO] 📄 Document 9/32 (28.1%)
+[2026-01-20 20:27:01] [INFO] ================================================================================
+[2026-01-20 20:27:01] [INFO] 📄 Indexation: documents-financiers-lvmh-31-decembre-2023.pdf
+[2026-01-20 20:27:01] [INFO]    Taille: 2.1 MB
+[2026-01-20 20:27:01] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:27:01] [INFO]    Collection: documents_financiers_lvmh_31_decembre_2023
+[2026-01-20 20:28:58] [SUCCESS] ✅ Succès! Chunks: 509 (Tables: 227, Texte: 282)
+[2026-01-20 20:28:58] [INFO] 
+📊 Progression: 9/32 documents
+[2026-01-20 20:28:58] [INFO]    ✅ Succès: 6
+[2026-01-20 20:28:58] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:28:58] [INFO]    📈 Taux de réussite: 66.7%
+[2026-01-20 20:28:58] [INFO]    ⏱️  Temps écoulé: 117.0s
+[2026-01-20 20:28:58] [INFO]    🔄 Restants: 23 documents
+
+[2026-01-20 20:28:58] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:29:00] [INFO] ================================================================================
+[2026-01-20 20:29:00] [INFO] 📄 Document 10/32 (31.2%)
+[2026-01-20 20:29:00] [INFO] ================================================================================
+[2026-01-20 20:29:00] [INFO] 📄 Indexation: hermes_20240209_cp_resultatsannuels2023_vf.pdf
+[2026-01-20 20:29:00] [INFO]    Taille: 0.5 MB
+[2026-01-20 20:29:00] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:29:00] [INFO]    Collection: hermes_20240209_cp_resultatsannuels2023_vf
+[2026-01-20 20:29:22] [SUCCESS] ✅ Succès! Chunks: 62 (Tables: 35, Texte: 27)
+[2026-01-20 20:29:22] [INFO] 
+📊 Progression: 10/32 documents
+[2026-01-20 20:29:22] [INFO]    ✅ Succès: 7
+[2026-01-20 20:29:22] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:29:22] [INFO]    📈 Taux de réussite: 70.0%
+[2026-01-20 20:29:22] [INFO]    ⏱️  Temps écoulé: 21.5s
+[2026-01-20 20:29:22] [INFO]    🔄 Restants: 22 documents
+
+[2026-01-20 20:29:22] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:29:24] [INFO] ================================================================================
+[2026-01-20 20:29:24] [INFO] 📄 Document 11/32 (34.4%)
+[2026-01-20 20:29:24] [INFO] ================================================================================
+[2026-01-20 20:29:24] [INFO] 📄 Indexation: hermes_20250410_rapportdactivite2024-fr.pdf
+[2026-01-20 20:29:24] [INFO]    Taille: 10.7 MB
+[2026-01-20 20:29:24] [INFO]    Timeout: 1286s (~21min)
+[2026-01-20 20:29:24] [INFO]    Collection: hermes_20250410_rapportdactivite2024_fr
+[2026-01-20 20:29:45] [SUCCESS] ✅ Succès! Chunks: 53 (Tables: 9, Texte: 44)
+[2026-01-20 20:29:45] [INFO] 
+📊 Progression: 11/32 documents
+[2026-01-20 20:29:45] [INFO]    ✅ Succès: 8
+[2026-01-20 20:29:45] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:29:45] [INFO]    📈 Taux de réussite: 72.7%
+[2026-01-20 20:29:45] [INFO]    ⏱️  Temps écoulé: 20.9s
+[2026-01-20 20:29:45] [INFO]    🔄 Restants: 21 documents
+
+[2026-01-20 20:29:45] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:29:47] [INFO] ================================================================================
+[2026-01-20 20:29:47] [INFO] 📄 Document 12/32 (37.5%)
+[2026-01-20 20:29:47] [INFO] ================================================================================
+[2026-01-20 20:29:47] [INFO] 📄 Indexation: lvmh-comptes-consolides-2023-vf-vdef-publiee.pdf
+[2026-01-20 20:29:47] [INFO]    Taille: 2.2 MB
+[2026-01-20 20:29:47] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:29:47] [INFO]    Collection: lvmh_comptes_consolides_2023_vf_vdef_publiee
+[2026-01-20 20:33:13] [SUCCESS] ✅ Succès! Chunks: 773 (Tables: 507, Texte: 266)
+[2026-01-20 20:33:13] [INFO] 
+📊 Progression: 12/32 documents
+[2026-01-20 20:33:13] [INFO]    ✅ Succès: 9
+[2026-01-20 20:33:13] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:33:13] [INFO]    📈 Taux de réussite: 75.0%
+[2026-01-20 20:33:13] [INFO]    ⏱️  Temps écoulé: 205.8s
+[2026-01-20 20:33:13] [INFO]    🔄 Restants: 20 documents
+
+[2026-01-20 20:33:13] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:33:15] [INFO] ================================================================================
+[2026-01-20 20:33:15] [INFO] 📄 Document 13/32 (40.6%)
+[2026-01-20 20:33:15] [INFO] ================================================================================
+[2026-01-20 20:33:15] [INFO] 📄 Indexation: lvmhDocuments financiers  - 31 décembre 2024.pdf
+[2026-01-20 20:33:15] [INFO]    Taille: 1.8 MB
+[2026-01-20 20:33:15] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:33:15] [INFO]    Collection: lvmhdocuments_financiers_31_decembre_2024
+[2026-01-20 20:35:12] [SUCCESS] ✅ Succès! Chunks: 507 (Tables: 228, Texte: 279)
+[2026-01-20 20:35:12] [INFO] 
+📊 Progression: 13/32 documents
+[2026-01-20 20:35:12] [INFO]    ✅ Succès: 10
+[2026-01-20 20:35:12] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:35:12] [INFO]    📈 Taux de réussite: 76.9%
+[2026-01-20 20:35:12] [INFO]    ⏱️  Temps écoulé: 117.2s
+[2026-01-20 20:35:12] [INFO]    🔄 Restants: 19 documents
+
+[2026-01-20 20:35:12] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:35:14] [INFO] ================================================================================
+[2026-01-20 20:35:14] [INFO] 📄 Document 14/32 (43.8%)
+[2026-01-20 20:35:14] [INFO] ================================================================================
+[2026-01-20 20:35:14] [INFO] 📄 Indexation: lvmh_rapport-financier-semestriel-2023.pdf
+[2026-01-20 20:35:14] [INFO]    Taille: 2.0 MB
+[2026-01-20 20:35:14] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:35:14] [INFO]    Collection: lvmh_rapport_financier_semestriel_2023
+[2026-01-20 20:37:04] [SUCCESS] ✅ Succès! Chunks: 414 (Tables: 214, Texte: 200)
+[2026-01-20 20:37:04] [INFO] 
+📊 Progression: 14/32 documents
+[2026-01-20 20:37:04] [INFO]    ✅ Succès: 11
+[2026-01-20 20:37:04] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:37:04] [INFO]    📈 Taux de réussite: 78.6%
+[2026-01-20 20:37:04] [INFO]    ⏱️  Temps écoulé: 110.3s
+[2026-01-20 20:37:04] [INFO]    🔄 Restants: 18 documents
+
+[2026-01-20 20:37:04] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:37:06] [INFO] ================================================================================
+[2026-01-20 20:37:06] [INFO] 📄 Document 15/32 (46.9%)
+[2026-01-20 20:37:06] [INFO] ================================================================================
+[2026-01-20 20:37:06] [INFO] 📄 Indexation: orange2023.pdf
+[2026-01-20 20:37:06] [INFO]    Taille: 1.8 MB
+[2026-01-20 20:37:06] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:37:06] [INFO]    Collection: orange2023
+[2026-01-20 20:37:28] [SUCCESS] ✅ Succès! Chunks: 267 (Tables: 7, Texte: 260)
+[2026-01-20 20:37:28] [INFO] 
+📊 Progression: 15/32 documents
+[2026-01-20 20:37:28] [INFO]    ✅ Succès: 12
+[2026-01-20 20:37:28] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:37:28] [INFO]    📈 Taux de réussite: 80.0%
+[2026-01-20 20:37:28] [INFO]    ⏱️  Temps écoulé: 21.7s
+[2026-01-20 20:37:28] [INFO]    🔄 Restants: 17 documents
+
+[2026-01-20 20:37:28] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:37:30] [INFO] ================================================================================
+[2026-01-20 20:37:30] [INFO] 📄 Document 16/32 (50.0%)
+[2026-01-20 20:37:30] [INFO] ================================================================================
+[2026-01-20 20:37:30] [INFO] 📄 Indexation: orange2024.pdf
+[2026-01-20 20:37:30] [INFO]    Taille: 9.0 MB
+[2026-01-20 20:37:30] [INFO]    Timeout: 1080s (~18min)
+[2026-01-20 20:37:30] [INFO]    Collection: orange2024
+[2026-01-20 20:38:06] [SUCCESS] ✅ Succès! Chunks: 270 (Tables: 4, Texte: 266)
+[2026-01-20 20:38:06] [INFO] 
+📊 Progression: 16/32 documents
+[2026-01-20 20:38:06] [INFO]    ✅ Succès: 13
+[2026-01-20 20:38:06] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:38:06] [INFO]    📈 Taux de réussite: 81.2%
+[2026-01-20 20:38:06] [INFO]    ⏱️  Temps écoulé: 36.0s
+[2026-01-20 20:38:06] [INFO]    🔄 Restants: 16 documents
+
+[2026-01-20 20:38:06] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:38:08] [INFO] ================================================================================
+[2026-01-20 20:38:08] [INFO] 📄 Document 17/32 (53.1%)
+[2026-01-20 20:38:08] [INFO] ================================================================================
+[2026-01-20 20:38:08] [INFO] 📄 Indexation: ri_bouygues_2025_web.pdf
+[2026-01-20 20:38:08] [INFO]    Taille: 8.9 MB
+[2026-01-20 20:38:08] [INFO]    Timeout: 1071s (~17min)
+[2026-01-20 20:38:08] [INFO]    Collection: ri_bouygues_2025_web
+[2026-01-20 20:38:46] [SUCCESS] ✅ Succès! Chunks: 467 (Tables: 35, Texte: 432)
+[2026-01-20 20:38:46] [INFO] 
+📊 Progression: 17/32 documents
+[2026-01-20 20:38:46] [INFO]    ✅ Succès: 14
+[2026-01-20 20:38:46] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:38:46] [INFO]    📈 Taux de réussite: 82.4%
+[2026-01-20 20:38:46] [INFO]    ⏱️  Temps écoulé: 38.5s
+[2026-01-20 20:38:46] [INFO]    🔄 Restants: 15 documents
+
+[2026-01-20 20:38:46] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:38:48] [INFO] ================================================================================
+[2026-01-20 20:38:48] [INFO] 📄 Document 18/32 (56.2%)
+[2026-01-20 20:38:48] [INFO] ================================================================================
+[2026-01-20 20:38:48] [INFO] 📄 Indexation: safranFY 2023 FR Vdef.pdf
+[2026-01-20 20:38:48] [INFO]    Taille: 1.3 MB
+[2026-01-20 20:38:48] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:38:48] [INFO]    Collection: safranfy_2023_fr_vdef
+[2026-01-20 20:39:07] [SUCCESS] ✅ Succès! Chunks: 78 (Tables: 27, Texte: 51)
+[2026-01-20 20:39:07] [INFO] 
+📊 Progression: 18/32 documents
+[2026-01-20 20:39:07] [INFO]    ✅ Succès: 15
+[2026-01-20 20:39:07] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:39:07] [INFO]    📈 Taux de réussite: 83.3%
+[2026-01-20 20:39:07] [INFO]    ⏱️  Temps écoulé: 19.2s
+[2026-01-20 20:39:07] [INFO]    🔄 Restants: 14 documents
+
+[2026-01-20 20:39:07] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:39:09] [INFO] ================================================================================
+[2026-01-20 20:39:09] [INFO] 📄 Document 19/32 (59.4%)
+[2026-01-20 20:39:09] [INFO] ================================================================================
+[2026-01-20 20:39:09] [INFO] 📄 Indexation: safranFY 2024 FR Vdef.pdf
+[2026-01-20 20:39:09] [INFO]    Taille: 1.0 MB
+[2026-01-20 20:39:09] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:39:09] [INFO]    Collection: safranfy_2024_fr_vdef
+[2026-01-20 20:39:28] [SUCCESS] ✅ Succès! Chunks: 80 (Tables: 25, Texte: 55)
+[2026-01-20 20:39:28] [INFO] 
+📊 Progression: 19/32 documents
+[2026-01-20 20:39:28] [INFO]    ✅ Succès: 16
+[2026-01-20 20:39:28] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:39:28] [INFO]    📈 Taux de réussite: 84.2%
+[2026-01-20 20:39:28] [INFO]    ⏱️  Temps écoulé: 18.5s
+[2026-01-20 20:39:28] [INFO]    🔄 Restants: 13 documents
+
+[2026-01-20 20:39:28] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:39:30] [INFO] ================================================================================
+[2026-01-20 20:39:30] [INFO] 📄 Document 20/32 (62.5%)
+[2026-01-20 20:39:30] [INFO] ================================================================================
+[2026-01-20 20:39:30] [INFO] 📄 Indexation: safranPlaquette Décembre 2024 mise en ligne.pdf
+[2026-01-20 20:39:30] [INFO]    Taille: 19.7 MB
+[2026-01-20 20:39:30] [INFO]    Timeout: 2360s (~39min)
+[2026-01-20 20:39:30] [INFO]    Collection: safranplaquette_decembre_2024_mise_en_ligne
+[2026-01-20 20:41:44] [SUCCESS] ✅ Succès! Chunks: 622 (Tables: 276, Texte: 346)
+[2026-01-20 20:41:44] [INFO] 
+📊 Progression: 20/32 documents
+[2026-01-20 20:41:44] [INFO]    ✅ Succès: 17
+[2026-01-20 20:41:44] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:41:44] [INFO]    📈 Taux de réussite: 85.0%
+[2026-01-20 20:41:44] [INFO]    ⏱️  Temps écoulé: 133.8s
+[2026-01-20 20:41:44] [INFO]    🔄 Restants: 12 documents
+
+[2026-01-20 20:41:44] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:41:46] [INFO] ================================================================================
+[2026-01-20 20:41:46] [INFO] 📄 Document 21/32 (65.6%)
+[2026-01-20 20:41:46] [INFO] ================================================================================
+[2026-01-20 20:41:46] [INFO] 📄 Indexation: safranS1 2025 FR vDEF.pdf
+[2026-01-20 20:41:46] [INFO]    Taille: 0.9 MB
+[2026-01-20 20:41:46] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:41:46] [INFO]    Collection: safrans1_2025_fr_vdef
+[2026-01-20 20:42:06] [SUCCESS] ✅ Succès! Chunks: 88 (Tables: 39, Texte: 49)
+[2026-01-20 20:42:06] [INFO] 
+📊 Progression: 21/32 documents
+[2026-01-20 20:42:06] [INFO]    ✅ Succès: 18
+[2026-01-20 20:42:06] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:42:06] [INFO]    📈 Taux de réussite: 85.7%
+[2026-01-20 20:42:06] [INFO]    ⏱️  Temps écoulé: 19.8s
+[2026-01-20 20:42:06] [INFO]    🔄 Restants: 11 documents
+
+[2026-01-20 20:42:06] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:42:08] [INFO] ================================================================================
+[2026-01-20 20:42:08] [INFO] 📄 Document 22/32 (68.8%)
+[2026-01-20 20:42:08] [INFO] ================================================================================
+[2026-01-20 20:42:08] [INFO] 📄 Indexation: safranT1 2025 FR vdef.pdf
+[2026-01-20 20:42:08] [INFO]    Taille: 0.9 MB
+[2026-01-20 20:42:08] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:42:08] [INFO]    Collection: safrant1_2025_fr_vdef
+[2026-01-20 20:42:18] [SUCCESS] ✅ Succès! Chunks: 42 (Tables: 17, Texte: 25)
+[2026-01-20 20:42:18] [INFO] 
+📊 Progression: 22/32 documents
+[2026-01-20 20:42:18] [INFO]    ✅ Succès: 19
+[2026-01-20 20:42:18] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:42:18] [INFO]    📈 Taux de réussite: 86.4%
+[2026-01-20 20:42:18] [INFO]    ⏱️  Temps écoulé: 10.2s
+[2026-01-20 20:42:18] [INFO]    🔄 Restants: 10 documents
+
+[2026-01-20 20:42:18] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:42:20] [INFO] ================================================================================
+[2026-01-20 20:42:20] [INFO] 📄 Document 23/32 (71.9%)
+[2026-01-20 20:42:20] [INFO] ================================================================================
+[2026-01-20 20:42:20] [INFO] 📄 Indexation: safranT3 2025 FR vDEF.pdf
+[2026-01-20 20:42:20] [INFO]    Taille: 1.2 MB
+[2026-01-20 20:42:20] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:42:20] [INFO]    Collection: safrant3_2025_fr_vdef
+[2026-01-20 20:42:32] [SUCCESS] ✅ Succès! Chunks: 53 (Tables: 26, Texte: 27)
+[2026-01-20 20:42:32] [INFO] 
+📊 Progression: 23/32 documents
+[2026-01-20 20:42:32] [INFO]    ✅ Succès: 20
+[2026-01-20 20:42:32] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:42:32] [INFO]    📈 Taux de réussite: 87.0%
+[2026-01-20 20:42:32] [INFO]    ⏱️  Temps écoulé: 12.3s
+[2026-01-20 20:42:32] [INFO]    🔄 Restants: 9 documents
+
+[2026-01-20 20:42:32] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:42:34] [INFO] ================================================================================
+[2026-01-20 20:42:34] [INFO] 📄 Document 24/32 (75.0%)
+[2026-01-20 20:42:34] [INFO] ================================================================================
+[2026-01-20 20:42:34] [INFO] 📄 Indexation: sanofi-rapport-financier-semestriel-2025.pdf
+[2026-01-20 20:42:34] [INFO]    Taille: 1.7 MB
+[2026-01-20 20:42:34] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:42:34] [INFO]    Collection: sanofi_rapport_financier_semestriel_2025
+[2026-01-20 20:44:04] [SUCCESS] ✅ Succès! Chunks: 544 (Tables: 223, Texte: 321)
+[2026-01-20 20:44:04] [INFO] 
+📊 Progression: 24/32 documents
+[2026-01-20 20:44:04] [INFO]    ✅ Succès: 21
+[2026-01-20 20:44:04] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:44:04] [INFO]    📈 Taux de réussite: 87.5%
+[2026-01-20 20:44:04] [INFO]    ⏱️  Temps écoulé: 89.7s
+[2026-01-20 20:44:04] [INFO]    🔄 Restants: 8 documents
+
+[2026-01-20 20:44:04] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:44:06] [INFO] ================================================================================
+[2026-01-20 20:44:06] [INFO] 📄 Document 25/32 (78.1%)
+[2026-01-20 20:44:06] [INFO] ================================================================================
+[2026-01-20 20:44:06] [INFO] 📄 Indexation: sanofi-rapport-semestriel-2024.pdf
+[2026-01-20 20:44:06] [INFO]    Taille: 1.4 MB
+[2026-01-20 20:44:06] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 20:44:06] [INFO]    Collection: sanofi_rapport_semestriel_2024
+[2026-01-20 20:45:37] [SUCCESS] ✅ Succès! Chunks: 542 (Tables: 253, Texte: 289)
+[2026-01-20 20:45:37] [INFO] 
+📊 Progression: 25/32 documents
+[2026-01-20 20:45:37] [INFO]    ✅ Succès: 22
+[2026-01-20 20:45:37] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:45:37] [INFO]    📈 Taux de réussite: 88.0%
+[2026-01-20 20:45:37] [INFO]    ⏱️  Temps écoulé: 91.5s
+[2026-01-20 20:45:37] [INFO]    🔄 Restants: 7 documents
+
+[2026-01-20 20:45:37] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:45:39] [INFO] ================================================================================
+[2026-01-20 20:45:39] [INFO] 📄 Document 26/32 (81.2%)
+[2026-01-20 20:45:39] [INFO] ================================================================================
+[2026-01-20 20:45:39] [INFO] 📄 Indexation: schneiderelectric2023-document-enregistrement-universel_tcm342-462018.pdf
+[2026-01-20 20:45:39] [INFO]    Taille: 14.3 MB
+[2026-01-20 20:45:39] [INFO]    Timeout: 1719s (~28min)
+[2026-01-20 20:45:39] [INFO]    Collection: schneiderelectric2023_document_enregistrement_universel_tcm342_462018
+[2026-01-20 20:56:01] [SUCCESS] ✅ Succès! Chunks: 5876 (Tables: 2168, Texte: 3708)
+[2026-01-20 20:56:01] [INFO] 
+📊 Progression: 26/32 documents
+[2026-01-20 20:56:01] [INFO]    ✅ Succès: 23
+[2026-01-20 20:56:01] [INFO]    ❌ Échecs: 3
+[2026-01-20 20:56:01] [INFO]    📈 Taux de réussite: 88.5%
+[2026-01-20 20:56:01] [INFO]    ⏱️  Temps écoulé: 621.6s
+[2026-01-20 20:56:01] [INFO]    🔄 Restants: 6 documents
+
+[2026-01-20 20:56:01] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 20:56:03] [INFO] ================================================================================
+[2026-01-20 20:56:03] [INFO] 📄 Document 27/32 (84.4%)
+[2026-01-20 20:56:03] [INFO] ================================================================================
+[2026-01-20 20:56:03] [INFO] 📄 Indexation: schneiderelectric2024-document-enregistrement-universel_tcm342-510443.pdf
+[2026-01-20 20:56:03] [INFO]    Taille: 13.9 MB
+[2026-01-20 20:56:03] [INFO]    Timeout: 1670s (~27min)
+[2026-01-20 20:56:03] [INFO]    Collection: schneiderelectric2024_document_enregistrement_universel_tcm342_510443
+[2026-01-20 21:08:24] [SUCCESS] ✅ Succès! Chunks: 7288 (Tables: 2874, Texte: 4414)
+[2026-01-20 21:08:24] [INFO] 
+📊 Progression: 27/32 documents
+[2026-01-20 21:08:24] [INFO]    ✅ Succès: 24
+[2026-01-20 21:08:24] [INFO]    ❌ Échecs: 3
+[2026-01-20 21:08:24] [INFO]    📈 Taux de réussite: 88.9%
+[2026-01-20 21:08:24] [INFO]    ⏱️  Temps écoulé: 740.9s
+[2026-01-20 21:08:24] [INFO]    🔄 Restants: 5 documents
+
+[2026-01-20 21:08:24] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 21:08:26] [INFO] ================================================================================
+[2026-01-20 21:08:26] [INFO] 📄 Document 28/32 (87.5%)
+[2026-01-20 21:08:26] [INFO] ================================================================================
+[2026-01-20 21:08:26] [INFO] 📄 Indexation: totalenergies_document-enregistrement-universel-2023_2023_fr_pdf.pdf
+[2026-01-20 21:08:26] [INFO]    Taille: 22.1 MB
+[2026-01-20 21:08:26] [INFO]    Timeout: 2653s (~44min)
+[2026-01-20 21:08:26] [INFO]    Collection: totalenergies_document_enregistrement_universel_2023_2023_fr_pdf
+[2026-01-20 21:28:29] [SUCCESS] ✅ Succès! Chunks: 7143 (Tables: 2891, Texte: 4252)
+[2026-01-20 21:28:29] [INFO] 
+📊 Progression: 28/32 documents
+[2026-01-20 21:28:29] [INFO]    ✅ Succès: 25
+[2026-01-20 21:28:29] [INFO]    ❌ Échecs: 3
+[2026-01-20 21:28:29] [INFO]    📈 Taux de réussite: 89.3%
+[2026-01-20 21:28:29] [INFO]    ⏱️  Temps écoulé: 1203.1s
+[2026-01-20 21:28:29] [INFO]    🔄 Restants: 4 documents
+
+[2026-01-20 21:28:29] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 21:28:31] [INFO] ================================================================================
+[2026-01-20 21:28:31] [INFO] 📄 Document 29/32 (90.6%)
+[2026-01-20 21:28:31] [INFO] ================================================================================
+[2026-01-20 21:28:31] [INFO] 📄 Indexation: totalenergies_document-enregistrement-universel-2024_2025_fr.pdf
+[2026-01-20 21:28:31] [INFO]    Taille: 16.1 MB
+[2026-01-20 21:28:31] [INFO]    Timeout: 1934s (~32min)
+[2026-01-20 21:28:31] [INFO]    Collection: totalenergies_document_enregistrement_universel_2024_2025_fr
+[2026-01-20 21:46:40] [SUCCESS] ✅ Succès! Chunks: 7030 (Tables: 2654, Texte: 4376)
+[2026-01-20 21:46:40] [INFO] 
+📊 Progression: 29/32 documents
+[2026-01-20 21:46:40] [INFO]    ✅ Succès: 26
+[2026-01-20 21:46:40] [INFO]    ❌ Échecs: 3
+[2026-01-20 21:46:40] [INFO]    📈 Taux de réussite: 89.7%
+[2026-01-20 21:46:40] [INFO]    ⏱️  Temps écoulé: 1088.9s
+[2026-01-20 21:46:40] [INFO]    🔄 Restants: 3 documents
+
+[2026-01-20 21:46:40] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 21:46:42] [INFO] ================================================================================
+[2026-01-20 21:46:42] [INFO] 📄 Document 30/32 (93.8%)
+[2026-01-20 21:46:42] [INFO] ================================================================================
+[2026-01-20 21:46:42] [INFO] 📄 Indexation: vinci-document-enregistrement-universel-2023.pdf
+[2026-01-20 21:46:42] [INFO]    Taille: 18.7 MB
+[2026-01-20 21:46:42] [INFO]    Timeout: 2246s (~37min)
+[2026-01-20 21:46:42] [INFO]    Collection: vinci_document_enregistrement_universel_2023
+[2026-01-20 21:56:50] [SUCCESS] ✅ Succès! Chunks: 4510 (Tables: 1839, Texte: 2671)
+[2026-01-20 21:56:50] [INFO] 
+📊 Progression: 30/32 documents
+[2026-01-20 21:56:50] [INFO]    ✅ Succès: 27
+[2026-01-20 21:56:50] [INFO]    ❌ Échecs: 3
+[2026-01-20 21:56:50] [INFO]    📈 Taux de réussite: 90.0%
+[2026-01-20 21:56:50] [INFO]    ⏱️  Temps écoulé: 608.1s
+[2026-01-20 21:56:50] [INFO]    🔄 Restants: 2 documents
+
+[2026-01-20 21:56:50] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 21:56:52] [INFO] ================================================================================
+[2026-01-20 21:56:52] [INFO] 📄 Document 31/32 (96.9%)
+[2026-01-20 21:56:52] [INFO] ================================================================================
+[2026-01-20 21:56:52] [INFO] 📄 Indexation: vinci-document-enregistrement-universel-2024.pdf
+[2026-01-20 21:56:52] [INFO]    Taille: 13.6 MB
+[2026-01-20 21:56:52] [INFO]    Timeout: 1631s (~27min)
+[2026-01-20 21:56:52] [INFO]    Collection: vinci_document_enregistrement_universel_2024
+[2026-01-20 22:08:21] [SUCCESS] ✅ Succès! Chunks: 4844 (Tables: 2083, Texte: 2761)
+[2026-01-20 22:08:21] [INFO] 
+📊 Progression: 31/32 documents
+[2026-01-20 22:08:21] [INFO]    ✅ Succès: 28
+[2026-01-20 22:08:21] [INFO]    ❌ Échecs: 3
+[2026-01-20 22:08:21] [INFO]    📈 Taux de réussite: 90.3%
+[2026-01-20 22:08:21] [INFO]    ⏱️  Temps écoulé: 689.1s
+[2026-01-20 22:08:21] [INFO]    🔄 Restants: 1 documents
+
+[2026-01-20 22:08:21] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 22:08:23] [INFO] ================================================================================
+[2026-01-20 22:08:23] [INFO] 📄 Document 32/32 (100.0%)
+[2026-01-20 22:08:23] [INFO] ================================================================================
+[2026-01-20 22:08:23] [INFO] 📄 Indexation: vinci-rapport-financier-semestriel-au-30-juin-2025.pdf
+[2026-01-20 22:08:23] [INFO]    Taille: 2.5 MB
+[2026-01-20 22:08:23] [INFO]    Timeout: 600s (~10min)
+[2026-01-20 22:08:23] [INFO]    Collection: vinci_rapport_financier_semestriel_au_30_juin_2025
+[2026-01-20 22:10:29] [SUCCESS] ✅ Succès! Chunks: 538 (Tables: 228, Texte: 310)
+[2026-01-20 22:10:29] [INFO] 
+📊 Progression: 32/32 documents
+[2026-01-20 22:10:29] [INFO]    ✅ Succès: 29
+[2026-01-20 22:10:29] [INFO]    ❌ Échecs: 3
+[2026-01-20 22:10:29] [INFO]    📈 Taux de réussite: 90.6%
+[2026-01-20 22:10:29] [INFO]    ⏱️  Temps écoulé: 126.6s
+[2026-01-20 22:10:29] [INFO]    🔄 Restants: 0 documents
+
+[2026-01-20 22:10:29] [INFO] ================================================================================
+[2026-01-20 22:10:29] [INFO] 🎉 INDEXATION TERMINÉE
+[2026-01-20 22:10:29] [INFO] ================================================================================
+[2026-01-20 22:10:29] [INFO] 
+📊 STATISTIQUES FINALES:
+[2026-01-20 22:10:29] [INFO]    Documents traités: 32
+[2026-01-20 22:10:29] [INFO]    ✅ Succès: 29
+[2026-01-20 22:10:29] [INFO]    ❌ Échecs: 3
+[2026-01-20 22:10:29] [INFO]    Taux de réussite: 90.6%
+[2026-01-20 22:10:29] [INFO]    ⏱️  Temps total: 194.2 minutes (3.2h)
+[2026-01-20 22:10:29] [INFO] 
+📁 Logs sauvegardés: indexing_log.txt
+[2026-01-20 22:10:29] [INFO] 📁 Progression sauvegardée: indexing_progress.json
+[2026-01-20 22:10:29] [INFO] 
+⚠️  3 document(s) ont échoué
+[2026-01-20 22:10:29] [INFO]    Consultez le fichier de log pour les détails
+[2026-01-20 22:12:53] [INFO] ================================================================================
+[2026-01-20 22:12:53] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-20 22:12:53] [INFO] ================================================================================
+[2026-01-20 22:12:53] [INFO] 
+📊 STATISTIQUES:
+[2026-01-20 22:12:53] [INFO]    Total de documents: 79
+[2026-01-20 22:12:53] [INFO]    Déjà traités: 76
+[2026-01-20 22:12:53] [INFO]    À traiter: 3
+[2026-01-20 22:12:53] [INFO]    Taille totale: 31.9 MB
+[2026-01-20 22:12:53] [INFO]    Temps estimé: 128 minutes (~2.1h)
+[2026-01-20 22:12:53] [INFO] 
+[2026-01-20 22:12:53] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-20 22:12:53] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-20 22:12:53] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-20 22:12:53] [INFO] 
+[2026-01-20 22:14:52] [INFO] ================================================================================
+[2026-01-20 22:14:52] [INFO] 🚀 INDEXATION BATCH DE DOCUMENTS
+[2026-01-20 22:14:52] [INFO] ================================================================================
+[2026-01-20 22:14:52] [INFO] 
+📊 STATISTIQUES:
+[2026-01-20 22:14:52] [INFO]    Total de documents: 79
+[2026-01-20 22:14:52] [INFO]    Déjà traités: 76
+[2026-01-20 22:14:52] [INFO]    À traiter: 3
+[2026-01-20 22:14:52] [INFO]    Taille totale: 31.9 MB
+[2026-01-20 22:14:52] [INFO]    Temps estimé: 128 minutes (~2.1h)
+[2026-01-20 22:14:52] [INFO] 
+[2026-01-20 22:14:52] [INFO] ⚠️  IMPORTANT: Ce processus va prendre du temps.
+[2026-01-20 22:14:52] [INFO]    Vous pouvez l'interrompre avec Ctrl+C et le relancer plus tard.
+[2026-01-20 22:14:52] [INFO]    La progression sera sauvegardée automatiquement.
+[2026-01-20 22:14:52] [INFO] 
+[2026-01-20 22:14:56] [INFO] 
+🏃 Démarrage de l'indexation...
+
+[2026-01-20 22:14:56] [INFO] ================================================================================
+[2026-01-20 22:14:56] [INFO] 📄 Document 1/3 (33.3%)
+[2026-01-20 22:14:56] [INFO] ================================================================================
+[2026-01-20 22:14:56] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2023-1.pdf
+[2026-01-20 22:14:56] [INFO]    Taille: 6.2 MB
+[2026-01-20 22:14:56] [INFO]    Timeout: 1494s (~24min)
+[2026-01-20 22:14:56] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2023_1
+[2026-01-20 22:39:50] [ERROR] ⏱️  Timeout après 1494s (24min)
+[2026-01-20 22:39:50] [WARNING] 🔄 Nouvelle tentative avec timeout augmenté...
+[2026-01-20 22:39:55] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2023-1.pdf (Tentative 2/3)
+[2026-01-20 22:39:55] [INFO]    Taille: 6.2 MB
+[2026-01-20 22:39:55] [INFO]    Timeout: 2241s (~37min)
+[2026-01-20 22:39:55] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2023_1
+[2026-01-20 23:05:34] [SUCCESS] ✅ Succès! Chunks: 7206 (Tables: 3320, Texte: 3886)
+[2026-01-20 23:05:34] [INFO] 
+📊 Progression: 1/3 documents
+[2026-01-20 23:05:34] [INFO]    ✅ Succès: 1
+[2026-01-20 23:05:34] [INFO]    ❌ Échecs: 0
+[2026-01-20 23:05:34] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 23:05:34] [INFO]    ⏱️  Temps écoulé: 3037.8s
+[2026-01-20 23:05:34] [INFO]    🔄 Restants: 2 documents
+
+[2026-01-20 23:05:34] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 23:05:36] [INFO] ================================================================================
+[2026-01-20 23:05:36] [INFO] 📄 Document 2/3 (66.7%)
+[2026-01-20 23:05:36] [INFO] ================================================================================
+[2026-01-20 23:05:36] [INFO] 📄 Indexation: bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2024-pdf.pdf
+[2026-01-20 23:05:36] [INFO]    Taille: 15.7 MB
+[2026-01-20 23:05:36] [INFO]    Timeout: 3776s (~62min)
+[2026-01-20 23:05:36] [INFO]    Collection: bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2024_pdf
+[2026-01-20 23:37:46] [SUCCESS] ✅ Succès! Chunks: 8625 (Tables: 4600, Texte: 4025)
+[2026-01-20 23:37:46] [INFO] 
+📊 Progression: 2/3 documents
+[2026-01-20 23:37:46] [INFO]    ✅ Succès: 2
+[2026-01-20 23:37:46] [INFO]    ❌ Échecs: 0
+[2026-01-20 23:37:46] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 23:37:46] [INFO]    ⏱️  Temps écoulé: 1929.8s
+[2026-01-20 23:37:46] [INFO]    🔄 Restants: 1 documents
+
+[2026-01-20 23:37:46] [INFO] ⏸️  Pause de 2 secondes...
+
+[2026-01-20 23:37:48] [INFO] ================================================================================
+[2026-01-20 23:37:48] [INFO] 📄 Document 3/3 (100.0%)
+[2026-01-20 23:37:48] [INFO] ================================================================================
+[2026-01-20 23:37:48] [INFO] 📄 Indexation: carefourCFR_URD_2024_FR_250327_MEL_0_0.pdf
+[2026-01-20 23:37:48] [INFO]    Taille: 10.0 MB
+[2026-01-20 23:37:48] [INFO]    Timeout: 2392s (~39min)
+[2026-01-20 23:37:48] [INFO]    Collection: carefourcfr_urd_2024_fr_250327_mel_0_0
+[2026-01-20 23:48:35] [SUCCESS] ✅ Succès! Chunks: 5275 (Tables: 2244, Texte: 3031)
+[2026-01-20 23:48:35] [INFO] 
+📊 Progression: 3/3 documents
+[2026-01-20 23:48:35] [INFO]    ✅ Succès: 3
+[2026-01-20 23:48:35] [INFO]    ❌ Échecs: 0
+[2026-01-20 23:48:35] [INFO]    📈 Taux de réussite: 100.0%
+[2026-01-20 23:48:35] [INFO]    ⏱️  Temps écoulé: 646.8s
+[2026-01-20 23:48:35] [INFO]    🔄 Restants: 0 documents
+
+[2026-01-20 23:48:35] [INFO] ================================================================================
+[2026-01-20 23:48:35] [INFO] 🎉 INDEXATION TERMINÉE
+[2026-01-20 23:48:35] [INFO] ================================================================================
+[2026-01-20 23:48:35] [INFO] 
+📊 STATISTIQUES FINALES:
+[2026-01-20 23:48:35] [INFO]    Documents traités: 3
+[2026-01-20 23:48:35] [INFO]    ✅ Succès: 3
+[2026-01-20 23:48:35] [INFO]    ❌ Échecs: 0
+[2026-01-20 23:48:35] [INFO]    Taux de réussite: 100.0%
+[2026-01-20 23:48:35] [INFO]    ⏱️  Temps total: 93.7 minutes (1.6h)
+[2026-01-20 23:48:35] [INFO] 
+📁 Logs sauvegardés: indexing_log.txt
+[2026-01-20 23:48:35] [INFO] 📁 Progression sauvegardée: indexing_progress.json

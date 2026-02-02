@@ -1,0 +1,572 @@
+{
+  "processed": [
+    {
+      "file": "2023-sanofi-half-year-report.pdf",
+      "collection": "2023_sanofi_half_year_report",
+      "chunks": 431,
+      "timestamp": "2026-01-19T19:05:31.883609",
+      "processing_time": 93.56744289398193
+    },
+    {
+      "file": "2023-document-enregistrement-universel_tcm342-462018.pdf",
+      "collection": "2023_document_enregistrement_universel_tcm342_462018",
+      "chunks": 5876,
+      "timestamp": "2026-01-19T19:36:02.855475",
+      "processing_time": 628.4100112915039
+    },
+    {
+      "file": "2024-document-enregistrement-universel_tcm342-510443.pdf",
+      "collection": "2024_document_enregistrement_universel_tcm342_510443",
+      "chunks": 7288,
+      "timestamp": "2026-01-19T19:47:38.933147",
+      "processing_time": 694.0648958683014
+    },
+    {
+      "file": "20250220_Renault-Group_Communique-de-presse_Resultats-2024.pdf",
+      "collection": "20250220_renault_group_communique_de_presse_resultats_2024",
+      "chunks": 43,
+      "timestamp": "2026-01-19T19:47:47.336871",
+      "processing_time": 6.39555287361145
+    },
+    {
+      "file": "20250731_Communique-de-presse_Renault-Group_2025-S1.pdf",
+      "collection": "20250731_communique_de_presse_renault_group_2025_s1",
+      "chunks": 36,
+      "timestamp": "2026-01-19T19:47:54.236311",
+      "processing_time": 4.891020059585571
+    },
+    {
+      "file": "20251023_Communique-presse_Renault-Group_2025-Q3-Revenue.pdf",
+      "collection": "20251023_communique_presse_renault_group_2025_q3_revenue",
+      "chunks": 44,
+      "timestamp": "2026-01-19T19:48:04.295643",
+      "processing_time": 8.049926996231079
+    },
+    {
+      "file": "3DS_DEU 2023_18032024.pdf",
+      "collection": "3ds_deu_2023_18032024",
+      "chunks": 3079,
+      "timestamp": "2026-01-19T20:19:32.883351",
+      "processing_time": 409.55148696899414
+    },
+    {
+      "file": "3DS_DEU 2024_18032025.pdf",
+      "collection": "3ds_deu_2024_18032025",
+      "chunks": 4136,
+      "timestamp": "2026-01-19T20:27:22.296025",
+      "processing_time": 467.40363788604736
+    },
+    {
+      "file": "Airbus Annual Report 2024.pdf",
+      "collection": "airbus_annual_report_2024",
+      "chunks": 2504,
+      "timestamp": "2026-01-19T20:34:38.509593",
+      "processing_time": 434.204913854599
+    },
+    {
+      "file": "Airbus-Annual-Report-2023-Overview.pdf",
+      "collection": "airbus_annual_report_2023_overview",
+      "chunks": 98,
+      "timestamp": "2026-01-19T20:59:59.365282",
+      "processing_time": 17.86617112159729
+    },
+    {
+      "file": "2eme-amendement-au-document-d-enregistrement-universel-et-rapport-financier-annuel-2024.pdf",
+      "collection": "2eme_amendement_au_document_d_enregistrement_universel_et_rapport_financier_annuel_2024",
+      "chunks": 2318,
+      "timestamp": "2026-01-19T21:45:08.100100",
+      "processing_time": 653.935075044632
+    },
+    {
+      "file": "Airbus-Annual-Report-2023.pdf",
+      "collection": "airbus_annual_report_2023",
+      "chunks": 2678,
+      "timestamp": "2026-01-19T21:53:55.296574",
+      "processing_time": 365.5098776817322
+    },
+    {
+      "file": "Capgemini_-_2024-03-29_-_Document_d_Enregistrement_Universel_2023.pdf",
+      "collection": "capgemini___2024_03_29___document_d_enregistrement_universel_2023",
+      "chunks": 4343,
+      "timestamp": "2026-01-19T22:11:34.974331",
+      "processing_time": 457.6435389518738
+    },
+    {
+      "file": "250327_hermes_urd2024_fr.pdf",
+      "collection": "250327_hermes_urd2024_fr",
+      "chunks": 5009,
+      "timestamp": "2026-01-20T08:28:19.419860",
+      "processing_time": 812.2513048648834
+    },
+    {
+      "file": "Airbus Financial Statements 2024 (1).pdf",
+      "collection": "airbus_financial_statements_2024_1",
+      "chunks": 752,
+      "timestamp": "2026-01-20T08:31:18.668757",
+      "processing_time": 177.23997592926025
+    },
+    {
+      "file": "Airliquiderapport-annuel-integre-2024.pdf",
+      "collection": "airliquiderapport_annuel_integre_2024",
+      "chunks": 293,
+      "timestamp": "2026-01-20T08:32:06.699392",
+      "processing_time": 46.01517391204834
+    },
+    {
+      "file": "Capgemini_-_2024-05-16_-_Rapport_Annuel_Inte\u0301gre\u0301_2023.pdf",
+      "collection": "capgemini_2024_05_16_rapport_annuel_integre_2023",
+      "chunks": 339,
+      "timestamp": "2026-01-20T08:32:38.379072",
+      "processing_time": 29.672142028808594
+    },
+    {
+      "file": "Capgemini_-_2025-03-21_-_Document_d_Enregistrement_Universel_2024.pdf",
+      "collection": "capgemini_2025_03_21_document_d_enregistrement_universel_2024",
+      "chunks": 5586,
+      "timestamp": "2026-01-20T08:43:28.081804",
+      "processing_time": 647.6973581314087
+    },
+    {
+      "file": "Capgemini_-_2025-05-07_-_Rapport-Annuel-Integre-2024.pdf",
+      "collection": "capgemini_2025_05_07_rapport_annuel_integre_2024",
+      "chunks": 375,
+      "timestamp": "2026-01-20T08:44:06.523001",
+      "processing_time": 36.43221187591553
+    },
+    {
+      "file": "ENGIE_RI_2023_FR-1605_2.pdf",
+      "collection": "engie_ri_2023_fr_1605_2",
+      "chunks": 756,
+      "timestamp": "2026-01-20T08:45:00.698689",
+      "processing_time": 52.167073011398315
+    },
+    {
+      "file": "Engie RI_Version FR_2105.pdf",
+      "collection": "engie_ri_version_fr_2105",
+      "chunks": 1107,
+      "timestamp": "2026-01-20T08:46:08.707623",
+      "processing_time": 66.00108790397644
+    },
+    {
+      "file": "KERING_RA_24_ALL_FR_PP_96dpi_d1d38ca7d3.pdf",
+      "collection": "kering_ra_24_all_fr_pp_96dpi_d1d38ca7d3",
+      "chunks": 239,
+      "timestamp": "2026-01-20T08:46:51.628789",
+      "processing_time": 40.91096210479736
+    },
+    {
+      "file": "Kering_Document_financier_2023_e44ac4f47b.pdf",
+      "collection": "kering_document_financier_2023_e44ac4f47b",
+      "chunks": 656,
+      "timestamp": "2026-01-20T08:49:47.790443",
+      "processing_time": 174.1542809009552
+    },
+    {
+      "file": "LOREAL_Rapport_Annuel_2021.pdf",
+      "collection": "loreal_rapport_annuel_2021",
+      "chunks": 92,
+      "timestamp": "2026-01-20T08:50:06.573655",
+      "processing_time": 16.77561092376709
+    },
+    {
+      "file": "LOREAL_Rapport_Annuel_2022.pdf",
+      "collection": "loreal_rapport_annuel_2022",
+      "chunks": 95,
+      "timestamp": "2026-01-20T08:50:23.565868",
+      "processing_time": 14.98447585105896
+    },
+    {
+      "file": "LOREAL_Rapport_Annuel_2023.pdf",
+      "collection": "loreal_rapport_annuel_2023",
+      "chunks": 95,
+      "timestamp": "2026-01-20T08:50:40.310837",
+      "processing_time": 14.7361900806427
+    },
+    {
+      "file": "LVMH_Rapport Annuel 2024_FR.pdf",
+      "collection": "lvmh_rapport_annuel_2024_fr",
+      "chunks": 433,
+      "timestamp": "2026-01-20T08:52:23.438855",
+      "processing_time": 101.11828017234802
+    },
+    {
+      "file": "LVMH_Rapport financier semestriel 2024.pdf",
+      "collection": "lvmh_rapport_financier_semestriel_2024",
+      "chunks": 411,
+      "timestamp": "2026-01-20T08:54:11.850615",
+      "processing_time": 106.40379500389099
+    },
+    {
+      "file": "LVMH_Rapport_Annuel_2023.pdf",
+      "collection": "lvmh_rapport_annuel_2023",
+      "chunks": 455,
+      "timestamp": "2026-01-20T08:56:06.546838",
+      "processing_time": 112.68779611587524
+    },
+    {
+      "file": "Pernod_AR24_FRENCH.pdf",
+      "collection": "pernod_ar24_french",
+      "chunks": 469,
+      "timestamp": "2026-01-20T08:57:30.637830",
+      "processing_time": 82.0836501121521
+    },
+    {
+      "file": "Pernod_Ricard_IAR25_FRENCH.pdf",
+      "collection": "pernod_ricard_iar25_french",
+      "chunks": 436,
+      "timestamp": "2026-01-20T08:58:33.038218",
+      "processing_time": 60.39013981819153
+    },
+    {
+      "file": "Plaquette d\u00e9cembre 2023 mise en ligne FR.pdf",
+      "collection": "plaquette_dcembre_2023_mise_en_ligne_fr",
+      "chunks": 714,
+      "timestamp": "2026-01-20T09:01:16.001151",
+      "processing_time": 160.95589923858643
+    },
+    {
+      "file": "SGrapport-integre-2022-2023.pdf",
+      "collection": "sgrapport_integre_2022_2023",
+      "chunks": 378,
+      "timestamp": "2026-01-20T09:02:04.442722",
+      "processing_time": 46.43283772468567
+    },
+    {
+      "file": "SGrapport-integre-2023-2024.pdf",
+      "collection": "sgrapport_integre_2023_2024",
+      "chunks": 326,
+      "timestamp": "2026-01-20T09:02:39.933328",
+      "processing_time": 33.48255205154419
+    },
+    {
+      "file": "STM 20-F 2024-2025-02-27-22-14.pdf",
+      "collection": "stm_20_f_2024_2025_02_27_22_14",
+      "chunks": 1239,
+      "timestamp": "2026-01-20T09:06:10.168755",
+      "processing_time": 208.22682428359985
+    },
+    {
+      "file": "STM_SAR_Master+-+Semiannual+2025.pdf",
+      "collection": "stm_sar_master_semiannual2025",
+      "chunks": 317,
+      "timestamp": "2026-01-20T09:07:17.993821",
+      "processing_time": 65.81715202331543
+    },
+    {
+      "file": "Saint-Gobain RI 2024 pap FRE lite.pdf",
+      "collection": "saint_gobain_ri_2024_pap_fre_lite",
+      "chunks": 406,
+      "timestamp": "2026-01-20T09:08:24.417022",
+      "processing_time": 64.41409206390381
+    },
+    {
+      "file": "Saint-Gobain_2024_DEU_VF.pdf",
+      "collection": "saint_gobain_2024_deu_vf",
+      "chunks": 4490,
+      "timestamp": "2026-01-20T09:19:11.645473",
+      "processing_time": 645.220626115799
+    },
+    {
+      "file": "TotalEnergies_DEU_2022_VF.pdf",
+      "collection": "totalenergies_deu_2022_vf",
+      "chunks": 6941,
+      "timestamp": "2026-01-20T09:39:12.836504",
+      "processing_time": 1199.1818990707397
+    },
+    {
+      "file": "aN0RSp5xUNkB1Wma_axa_rapport_financier_semestriel_2023c.pdf",
+      "collection": "an0rsp5xunkb1wma_axa_rapport_financier_semestriel_2023c",
+      "chunks": 1066,
+      "timestamp": "2026-01-20T09:42:40.623078",
+      "processing_time": 205.77492713928223
+    },
+    {
+      "file": "aN0S-p5xUNkB1WqD_axa_ri2024_accessible_vf.pdf",
+      "collection": "an0s_p5xunkb1wqd_axa_ri2024_accessible_vf",
+      "chunks": 229,
+      "timestamp": "2026-01-20T09:43:16.100320",
+      "processing_time": 33.46778106689453
+    },
+    {
+      "file": "aN0Ty55xUNkB1Wr3_axa_rapport_financier_semestriel_2025.pdf",
+      "collection": "an0ty55xunkb1wr3_axa_rapport_financier_semestriel_2025",
+      "chunks": 651,
+      "timestamp": "2026-01-20T09:46:09.844256",
+      "processing_time": 171.72969102859497
+    },
+    {
+      "file": "aNzwH55xUNkB1VH5_axa_urd2023_accessibleb_vf.pdf",
+      "collection": "anzwh55xunkb1vh5_axa_urd2023_accessibleb_vf",
+      "chunks": 4854,
+      "timestamp": "2026-01-20T09:56:55.156932",
+      "processing_time": 643.3033709526062
+    },
+    {
+      "file": "aNzwI55xUNkB1VH7_axa_urd2024_accessible_vf.pdf",
+      "collection": "anzwi55xunkb1vh7_axa_urd2024_accessible_vf",
+      "chunks": 5054,
+      "timestamp": "2026-01-20T10:08:26.674996",
+      "processing_time": 689.5091290473938
+    },
+    {
+      "file": "aireliquiderapport-annuel-2022.pdf",
+      "collection": "aireliquiderapport_annuel_2022",
+      "chunks": 247,
+      "timestamp": "2026-01-20T10:09:05.680514",
+      "processing_time": 36.99584197998047
+    },
+    {
+      "file": "airliquiderapport-annuel-2023-1.pdf",
+      "collection": "airliquiderapport_annuel_2023_1",
+      "chunks": 260,
+      "timestamp": "2026-01-20T10:09:46.583499",
+      "processing_time": 38.893096923828125
+    },
+    {
+      "file": "bnpamendement-1t25-v01-a4.pdf",
+      "collection": "bnpamendement_1t25_v01_a4",
+      "chunks": 557,
+      "timestamp": "2026-01-20T10:12:15.540240",
+      "processing_time": 146.94837498664856
+    },
+    {
+      "file": "bnpamendement-fr-28-10.25.pdf",
+      "collection": "bnpamendement_fr_28_10.25",
+      "chunks": 448,
+      "timestamp": "2026-01-20T10:14:41.972811",
+      "processing_time": 144.42295289039612
+    },
+    {
+      "file": "bouyguesrapport-integre-2023-fr.pdf",
+      "collection": "bouyguesrapport_integre_2023_fr",
+      "chunks": 449,
+      "timestamp": "2026-01-20T18:46:51.538839",
+      "processing_time": 557.6286227703094
+    },
+    {
+      "file": "carefourDocument d'enregistrement universel 2023 (PDF)_10.pdf",
+      "collection": "carefourdocument_denregistrement_universel_2023_pdf_10",
+      "chunks": 4147,
+      "timestamp": "2026-01-20T20:09:39.163822",
+      "processing_time": 560.5217299461365
+    },
+    {
+      "file": "danone2024accessibleversion.pdf",
+      "collection": "danone2024accessibleversion",
+      "chunks": 4765,
+      "timestamp": "2026-01-20T20:18:11.841051",
+      "processing_time": 510.6640200614929
+    },
+    {
+      "file": "danoneiar2024.pdf",
+      "collection": "danoneiar2024",
+      "chunks": 175,
+      "timestamp": "2026-01-20T20:18:43.008129",
+      "processing_time": 29.15584111213684
+    },
+    {
+      "file": "danonerapportfinanciersemestriel2025.pdf",
+      "collection": "danonerapportfinanciersemestriel2025",
+      "chunks": 235,
+      "timestamp": "2026-01-20T20:19:31.059461",
+      "processing_time": 46.043818950653076
+    },
+    {
+      "file": "deudanone2023.pdf",
+      "collection": "deudanone2023",
+      "chunks": 4013,
+      "timestamp": "2026-01-20T20:26:59.730676",
+      "processing_time": 446.6621651649475
+    },
+    {
+      "file": "documents-financiers-lvmh-31-decembre-2023.pdf",
+      "collection": "documents_financiers_lvmh_31_decembre_2023",
+      "chunks": 509,
+      "timestamp": "2026-01-20T20:28:58.750233",
+      "processing_time": 117.01054310798645
+    },
+    {
+      "file": "hermes_20240209_cp_resultatsannuels2023_vf.pdf",
+      "collection": "hermes_20240209_cp_resultatsannuels2023_vf",
+      "chunks": 62,
+      "timestamp": "2026-01-20T20:29:22.270491",
+      "processing_time": 21.511571884155273
+    },
+    {
+      "file": "hermes_20250410_rapportdactivite2024-fr.pdf",
+      "collection": "hermes_20250410_rapportdactivite2024_fr",
+      "chunks": 53,
+      "timestamp": "2026-01-20T20:29:45.223545",
+      "processing_time": 20.94494891166687
+    },
+    {
+      "file": "lvmh-comptes-consolides-2023-vf-vdef-publiee.pdf",
+      "collection": "lvmh_comptes_consolides_2023_vf_vdef_publiee",
+      "chunks": 773,
+      "timestamp": "2026-01-20T20:33:13.061119",
+      "processing_time": 205.82809591293335
+    },
+    {
+      "file": "lvmhDocuments financiers  - 31 de\u0301cembre 2024.pdf",
+      "collection": "lvmhdocuments_financiers_31_decembre_2024",
+      "chunks": 507,
+      "timestamp": "2026-01-20T20:35:12.248404",
+      "processing_time": 117.17918395996094
+    },
+    {
+      "file": "lvmh_rapport-financier-semestriel-2023.pdf",
+      "collection": "lvmh_rapport_financier_semestriel_2023",
+      "chunks": 414,
+      "timestamp": "2026-01-20T20:37:04.514002",
+      "processing_time": 110.25694179534912
+    },
+    {
+      "file": "orange2023.pdf",
+      "collection": "orange2023",
+      "chunks": 267,
+      "timestamp": "2026-01-20T20:37:28.188655",
+      "processing_time": 21.659745931625366
+    },
+    {
+      "file": "orange2024.pdf",
+      "collection": "orange2024",
+      "chunks": 270,
+      "timestamp": "2026-01-20T20:38:06.173231",
+      "processing_time": 35.96883702278137
+    },
+    {
+      "file": "ri_bouygues_2025_web.pdf",
+      "collection": "ri_bouygues_2025_web",
+      "chunks": 467,
+      "timestamp": "2026-01-20T20:38:46.671533",
+      "processing_time": 38.48935079574585
+    },
+    {
+      "file": "safranFY 2023 FR Vdef.pdf",
+      "collection": "safranfy_2023_fr_vdef",
+      "chunks": 78,
+      "timestamp": "2026-01-20T20:39:07.875162",
+      "processing_time": 19.194375038146973
+    },
+    {
+      "file": "safranFY 2024 FR Vdef.pdf",
+      "collection": "safranfy_2024_fr_vdef",
+      "chunks": 80,
+      "timestamp": "2026-01-20T20:39:28.349115",
+      "processing_time": 18.46465802192688
+    },
+    {
+      "file": "safranPlaquette De\u0301cembre 2024 mise en ligne.pdf",
+      "collection": "safranplaquette_decembre_2024_mise_en_ligne",
+      "chunks": 622,
+      "timestamp": "2026-01-20T20:41:44.196461",
+      "processing_time": 133.8428440093994
+    },
+    {
+      "file": "safranS1 2025 FR vDEF.pdf",
+      "collection": "safrans1_2025_fr_vdef",
+      "chunks": 88,
+      "timestamp": "2026-01-20T20:42:06.049170",
+      "processing_time": 19.844279050827026
+    },
+    {
+      "file": "safranT1 2025 FR vdef.pdf",
+      "collection": "safrant1_2025_fr_vdef",
+      "chunks": 42,
+      "timestamp": "2026-01-20T20:42:18.231880",
+      "processing_time": 10.174075841903687
+    },
+    {
+      "file": "safranT3 2025 FR vDEF.pdf",
+      "collection": "safrant3_2025_fr_vdef",
+      "chunks": 53,
+      "timestamp": "2026-01-20T20:42:32.551106",
+      "processing_time": 12.309453964233398
+    },
+    {
+      "file": "sanofi-rapport-financier-semestriel-2025.pdf",
+      "collection": "sanofi_rapport_financier_semestriel_2025",
+      "chunks": 544,
+      "timestamp": "2026-01-20T20:44:04.228801",
+      "processing_time": 89.66837787628174
+    },
+    {
+      "file": "sanofi-rapport-semestriel-2024.pdf",
+      "collection": "sanofi_rapport_semestriel_2024",
+      "chunks": 542,
+      "timestamp": "2026-01-20T20:45:37.722421",
+      "processing_time": 91.4837429523468
+    },
+    {
+      "file": "schneiderelectric2023-document-enregistrement-universel_tcm342-462018.pdf",
+      "collection": "schneiderelectric2023_document_enregistrement_universel_tcm342_462018",
+      "chunks": 5876,
+      "timestamp": "2026-01-20T20:56:01.323170",
+      "processing_time": 621.5890119075775
+    },
+    {
+      "file": "schneiderelectric2024-document-enregistrement-universel_tcm342-510443.pdf",
+      "collection": "schneiderelectric2024_document_enregistrement_universel_tcm342_510443",
+      "chunks": 7288,
+      "timestamp": "2026-01-20T21:08:24.203922",
+      "processing_time": 740.8656451702118
+    },
+    {
+      "file": "totalenergies_document-enregistrement-universel-2023_2023_fr_pdf.pdf",
+      "collection": "totalenergies_document_enregistrement_universel_2023_2023_fr_pdf",
+      "chunks": 7143,
+      "timestamp": "2026-01-20T21:28:29.327356",
+      "processing_time": 1203.1097769737244
+    },
+    {
+      "file": "totalenergies_document-enregistrement-universel-2024_2025_fr.pdf",
+      "collection": "totalenergies_document_enregistrement_universel_2024_2025_fr",
+      "chunks": 7030,
+      "timestamp": "2026-01-20T21:46:40.216999",
+      "processing_time": 1088.8738279342651
+    },
+    {
+      "file": "vinci-document-enregistrement-universel-2023.pdf",
+      "collection": "vinci_document_enregistrement_universel_2023",
+      "chunks": 4510,
+      "timestamp": "2026-01-20T21:56:50.332203",
+      "processing_time": 608.10045170784
+    },
+    {
+      "file": "vinci-document-enregistrement-universel-2024.pdf",
+      "collection": "vinci_document_enregistrement_universel_2024",
+      "chunks": 4844,
+      "timestamp": "2026-01-20T22:08:21.396210",
+      "processing_time": 689.0540773868561
+    },
+    {
+      "file": "vinci-rapport-financier-semestriel-au-30-juin-2025.pdf",
+      "collection": "vinci_rapport_financier_semestriel_au_30_juin_2025",
+      "chunks": 538,
+      "timestamp": "2026-01-20T22:10:29.972148",
+      "processing_time": 126.562579870224
+    },
+    {
+      "file": "bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2023-1.pdf",
+      "collection": "bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2023_1",
+      "chunks": 7206,
+      "timestamp": "2026-01-20T23:05:34.576107",
+      "processing_time": 3037.7558300495148
+    },
+    {
+      "file": "bnpdocument-d-enregistrement-universel-et-rapport-financier-annuel-2024-pdf.pdf",
+      "collection": "bnpdocument_d_enregistrement_universel_et_rapport_financier_annuel_2024_pdf",
+      "chunks": 8625,
+      "timestamp": "2026-01-20T23:37:46.366800",
+      "processing_time": 1929.7808349132538
+    },
+    {
+      "file": "carefourCFR_URD_2024_FR_250327_MEL_0_0.pdf",
+      "collection": "carefourcfr_urd_2024_fr_250327_mel_0_0",
+      "chunks": 5275,
+      "timestamp": "2026-01-20T23:48:35.148747",
+      "processing_time": 646.7718181610107
+    }
+  ],
+  "failed": []
+}

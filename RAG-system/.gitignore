@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Data (commentez si vous voulez versionner vos données)
+# data/context/*.pdf
+# data/vector_db/
+data/uploads/*
+!data/uploads/.gitkeep
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+api/agents/portfolio_plan_*.txt
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Documentation builds (si vous utilisez Sphinx ou autre)
+docs/_build/
+docs/.doctrees/
+
+# Autres
+*.bak
+*.swp
+.cache/

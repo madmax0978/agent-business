@@ -1,0 +1,64 @@
+# Dépendances pour le système RAG
+
+# Docling - Traitement de documents
+docling>=2.0.0
+docling-core>=2.0.0
+
+# Transformers et tokenization
+transformers>=4.30.0
+sentence-transformers>=2.2.0
+torch>=2.0.0
+
+# Interface utilisateur
+rich>=13.0.0
+
+# Base de données vectorielle
+chromadb>=0.4.0
+
+# API HTTP
+requests>=2.31.0
+
+# FastAPI
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# CrewAI
+crewai>=0.28.0
+crewai-tools>=0.2.0
+
+# Utilitaires
+pathlib
+
+# ==========================================
+# NOUVELLES FONCTIONNALITÉS - PHASE 2
+# ==========================================
+
+# APIs Financières (Données réelles)
+yfinance>=0.2.30
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Analyse Technique
+pandas-ta>=0.3.14b
+mplfinance>=0.12.10b0
+plotly>=5.18.0
+
+# IA Avancée pour Analyses
+anthropic>=0.18.0
+openai>=1.10.0
+
+# News & Sentiment Analysis
+newsapi-python>=0.2.7
+# serpapi>=2.4.2  # Optionnel - Décommenter si besoin
+
+# Telegram Notifications
+python-telegram-bot>=20.7
+
+# Database
+# sqlalchemy>=2.0.25  # Optionnel - Si besoin de migrations
+
+# Configuration
+python-dotenv>=1.0.0
