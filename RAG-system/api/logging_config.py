@@ -21,7 +21,7 @@ from typing import Any, Optional
 from logging.handlers import RotatingFileHandler
 from contextvars import ContextVar
 
-from api.config import settings
+from config import settings
 
 
 # Context variables pour stocker les informations de requête

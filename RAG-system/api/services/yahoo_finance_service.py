@@ -18,7 +18,7 @@ from functools import lru_cache
 import time
 from threading import Lock
 
-from api.logging_config import get_logger
+from logging_config import get_logger
 
 
 logger = get_logger(__name__)

@@ -8,6 +8,10 @@ from fastapi import FastAPI, HTTPException, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import shutil
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # NOUVEAUX IMPORTS - Améliorations production-ready
 from config import settings
@@ -61,10 +65,10 @@ setup_middleware(app)
 # CORS (après les middlewares personnalisés)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors.allowed_origins,
+    allow_origins=settings.cors.allow_origins,
     allow_credentials=settings.cors.allow_credentials,
-    allow_methods=settings.cors.allowed_methods,
-    allow_headers=settings.cors.allowed_headers,
+    allow_methods=settings.cors.allow_methods,
+    allow_headers=settings.cors.allow_headers,
 )
 
 # INSTALLER LES ERROR HANDLERS (CRITIQUE)

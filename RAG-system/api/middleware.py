@@ -22,8 +22,8 @@ from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.middleware.cors import CORSMiddleware
 
-from api.config import settings
-from api.logging_config import get_logger, set_request_context, clear_request_context, log_performance
+from config import settings
+from logging_config import get_logger, set_request_context, clear_request_context, log_performance
 
 
 logger = get_logger(__name__)
