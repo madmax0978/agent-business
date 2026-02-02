@@ -37,14 +37,21 @@ PORTEFEUILLE ACTUEL DE L'UTILISATEUR:
 """
 
         for pos in summary['positions']:
+            # Gérer les valeurs None
+            avg_price = pos['avg_price'] or 0
+            current_price = pos['current_price'] or 0
+            current_value = pos['current_value'] or 0
+            gain_loss_percent = pos['gain_loss_percent'] or 0
+            weight = (current_value / summary['total_value'] * 100) if summary['total_value'] > 0 else 0
+
             context += f"""
 🏢 {pos['company_name']} ({pos['ticker']}):
    • Quantité: {pos['quantity']} actions
-   • PRU (Prix de Revient Unitaire): {pos['avg_price']:.2f} €
-   • Prix actuel: {pos['current_price']:.2f} €
-   • Valeur: {pos['current_value']:,.2f} €
-   • Performance: {"🟢" if pos['gain_loss_percent'] >= 0 else "🔴"} {pos['gain_loss_percent']:+.2f}%
-   • Poids: {(pos['current_value'] / summary['total_value'] * 100):.1f}% du portefeuille
+   • PRU (Prix de Revient Unitaire): {avg_price:.2f} €
+   • Prix actuel: {current_price:.2f} €
+   • Valeur: {current_value:,.2f} €
+   • Performance: {"🟢" if gain_loss_percent >= 0 else "🔴"} {gain_loss_percent:+.2f}%
+   • Poids: {weight:.1f}% du portefeuille
 """
 
         # Ajouter les statistiques

@@ -107,16 +107,18 @@ class PortfolioDatabase:
                 new_qty = old_qty + quantity
                 # Calcul PRU pur
                 new_avg_price = ((old_price * old_qty) + (price * quantity)) / new_qty
+                # Calculer la nouvelle valeur (on garde current_price si disponible, sinon on met le nouveau prix)
+                new_current_value = price * new_qty  # Valeur basée sur le prix actuel
 
                 cursor.execute("""
                     UPDATE portfolio
                     SET quantity = ?,
                         avg_price = ?,
                         current_price = ?,
-                        current_value = ? * ?, -- Prix d'achat * Nouvelle Quantité
+                        current_value = ?,
                         last_updated = CURRENT_TIMESTAMP
                     WHERE user_id = ? AND ticker = ?
-                """, (new_qty, new_avg_price, price, price, new_qty, user_id, ticker))
+                """, (new_qty, new_avg_price, price, new_current_value, user_id, ticker))
             else:
                 # Nouvelle position
                 cursor.execute("""
@@ -153,7 +155,7 @@ class PortfolioDatabase:
 
             # Récupérer la position actuelle
             cursor.execute("""
-                SELECT id, quantity, company_name FROM portfolio WHERE user_id = ? AND ticker = ?
+                SELECT id, quantity, company_name, avg_price, current_price FROM portfolio WHERE user_id = ? AND ticker = ?
             """, (user_id, ticker))
 
             position = cursor.fetchone()
@@ -162,7 +164,7 @@ class PortfolioDatabase:
                 print(f"Position {ticker} non trouvée pour user {user_id}")
                 return False
 
-            pos_id, current_qty, company_name = position
+            pos_id, current_qty, company_name, avg_price, current_price = position
 
             if quantity > current_qty:
                 print(f"Quantité à vendre ({quantity}) supérieure à la quantité détenue ({current_qty})")
@@ -172,14 +174,18 @@ class PortfolioDatabase:
             new_qty = current_qty - quantity
 
             if new_qty > 0:
-                # Vente partielle
+                # Vente partielle - calculer nouvelle valeur
+                # Utiliser current_price si disponible, sinon avg_price
+                price_for_value = current_price if current_price else avg_price
+                new_current_value = price_for_value * new_qty
+
                 cursor.execute("""
                     UPDATE portfolio
                     SET quantity = ?,
-                        current_value = avg_price * ?,
+                        current_value = ?,
                         last_updated = CURRENT_TIMESTAMP
                     WHERE id = ?
-                """, (new_qty, new_qty, pos_id))
+                """, (new_qty, new_current_value, pos_id))
             else:
                 # Vente totale - supprimer la position
                 cursor.execute("DELETE FROM portfolio WHERE id = ?", (pos_id,))
