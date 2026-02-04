@@ -3,6 +3,7 @@ API FastAPI pour le système RAG multi-documents
 """
 
 import time
+import re
 from typing import List
 from fastapi import FastAPI, HTTPException, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -34,7 +35,9 @@ from models import (
     PositionAddRequest,
     PositionSellRequest,
 )
-from rag_manager import RAGManager
+# Import RAG Manager v2 optimisé (v2 uniquement, pas de fallback v1)
+from rag_manager_v2 import OptimizedRAGManager as RAGManager
+_rag_version = "v2 (optimisé)"
 from agents.financial_crew import generate_financial_report
 from agents.portfolio_builder_crew import build_optimal_pea_portfolio
 from datetime import datetime
@@ -76,12 +79,53 @@ install_error_handlers(app)
 
 # Initialiser le gestionnaire RAG
 rag_manager = RAGManager()
-logger.info("RAG Manager initialized successfully")
+logger.info(f"RAG Manager {_rag_version} initialized successfully")
 
 # Dossier pour les uploads (utiliser settings)
 UPLOAD_DIR = settings.upload_dir
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 logger.info(f"Upload directory configured: {UPLOAD_DIR}")
+
+
+def sanitize_collection_name(name: str) -> str:
+    """
+    Nettoie le nom de collection pour respecter le format ChromaDB requis:
+    - 3-512 caractères
+    - Uniquement [a-zA-Z0-9._-]
+    - Commence et finit par [a-zA-Z0-9]
+
+    Args:
+        name: Nom brut à nettoyer
+
+    Returns:
+        Nom nettoyé et valide pour ChromaDB
+    """
+    # Remplacer espaces par underscore
+    name = name.replace(" ", "_")
+
+    # Supprimer les accents (é → e, à → a, etc.)
+    import unicodedata
+    name = unicodedata.normalize('NFKD', name)
+    name = name.encode('ASCII', 'ignore').decode('ASCII')
+
+    # Garder seulement les caractères autorisés [a-zA-Z0-9._-]
+    name = re.sub(r'[^a-zA-Z0-9._-]', '', name)
+
+    # Supprimer les underscores/points/tirets multiples consécutifs
+    name = re.sub(r'[._-]+', '_', name)
+
+    # S'assurer que le nom commence et finit par [a-zA-Z0-9]
+    name = name.strip('._-')
+
+    # S'assurer que le nom fait au moins 3 caractères
+    if len(name) < 3:
+        name = f"doc_{name}_001"
+
+    # Limiter à 512 caractères
+    if len(name) > 512:
+        name = name[:512].rstrip('._-')
+
+    return name
 
 
 @app.get("/", tags=["Health"])
@@ -104,6 +148,22 @@ async def health_check():
         collections=rag_manager.list_collections(),
         version=__version__,
     )
+
+
+@app.get("/rag-info", tags=["Health"])
+async def rag_info():
+    """Informations sur le système RAG utilisé"""
+    # Récupérer le modèle d'embedding utilisé
+    embed_model = getattr(rag_manager, 'embed_model_id', 'unknown')
+    cache_enabled = getattr(rag_manager, 'enable_cache', False)
+
+    return {
+        "rag_version": _rag_version,
+        "embedding_model": embed_model,
+        "cache_enabled": cache_enabled,
+        "is_v2": "v2" in _rag_version.lower(),
+        "info": "v2 utilise paraphrase-multilingual-mpnet-base-v2 (optimisé français)"
+    }
 
 
 @app.get("/collections", response_model=List[CollectionInfo], tags=["Collections"])
@@ -143,7 +203,7 @@ async def upload_document(file: UploadFile = File(...), collection_name: str = N
 
     # Générer un nom de collection si non fourni
     if not collection_name:
-        collection_name = Path(file.filename).stem.lower().replace(" ", "_")
+        collection_name = sanitize_collection_name(Path(file.filename).stem)
 
     # Sauvegarder le fichier
     file_path = UPLOAD_DIR / file.filename
@@ -173,7 +233,7 @@ async def index_existing_document(doc: DocumentUpload):
     Indexe un document existant depuis un chemin
     """
     # Générer un nom de collection si non fourni
-    collection_name = doc.collection_name or Path(doc.file_path).stem.lower().replace(" ", "_")
+    collection_name = doc.collection_name or sanitize_collection_name(Path(doc.file_path).stem)
 
     try:
         # Indexer le document
@@ -458,6 +518,266 @@ async def get_position_details(ticker: str, user_id: str = "default_user"):
     manager = PortfolioManager()
     details = manager.get_position_details(ticker, user_id)
     return details
+
+
+# ==========================================
+# NOUVEAUX ENDPOINTS - TRÉSORERIE PEA
+# ==========================================
+
+@app.post("/portfolio/deposit", tags=["Portfolio - Treasury"])
+async def deposit_cash_to_pea(amount: float, user_id: str = "default_user", notes: Optional[str] = None):
+    """
+    Dépose de l'argent sur le PEA
+
+    Args:
+        amount: Montant à déposer (euros)
+        user_id: Identifiant utilisateur
+        notes: Notes optionnelles sur le dépôt
+    """
+    if amount <= 0:
+        raise HTTPException(status_code=400, detail="Le montant doit être positif")
+
+    db = PortfolioDatabase()
+    success = db.deposit_cash(amount, user_id=user_id, notes=notes)
+
+    if success:
+        treasury = db.get_treasury_status(user_id)
+        return {
+            "message": f"Dépôt de {amount:.2f}€ effectué avec succès",
+            "new_cash_available": treasury['cash_available'],
+            "total_deposits": treasury['total_deposits']
+        }
+    else:
+        raise HTTPException(status_code=500, detail="Erreur lors du dépôt")
+
+
+@app.get("/portfolio/treasury", tags=["Portfolio - Treasury"])
+async def get_treasury_status(user_id: str = "default_user"):
+    """
+    Récupère l'état complet de la trésorerie PEA
+
+    Returns:
+        État détaillé de la trésorerie (dépôts, cash disponible, cash investi)
+    """
+    db = PortfolioDatabase()
+    treasury = db.get_treasury_status(user_id)
+    return treasury
+
+
+@app.get("/portfolio/treasury/deposits", tags=["Portfolio - Treasury"])
+async def get_deposit_history(user_id: str = "default_user", limit: int = 50):
+    """Récupère l'historique des dépôts effectués sur le PEA"""
+    db = PortfolioDatabase()
+    deposits = db.get_deposit_history(user_id, limit=limit)
+    return {
+        "user_id": user_id,
+        "total_deposits": len(deposits),
+        "deposits": deposits
+    }
+
+
+@app.get("/portfolio/treasury/cashflow", tags=["Portfolio - Treasury"])
+async def get_cash_flow(user_id: str = "default_user", event_type: Optional[str] = None, limit: int = 100):
+    """
+    Récupère l'historique des flux de trésorerie
+
+    Args:
+        event_type: Filter par type ('DEPOSIT', 'BUY', 'SELL') ou None pour tous
+        limit: Nombre maximum d'événements à retourner
+    """
+    db = PortfolioDatabase()
+    events = db.get_cash_flow_events(user_id, event_type=event_type, limit=limit)
+    return {
+        "user_id": user_id,
+        "event_type_filter": event_type or "ALL",
+        "total_events": len(events),
+        "events": events
+    }
+
+
+# ==========================================
+# NOUVEAUX ENDPOINTS - OPPORTUNITÉS D'INVESTISSEMENT
+# ==========================================
+
+@app.post("/portfolio/opportunities/analyze", tags=["Portfolio - Opportunities"])
+async def analyze_investment_opportunities(user_id: str = "default_user"):
+    """
+    Analyse le cash disponible et suggère des opportunités d'investissement
+
+    Args:
+        user_id: Identifiant utilisateur
+
+    Returns:
+        Analyse complète avec opportunités détectées
+    """
+    try:
+        manager = PortfolioManager()
+        result = manager.analyze_cash_opportunities(user_id)
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/portfolio/opportunities/pending", tags=["Portfolio - Opportunities"])
+async def get_pending_opportunities(user_id: str = "default_user", include_expired: bool = False):
+    """
+    Récupère toutes les opportunités en attente de décision
+
+    Args:
+        user_id: Identifiant utilisateur
+        include_expired: Inclure les opportunités expirées
+    """
+    try:
+        manager = PortfolioManager()
+        opportunities = manager.get_pending_opportunities(user_id, include_expired)
+        return {
+            "success": True,
+            "count": len(opportunities),
+            "opportunities": opportunities
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/portfolio/opportunities/create", tags=["Portfolio - Opportunities"])
+async def create_opportunity(
+    ticker: str,
+    company_name: str,
+    recommendation_type: str,
+    suggested_amount: float,
+    reasoning: str,
+    user_id: str = "default_user",
+    suggested_quantity: Optional[int] = None,
+    target_price: Optional[float] = None,
+    confidence_score: float = 0.7,
+    risk_level: str = "MEDIUM",
+    expires_in_days: int = 7
+):
+    """
+    Crée une nouvelle opportunité d'investissement
+
+    Args:
+        ticker: Symbole boursier
+        company_name: Nom de l'entreprise
+        recommendation_type: Type ('NEW_POSITION', 'ADD_TO_EXISTING', 'DIVERSIFY')
+        suggested_amount: Montant suggéré
+        reasoning: Justification de l'opportunité
+    """
+    try:
+        manager = PortfolioManager()
+        success = manager.save_opportunity_to_db(
+            ticker=ticker,
+            company_name=company_name,
+            recommendation_type=recommendation_type,
+            suggested_amount=suggested_amount,
+            reasoning=reasoning,
+            user_id=user_id,
+            suggested_quantity=suggested_quantity,
+            target_price=target_price,
+            confidence_score=confidence_score,
+            risk_level=risk_level,
+            expires_in_days=expires_in_days
+        )
+
+        if success:
+            return {"success": True, "message": "Opportunité créée avec succès"}
+        else:
+            raise HTTPException(status_code=500, detail="Échec de la création")
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/portfolio/opportunities/{opportunity_id}/accept", tags=["Portfolio - Opportunities"])
+async def accept_opportunity(
+    opportunity_id: int,
+    user_id: str = "default_user",
+    actual_quantity: Optional[int] = None,
+    actual_price: Optional[float] = None
+):
+    """
+    Accepte une opportunité et exécute la transaction
+
+    Args:
+        opportunity_id: ID de l'opportunité
+        actual_quantity: Quantité réelle (optionnel, utilise suggested_quantity sinon)
+        actual_price: Prix réel (optionnel, utilise prix du marché sinon)
+    """
+    try:
+        manager = PortfolioManager()
+        result = manager.accept_opportunity(
+            opportunity_id=opportunity_id,
+            user_id=user_id,
+            actual_quantity=actual_quantity,
+            actual_price=actual_price
+        )
+
+        if result['success']:
+            return result
+        else:
+            raise HTTPException(status_code=400, detail=result.get('error'))
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/portfolio/opportunities/{opportunity_id}/reject", tags=["Portfolio - Opportunities"])
+async def reject_opportunity(
+    opportunity_id: int,
+    user_id: str = "default_user",
+    reason: Optional[str] = None
+):
+    """
+    Rejette une opportunité d'investissement
+
+    Args:
+        opportunity_id: ID de l'opportunité
+        reason: Raison du rejet (optionnel)
+    """
+    try:
+        manager = PortfolioManager()
+        success = manager.reject_opportunity(
+            opportunity_id=opportunity_id,
+            user_id=user_id,
+            reason=reason
+        )
+
+        if success:
+            return {"success": True, "message": "Opportunité rejetée"}
+        else:
+            raise HTTPException(status_code=404, detail="Opportunité non trouvée")
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/portfolio/opportunities/{opportunity_id}", tags=["Portfolio - Opportunities"])
+async def get_opportunity_details(opportunity_id: int, user_id: str = "default_user"):
+    """
+    Récupère les détails d'une opportunité spécifique
+
+    Args:
+        opportunity_id: ID de l'opportunité
+    """
+    try:
+        manager = PortfolioManager()
+        opportunities = manager.get_pending_opportunities(user_id, include_expired=True)
+
+        opportunity = next((o for o in opportunities if o['id'] == opportunity_id), None)
+
+        if opportunity:
+            return {"success": True, "opportunity": opportunity}
+        else:
+            raise HTTPException(status_code=404, detail="Opportunité non trouvée")
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # ==========================================
