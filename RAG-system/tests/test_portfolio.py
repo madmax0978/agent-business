@@ -5,6 +5,7 @@ Tests de la gestion de portefeuille: positions, PRU, plus-values, santé
 import pytest
 import requests
 import time
+import uuid
 
 
 @pytest.mark.portfolio
@@ -14,10 +15,11 @@ class TestPortfolioManagement:
     @pytest.fixture(autouse=True)
     def setup_teardown(self, api_base_url):
         """Setup et nettoyage pour chaque test"""
-        self.test_user_id = f"test_user_{int(time.time())}"
+        # Utiliser UUID pour garantir l'unicité entre les tests
+        self.test_user_id = f"test_user_{uuid.uuid4().hex[:12]}"
         yield
         # Cleanup après chaque test si nécessaire
-        # (La DB se réinitialise à chaque démarrage)
+        # Note: Pour nettoyer complètement, supprimer data/portfolio.db avant les tests
 
     def test_add_position(self, api_base_url, check_api_running):
         """

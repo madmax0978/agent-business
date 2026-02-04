@@ -18,6 +18,16 @@ def check_api():
     except:
         return False
 
+def get_collections():
+    """Récupère la liste des collections existantes"""
+    try:
+        response = requests.get(f"{API_BASE_URL}/collections", timeout=10)
+        if response.status_code == 200:
+            return response.json()
+        return []
+    except:
+        return []
+
 def index_pdf(pdf_path: Path, collection_name: str):
     print(f"\n📄 Indexation: {pdf_path.name} → {collection_name}")
     try:
@@ -32,7 +42,7 @@ def index_pdf(pdf_path: Path, collection_name: str):
                 f"{API_BASE_URL}/upload",
                 files=files,
                 data=data,
-                timeout=300
+                timeout=1800  # 30 minutes max (pour gros PDFs 600+ pages)
             )
 
             if response.status_code == 200:
@@ -63,24 +73,39 @@ def main():
     pdf_dir = Path(__file__).parent.parent / "data" / "context"
 
     pdfs_to_index = [
-        ("hermes_20240209_cp_resultatsannuels2023_vf.pdf", "Hermes_2023"),
-        ("lvmhDocuments financiers  - 31 décembre 2024.pdf", "LVMH_2024"),
-        ("safranFY 2024 FR Vdef.pdf", "Safran_2024"),
+        ("hermes_20240209_cp_resultatsannuels2023_vf.pdf", "Hermes_Resultats_2023"),
+        ("lvmhDocuments financiers  - 31 décembre 2024.pdf", "LVMH_Financiers_2024"),
+        ("safranFY 2024 FR Vdef.pdf", "Safran_FY_2024"),
     ]
 
     print(f"\n🚀 Indexation de {len(pdfs_to_index)} fichiers...")
 
+    # Récupérer les collections existantes
+    existing_collections = [c['name'] for c in get_collections()]
+    if existing_collections:
+        print(f"\n📚 Collections existantes: {', '.join(existing_collections)}")
+
     success = 0
+    skipped = 0
     for filename, collection in pdfs_to_index:
         pdf_path = pdf_dir / filename
         if pdf_path.exists():
+            # Vérifier si déjà indexé
+            if collection in existing_collections:
+                print(f"\n⏭️  {filename} → {collection}")
+                print(f"   Collection existe déjà, passage au suivant")
+                skipped += 1
+                continue
+
             if index_pdf(pdf_path, collection):
                 success += 1
         else:
             print(f"\n⚠️  Fichier non trouvé: {filename}")
 
     print(f"\n{'='*60}")
-    print(f"✅ {success}/{len(pdfs_to_index)} fichiers indexés")
+    print(f"✅ Réussis: {success}/{len(pdfs_to_index)}")
+    if skipped > 0:
+        print(f"⏭️  Ignorés: {skipped}/{len(pdfs_to_index)} (déjà indexés)")
     print("\n💡 Lancez maintenant: ./run_tests.sh")
     print("="*60)
 

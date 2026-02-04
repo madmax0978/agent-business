@@ -4,7 +4,7 @@ API FastAPI pour le système RAG multi-documents
 
 import time
 import re
-from typing import List
+from typing import List, Optional
 from fastapi import FastAPI, HTTPException, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import shutil

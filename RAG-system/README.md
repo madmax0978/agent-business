@@ -1,465 +1,352 @@
-# RAG-PEA: Intelligent Portfolio Management System
+# RAG-PEA System - Portfolio Intelligent avec IA
 
-**Version 1.1.0** - Production-Ready
+**Version 2.0.0** - Production Ready
 
-**AI-Powered Investment Assistant for French PEA (Plan d'Épargne en Actions)**
-
-> Build, manage, and optimize your long-term investment portfolio with multi-agent AI analysis, real-time market data, and automated insights.
-
----
-
-## Quick Overview
-
-RAG-PEA is a complete financial analysis and portfolio management system that combines:
-- **Multi-Agent AI** (CrewAI) for deep market analysis
-- **Vector Database** (ChromaDB) for financial document search
-- **Real-time Market Data** (Yahoo Finance - Free)
-- **Technical Analysis** (RSI, MACD, Bollinger Bands, Support/Resistance)
-- **Sentiment Analysis** (Claude AI/GPT-4)
-- **Telegram Alerts** for trading opportunities
-- **Backtesting Engine** to validate strategies
-- **REST API** for easy integration
+Système complet d'analyse financière et de gestion de portefeuille combinant:
+- **RAG v2 optimisé** (recherche dans documents financiers)
+- **Multi-Agent AI** (CrewAI) pour analyses approfondies
+- **Données temps réel** (Yahoo Finance gratuit)
+- **Analyse technique** complète (RSI, MACD, Bollinger, Support/Résistance)
+- **API REST** FastAPI avec 23 endpoints
 
 ---
 
-## Key Features
-
-- **Portfolio Builder** - AI constructs optimal PEA portfolios from scratch
-- **Smart Document Processing** - Extract key financial data from PDF reports (90%+ compression)
-- **Real-time Tracking** - Monitor positions, calculate gains/losses, portfolio health score
-- **Technical Signals** - Detect Golden Cross, Death Cross, oversold/overbought zones
-- **News Aggregation** - Multi-source news with AI sentiment analysis
-- **Automated Alerts** - Telegram notifications for opportunities
-- **Backtesting** - Test strategies on historical data before investing
-- **Multi-Collection RAG** - Search across dozens of indexed financial reports
-
----
-
-## Quick Start (5 minutes)
-
-### Prerequisites
-
-- Python 3.9+
-- OpenAI API key (for embeddings)
-- Optional: Claude API key, NewsAPI key, Telegram bot
+## 🚀 Démarrage Rapide (5 minutes)
 
 ### Installation
 
 ```bash
-# Clone repository
-cd RAG-system
-
-# Install dependencies
+# 1. Installer les dépendances
 pip install -r requirements.txt
 
-# Configure environment
-cp .env.example .env
-# Edit .env and add your OPENAI_API_KEY
+# 2. Lancer l'API
+cd api
+python -m uvicorn main:app --reload
+
+# ou
+./start_api.sh
 ```
 
-### Launch API
+L'API est accessible sur [http://localhost:8000/docs](http://localhost:8000/docs)
+
+### Premier Test
 
 ```bash
-# From project root
-python3 api/main.py
-
-# Or with uvicorn
-uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-Open [http://localhost:8000/docs](http://localhost:8000/docs) - API is ready!
-
-**New in v1.1.0:** Production-ready features with logging, rate limiting, circuit breaker, and more! See [INTEGRATION_TERMINEE.md](INTEGRATION_TERMINEE.md) for details.
-
-### First Steps
-
-```bash
-# 1. Check health
+# Vérifier que tout fonctionne
 curl http://localhost:8000/health
 
-# 2. Get market data (no API key needed)
+# Obtenir des données de marché (gratuit, pas de clé API)
 curl http://localhost:8000/market/stock/MC.PA
 
-# 3. Add a position
+# Ajouter une position
 curl -X POST http://localhost:8000/portfolio/add \
   -H "Content-Type: application/json" \
-  -d '{"ticker": "MC.PA", "company_name": "LVMH", "quantity": 10, "price": 750.00}'
+  -d '{"ticker": "MC.PA", "company_name": "LVMH", "quantity": 10, "price": 750.00, "user_id": "test_user"}'
 
-# 4. View portfolio
-curl http://localhost:8000/portfolio
+# Voir le portfolio
+curl http://localhost:8000/portfolio?user_id=test_user
 ```
 
-Done! You now have a working investment tracking system.
+✅ C'est tout ! Vous avez un système de suivi d'investissements fonctionnel.
 
 ---
 
-## Architecture
+## 📚 Fonctionnalités Principales
 
-```
-RAG-system/
-├── api/
-│   ├── main.py                 # FastAPI endpoints (23 routes)
-│   ├── rag_manager.py          # ChromaDB + embeddings manager
-│   ├── models.py               # Pydantic models
-│   ├── agents/                 # CrewAI multi-agent systems
-│   │   ├── portfolio_builder_crew.py    # 6 agents for portfolio construction
-│   │   ├── financial_crew.py            # 4 agents for analysis
-│   │   ├── tools.py                     # RAG, web search tools
-│   │   └── advanced_tools.py            # Data collection, optimization
-│   ├── services/               # Business logic services
-│   │   ├── yahoo_finance_service.py     # Free market data
-│   │   ├── technical_analysis.py        # Technical indicators
-│   │   ├── sentiment_analyzer.py        # AI sentiment analysis
-│   │   ├── news_aggregator.py           # Multi-source news
-│   │   ├── portfolio_manager.py         # Portfolio intelligence
-│   │   ├── telegram_bot.py              # Telegram notifications
-│   │   ├── backtesting_engine.py        # Strategy backtesting
-│   │   └── smart_document_processor.py  # AI document extraction
-│   └── database/
-│       ├── portfolio_db.py              # SQLite manager
-│       └── portfolio_manager.py         # Business logic
-├── data/
-│   ├── vector_db/              # ChromaDB storage
-│   ├── documents/              # PDF reports to index
-│   └── uploads/                # Uploaded documents
-├── docs/
-│   └── api-features/           # 20 API endpoint guides
-└── scripts/
-    └── document_indexer.py     # Batch PDF indexing
-```
+### 1. RAG v2 - Recherche dans Documents Financiers
 
-**See detailed architecture in [ARCHITECTURE.md](ARCHITECTURE.md)**
-
----
-
-## Use Cases
-
-### 1. Build an Optimal Portfolio
+**Recherche sémantique optimisée dans vos rapports PDF financiers**
 
 ```bash
-# AI analyzes market and recommends 10-15 stocks
-curl -X POST http://localhost:8000/build-portfolio \
-  -H "Content-Type: application/json" \
-  -d '{
-    "budget": 10000,
-    "risk_profile": "balanced",
-    "sectors": ["technology", "healthcare"],
-    "min_companies": 10,
-    "max_companies": 15
-  }'
+# Indexer un PDF (automatique avec v2)
+python3 scripts/quick_index.py          # 3 PDFs de test
+python3 scripts/index_all_pdfs.py       # Tous les PDFs
 
-# Returns precise allocation and buy orders
-```
-
-### 2. Daily Portfolio Monitoring
-
-```python
-import requests
-
-# Morning routine
-portfolio = requests.get("http://localhost:8000/portfolio").json()
-health = requests.get("http://localhost:8000/portfolio/health").json()
-
-print(f"Portfolio value: {portfolio['total_value']}€")
-print(f"Health score: {health['health_score']}/100")
-
-if health['health_score'] < 60:
-    rebalance = requests.get("http://localhost:8000/portfolio/rebalance").json()
-    print(f"Rebalancing needed: {rebalance['recommendations']}")
-```
-
-### 3. Analyze a Stock Before Buying
-
-```bash
-# Complete analysis: market data + news + sentiment + technical
-curl "http://localhost:8000/analysis/complete/AIR.PA?company_name=Airbus"
-```
-
-Returns:
-- Current price, P/E ratio, dividend yield
-- Technical signals (RSI, MACD, support/resistance)
-- Recent news sentiment analysis
-- Buy/Hold/Sell recommendation with confidence score
-
-### 4. Backtest a Strategy
-
-```python
-from api.services.backtesting_engine import BacktestingEngine
-from api.services.yahoo_finance_service import YahooFinanceService
-
-# Get historical data
-yf = YahooFinanceService()
-df = yf.get_historical_data("MC.PA", period="5y")
-
-# Backtest SMA crossover
-engine = BacktestingEngine(initial_capital=10000)
-results = engine.run_simple_ma_strategy(ticker="MC.PA", historical_data=df)
-
-print(f"Total return: {results['total_return']:.2f}%")
-print(f"Sharpe ratio: {results['sharpe_ratio']:.2f}")
-print(f"Max drawdown: {results['max_drawdown']:.2f}%")
-```
-
-### 5. Search Financial Documents
-
-```bash
-# Index a PDF report
-curl -X POST http://localhost:8000/index \
-  -H "Content-Type: application/json" \
-  -d '{"file_path": "data/documents/lvmh_rapport_2024.pdf", "collection_name": "lvmh_2024"}'
-
-# Query the document
+# Rechercher dans les documents
 curl -X POST http://localhost:8000/query \
   -H "Content-Type: application/json" \
   -d '{
     "question": "Quel est le chiffre d affaires 2024?",
-    "collection_name": "lvmh_2024",
+    "collection_name": "LVMH_Financiers_2024",
     "n_results": 5,
     "generate_answer": true
   }'
 ```
 
----
+**Avantages v2:**
+- ✅ Modèle multilingual optimisé (paraphrase-multilingual-mpnet-base-v2)
+- ✅ Scores 0.4-0.6 pour le français (+1500% vs v1)
+- ✅ Cache embeddings (20x plus rapide)
+- ✅ Cosine similarity
 
-## API Endpoints
-
-### Portfolio Management
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/portfolio/add` | Add/update position |
-| POST | `/portfolio/sell` | Sell position |
-| GET | `/portfolio` | Get complete portfolio |
-| GET | `/portfolio/health` | Health score (0-100) |
-| GET | `/portfolio/rebalance` | Rebalancing recommendations |
-| GET | `/portfolio/position/{ticker}` | Position details |
-
-### Market Data (Free - Yahoo Finance)
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/market/stock/{ticker}` | Stock info (price, P/E, dividends) |
-| GET | `/market/history/{ticker}` | Historical data |
-
-### Analysis
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/analysis/technical/{ticker}` | Technical analysis (RSI, MACD, etc.) |
-| GET | `/analysis/news/{company}` | Recent news |
-| GET | `/analysis/sentiment/{company}` | AI sentiment analysis |
-| GET | `/analysis/complete/{ticker}` | All-in-one analysis |
-
-### Documents & RAG
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/upload` | Upload and index PDF |
-| POST | `/index` | Index existing document |
-| POST | `/query` | Query RAG system |
-| GET | `/collections` | List all collections |
-
-### AI Agents
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/build-portfolio` | Build optimal portfolio (6 agents) |
-| POST | `/analyze/financial-report` | Deep analysis (4 agents) |
-
-**Full API documentation: [http://localhost:8000/docs](http://localhost:8000/docs)**
-
----
-
-## Configuration
-
-Minimal setup (required):
-```bash
-# .env
-OPENAI_API_KEY=sk-...
-```
-
-Full setup (all features):
-```bash
-# AI Analysis
-OPENAI_API_KEY=sk-...
-ANTHROPIC_API_KEY=sk-ant-...
-
-# News (100 free requests/day)
-NEWSAPI_KEY=your_key
-
-# Telegram Alerts
-TELEGRAM_BOT_TOKEN=123456789:ABC...
-TELEGRAM_CHAT_ID=123456789
-```
-
-**Full configuration options available in `.env.example`**
-
----
-
-## Testing
+### 2. Portfolio Management
 
 ```bash
-# Run all tests
-pytest
+# Ajouter des positions
+POST /portfolio/add
 
-# Test a specific endpoint
-curl http://localhost:8000/health
-curl http://localhost:8000/market/stock/MC.PA
-curl http://localhost:8000/portfolio
+# Vendre une position
+POST /portfolio/sell
 
-# Test portfolio builder (takes 5-10 min)
-cd api/agents
-python portfolio_builder_crew.py
+# Voir le portfolio complet
+GET /portfolio?user_id=your_id
+
+# Score de santé (0-100)
+GET /portfolio/health?user_id=your_id
+
+# Recommandations de rééquilibrage
+GET /portfolio/rebalance?user_id=your_id
+
+# Détails d'une position
+GET /portfolio/position/{ticker}?user_id=your_id
 ```
 
-**Full testing guide: [TESTING.md](TESTING.md)**
+### 3. Analyse de Marché
+
+```bash
+# Données en temps réel (gratuit - Yahoo Finance)
+GET /market/stock/{ticker}           # Info stock (prix, P/E, dividende)
+GET /market/history/{ticker}          # Historique
+
+# Analyse technique
+GET /analysis/technical/{ticker}      # RSI, MACD, Bollinger, S/R
+GET /analysis/news/{company}          # Actualités récentes
+GET /analysis/sentiment/{company}     # Analyse sentiment IA
+GET /analysis/complete/{ticker}       # Analyse complète
+```
+
+### 4. Agents IA Multi-Agents
+
+```bash
+# Construire un portfolio optimal (6 agents CrewAI)
+POST /build-portfolio
+{
+  "budget": 10000,
+  "risk_profile": "balanced",
+  "sectors": ["technology", "healthcare"],
+  "min_companies": 10,
+  "max_companies": 15
+}
+
+# Analyse financière approfondie (4 agents)
+POST /analyze/financial-report
+```
 
 ---
 
-## Documentation
+## 🏗️ Architecture Simple
 
-### Essential Documentation
-
-| Document | Description |
-|----------|-------------|
-| [INTEGRATION_TERMINEE.md](INTEGRATION_TERMINEE.md) | v1.1.0 - Production features & setup |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | System architecture and design (100KB) |
-| [API_REFERENCE.md](API_REFERENCE.md) | Complete API endpoint reference |
-| [TESTING.md](TESTING.md) | Testing guide (40KB) |
-| [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | Common issues and solutions |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute to the project |
-| [TELEGRAM_BOT_GUIDE.md](TELEGRAM_BOT_GUIDE.md) | Interactive Telegram bot setup |
-| [docs/api-features/](docs/api-features/) | 20 endpoint-specific guides |
-
-### Archived Documentation
-
-Older reports and guides are available in [docs/archives/](docs/archives/)
-
----
-
-## Key Technologies
-
-- **FastAPI** - Modern Python web framework
-- **CrewAI** - Multi-agent orchestration
-- **ChromaDB** - Vector database for RAG
-- **OpenAI** - Embeddings and analysis
-- **Claude AI** - Sentiment analysis
-- **yfinance** - Free Yahoo Finance data
-- **pandas-ta** - Technical analysis indicators
-- **SQLite** - Portfolio storage
-- **Telegram Bot** - Push notifications
-- **Docling** - Advanced PDF processing
+```
+RAG-system/
+├── api/
+│   ├── main.py                    # API FastAPI (23 endpoints)
+│   ├── rag_manager_v2.py          # RAG optimisé (v2 uniquement)
+│   ├── models.py                  # Modèles Pydantic
+│   ├── agents/                    # Agents CrewAI
+│   │   ├── portfolio_builder_crew.py   # 6 agents construction portfolio
+│   │   └── financial_crew.py           # 4 agents analyse
+│   ├── services/                  # Services métier
+│   │   ├── yahoo_finance_service.py    # Données gratuites
+│   │   ├── technical_analysis.py       # Indicateurs techniques
+│   │   ├── sentiment_analyzer.py       # Analyse sentiment IA
+│   │   ├── portfolio_manager.py        # Gestion portfolio
+│   │   └── backtesting_engine.py       # Backtesting stratégies
+│   └── database/
+│       └── portfolio_db.py             # SQLite
+├── data/
+│   ├── vector_db/                 # ChromaDB (collections RAG v2)
+│   ├── context/                   # PDFs à indexer
+│   └── uploads/                   # Documents uploadés
+├── scripts/
+│   ├── quick_index.py             # Indexation rapide (3 PDFs)
+│   └── index_all_pdfs.py          # Indexation complète
+└── tests/                         # 36 tests pytest
+```
 
 ---
 
-## Supported Stocks
+## 🔧 Configuration Minimale
 
-25+ French stocks eligible for PEA:
+**Aucune clé API requise** pour les fonctionnalités de base !
 
-**CAC 40:**
-- Luxury: LVMH (MC.PA), Hermès (RMS.PA), Kering (KER.PA)
-- Technology: Capgemini (CAP.PA), Dassault Systèmes (DSY.PA)
-- Aerospace: Airbus (AIR.PA), Safran (SAF.PA), Thales (HO.PA)
-- Industrial: Schneider Electric (SU.PA), Saint-Gobain (SGO.PA)
-- Energy: TotalEnergies (TTE.PA), Engie (ENGI.PA)
-- Finance: BNP Paribas (BNP.PA), AXA (CS.PA), Société Générale (GLE.PA)
-- Healthcare: Sanofi (SAN.PA), EssilorLuxottica (EL.PA)
-- Consumer: L'Oréal (OR.PA), Danone (BN.PA), Pernod Ricard (RI.PA)
+- ✅ Données marché (Yahoo Finance) - GRATUIT
+- ✅ Portfolio management - GRATUIT
+- ✅ RAG v2 - GRATUIT (modèle local)
+- ✅ Analyse technique - GRATUIT
 
-**Indices:**
-- CAC 40: ^FCHI
+**Optionnel** (fonctionnalités avancées):
 
----
-
-## Limitations
-
-Current limitations:
-- Yahoo Finance data: 15-20 min delay
-- NewsAPI free tier: 100 requests/day
-- Backtesting: Single strategy implemented (SMA crossover)
-- Portfolio: Single user (user_id="default_user")
-- No broker integration (manual order execution)
-
-Planned improvements:
-- WebSocket for real-time data
-- More backtesting strategies (RSI, Bollinger, MACD)
-- Walk-forward optimization
-- Multi-user support
-- Broker API integration
-- Machine learning predictions
+```bash
+# .env (optionnel)
+OPENAI_API_KEY=sk-...          # Pour analyse IA avancée
+ANTHROPIC_API_KEY=sk-ant-...   # Pour Claude AI sentiment
+NEWSAPI_KEY=...                # Pour actualités (100 req/jour gratuit)
+TELEGRAM_BOT_TOKEN=...         # Pour alertes Telegram
+```
 
 ---
 
-## Performance
+## 📊 Endpoints API Principaux
 
-- API response time: < 100ms (market data)
-- RAG search: < 500ms (5 results)
-- Portfolio analysis: < 1s
-- Technical analysis: < 2s
-- CrewAI portfolio builder: 5-10 minutes (comprehensive analysis)
-- Document indexing: 5-10 min per 500-page PDF
+| Catégorie | Endpoint | Description |
+|-----------|----------|-------------|
+| **Santé** | `GET /health` | Vérifier API + Ollama |
+| **Portfolio** | `POST /portfolio/add` | Ajouter position |
+| | `POST /portfolio/sell` | Vendre position |
+| | `GET /portfolio` | Portfolio complet |
+| | `GET /portfolio/health` | Score santé 0-100 |
+| **Marché** | `GET /market/stock/{ticker}` | Données temps réel |
+| | `GET /market/history/{ticker}` | Historique |
+| **Analyse** | `GET /analysis/technical/{ticker}` | Analyse technique |
+| | `GET /analysis/complete/{ticker}` | Analyse complète |
+| **RAG** | `POST /query` | Recherche documents |
+| | `GET /collections` | Lister collections |
+| | `POST /upload` | Upload & indexer PDF |
+| **IA** | `POST /build-portfolio` | Construire portfolio (6 agents) |
+| | `POST /analyze/financial-report` | Analyse profonde (4 agents) |
 
----
-
-## Contributing
-
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
-- Development setup
-- Coding standards
-- Pull request process
-- Testing requirements
-
----
-
-## License
-
-MIT License - Free to use and modify
+**Documentation complète**: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
 
-## Support
+## 🧪 Tests et Validation
 
-- **Getting Started:** [Quick Start](#quick-start-5-minutes)
-- **Latest Updates:** [INTEGRATION_TERMINEE.md](INTEGRATION_TERMINEE.md)
-- **Troubleshooting:** [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
-- **Architecture:** [ARCHITECTURE.md](ARCHITECTURE.md)
+```bash
+# Lancer tous les tests (36 tests)
+./run_tests.sh
 
----
+# Vérifier la version RAG
+python3 verifier_rag_version.py
 
-## Roadmap
+# Diagnostic RAG complet
+python3 diagnose_rag.py
+```
 
-**Q1 2026:**
-- [ ] Real-time WebSocket data
-- [ ] More backtesting strategies
-- [ ] Multi-user authentication
-- [ ] Web dashboard (React)
-
-**Q2 2026:**
-- [ ] Broker integration (Interactive Brokers, Trading212)
-- [ ] Machine learning price predictions
-- [ ] Mobile app (React Native)
-- [ ] PDF report export
+**Tous les tests doivent passer**: ✅ 36/36 tests
 
 ---
 
-## Credits
+## 📖 Documentation
 
-Built with:
-- FastAPI by Sebastián Ramírez
-- CrewAI by Crew Labs
-- ChromaDB by Chroma
-- yfinance by Ran Aroussi
+### Fichiers Essentiels
+
+- **README.md** (ce fichier) - Vue d'ensemble et démarrage
+- **GUIDE_UTILISATION.md** - Guide complet d'utilisation de chaque fonctionnalité
+- **TROUBLESHOOTING.md** - Tests, diagnostic, résolution de problèmes
+
+### Documentation Technique
+
+Le système utilise:
+- **FastAPI** - Framework web moderne
+- **ChromaDB** - Base vectorielle pour RAG
+- **sentence-transformers** - Embeddings multilingues
+- **CrewAI** - Orchestration multi-agents
+- **yfinance** - Données Yahoo Finance gratuites
+- **pandas-ta** - Analyse technique
+- **SQLite** - Stockage portfolio
+- **Ollama** - Génération locale (Mistral)
 
 ---
 
-## Disclaimer
+## 🎯 Cas d'Usage
 
-This software is for educational and informational purposes only. It does not constitute financial advice. Always do your own research and consult a licensed financial advisor before making investment decisions. Past performance does not guarantee future results.
+### Exemple 1: Suivre Mon Portfolio
+
+```python
+import requests
+
+API = "http://localhost:8000"
+
+# Ajouter 3 actions
+for ticker, qty, price in [("MC.PA", 10, 750), ("AIR.PA", 15, 140), ("SAN.PA", 20, 95)]:
+    requests.post(f"{API}/portfolio/add", json={
+        "ticker": ticker,
+        "quantity": qty,
+        "price": price,
+        "user_id": "maxime"
+    })
+
+# Consulter le portfolio
+portfolio = requests.get(f"{API}/portfolio?user_id=maxime").json()
+print(f"Valeur totale: {portfolio['total_value']}€")
+
+# Score de santé
+health = requests.get(f"{API}/portfolio/health?user_id=maxime").json()
+print(f"Score: {health['health_score']}/100")
+```
+
+### Exemple 2: Analyser une Action Avant Achat
+
+```bash
+# Analyse complète d'Airbus
+curl "http://localhost:8000/analysis/complete/AIR.PA?company_name=Airbus"
+
+# Retourne:
+# - Prix actuel, P/E, dividende
+# - RSI, MACD, Bollinger
+# - Support/Résistance
+# - Sentiment news
+# - Recommandation Buy/Hold/Sell
+```
+
+### Exemple 3: Rechercher dans Documents Financiers
+
+```bash
+# 1. Indexer vos PDFs
+python3 scripts/index_all_pdfs.py
+
+# 2. Rechercher
+curl -X POST http://localhost:8000/query \
+  -H "Content-Type: application/json" \
+  -d '{
+    "question": "résultat opérationnel 2024",
+    "collection_name": "LVMH_Financiers_2024",
+    "generate_answer": true
+  }'
+
+# Obtient des réponses avec contexte et sources
+```
 
 ---
 
-**Ready to optimize your investments?** Start with the [Quick Start](#quick-start-5-minutes) above.
+## 🚨 Performances
 
-**New to v1.1.0?** Check [INTEGRATION_TERMINEE.md](INTEGRATION_TERMINEE.md) for production features.
+- **API**: < 100ms (endpoints simples)
+- **RAG recherche**: ~5-100ms (avec cache)
+- **Analyse technique**: < 2s
+- **Agents IA**: 5-10 min (analyse complète)
+- **Indexation**: ~45s pour 80 pages PDF
 
-**Questions?** See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) or [API_REFERENCE.md](API_REFERENCE.md).
+**Scores RAG v2**: 0.4-0.6 pour recherches françaises (excellent!)
+
+---
+
+## ⚠️ Limitations Actuelles
+
+- Yahoo Finance: délai 15-20 min (gratuit)
+- Un seul utilisateur par défaut
+- Pas d'intégration courtier (ordres manuels)
+- Backtesting: 1 stratégie implémentée (SMA crossover)
+
+**Prochaines améliorations**: voir GUIDE_UTILISATION.md section Roadmap
+
+---
+
+## 🆘 Besoin d'Aide ?
+
+1. **Démarrage**: Suivez le [Démarrage Rapide](#-démarrage-rapide-5-minutes)
+2. **Utilisation**: Consultez **GUIDE_UTILISATION.md**
+3. **Problème**: Voir **TROUBLESHOOTING.md**
+4. **API complète**: [http://localhost:8000/docs](http://localhost:8000/docs)
+
+---
+
+## 📝 Disclaimer
+
+Ce logiciel est à but éducatif et informatif uniquement. Il ne constitue pas un conseil financier. Faites toujours vos propres recherches et consultez un conseiller financier agréé avant de prendre des décisions d'investissement.
+
+---
+
+**Prêt à commencer ?** Suivez le [Démarrage Rapide](#-démarrage-rapide-5-minutes) !
+
+**Questions ?** Consultez **GUIDE_UTILISATION.md** ou **TROUBLESHOOTING.md**

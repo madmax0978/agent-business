@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-Script pour indexer automatiquement tous les PDF du dossier data/context/
-dans des collections ChromaDB pour les tests.
+Script pour indexer tous les PDF un par un
+- Noms de collections validés (compatible ChromaDB)
+- Anti-doublons fiable
+- Indexation séquentielle (simple et fiable)
 """
 
 import os
@@ -9,61 +11,51 @@ import sys
 from pathlib import Path
 import requests
 import time
+import re
+import unicodedata
 
-# Ajouter le répertoire parent au path pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-# URL de l'API
 API_BASE_URL = "http://localhost:8000"
+TIMEOUT = 1800  # 30 minutes par PDF
 
-def get_company_from_filename(filename: str) -> str:
-    """Extrait le nom de l'entreprise du nom de fichier"""
-    filename_lower = filename.lower()
+def sanitize_collection_name(name: str) -> str:
+    """
+    Nettoie le nom de collection pour respecter les règles ChromaDB.
+    DOIT être identique à la fonction dans api/main.py !
 
-    # Mapping des entreprises
-    companies = {
-        'lvmh': 'LVMH',
-        'hermes': 'Hermès',
-        'loreal': "L'Oréal",
-        'sanofi': 'Sanofi',
-        'totalenergies': 'TotalEnergies',
-        'total': 'TotalEnergies',
-        'bnp': 'BNP Paribas',
-        'axa': 'AXA',
-        'airbus': 'Airbus',
-        'airliquid': 'Air Liquide',
-        'schneider': 'Schneider Electric',
-        'danone': 'Danone',
-        'renault': 'Renault',
-        'orange': 'Orange',
-        'capgemini': 'Capgemini',
-        'kering': 'Kering',
-        'pernod': 'Pernod Ricard',
-        'engie': 'Engie',
-        'saint-gobain': 'Saint-Gobain',
-        'vinci': 'Vinci',
-        'bouygues': 'Bouygues',
-        'carrefour': 'Carrefour',
-        'safran': 'Safran',
-        'stm': 'STMicroelectronics',
-        '3ds': 'Dassault Systèmes',
-    }
+    Règles ChromaDB:
+    - 3-512 caractères
+    - Seulement [a-zA-Z0-9._-]
+    """
+    # Enlever l'extension .pdf si présente
+    if name.endswith('.pdf'):
+        name = name[:-4]
 
-    for key, company in companies.items():
-        if key in filename_lower:
-            return company
+    # Remplacer espaces par underscores
+    name = name.replace(" ", "_")
 
-    return "Entreprise"
+    # Supprimer les accents: "décembre" → "decembre"
+    name = unicodedata.normalize('NFKD', name)
+    name = name.encode('ASCII', 'ignore').decode('ASCII')
 
-def get_year_from_filename(filename: str) -> str:
-    """Extrait l'année du nom de fichier"""
-    # Chercher 2021, 2022, 2023, 2024, 2025
-    for year in ['2025', '2024', '2023', '2022', '2021']:
-        if year in filename:
-            return year
-    return "N/A"
+    # Garder seulement [a-zA-Z0-9._-]
+    name = re.sub(r'[^a-zA-Z0-9._-]', '', name)
 
-def check_api_health():
+    # Remplacer multiples _.- par un seul
+    name = re.sub(r'[._-]+', '_', name)
+
+    # Enlever _.- au début/fin
+    name = name.strip('._-')
+
+    # Assurer minimum 3 caractères
+    if len(name) < 3:
+        name = f"doc_{name}_001"
+
+    # Maximum 512 caractères
+    return name[:512].rstrip('._-')
+
+def check_api():
     """Vérifie que l'API est accessible"""
     try:
         response = requests.get(f"{API_BASE_URL}/health", timeout=5)
@@ -81,152 +73,185 @@ def get_collections():
     except:
         return []
 
-def index_pdf(pdf_path: Path, collection_name: str):
-    """Indexe un PDF dans une collection"""
-    print(f"\n📄 Indexation: {pdf_path.name}")
-    print(f"   Collection: {collection_name}")
+def index_pdf(pdf_path: Path, collection_name: str, index: int, total: int):
+    """
+    Indexe un PDF dans une collection.
 
+    Returns:
+        tuple: (success: bool, status: str, collection_name: str)
+    """
     try:
-        # Upload du fichier
         with open(pdf_path, 'rb') as f:
             files = {'file': (pdf_path.name, f, 'application/pdf')}
-            # L'endpoint /upload attend seulement collection_name
-            data = {
-                'collection_name': collection_name
-            }
+            data = {'collection_name': collection_name}
 
-            print(f"   Upload en cours... (taille: {pdf_path.stat().st_size / 1024 / 1024:.1f} MB)")
+            size_mb = pdf_path.stat().st_size / 1024 / 1024
+
+            print(f"\n[{index}/{total}] 📄 {pdf_path.name}")
+            print(f"   Collection: {collection_name}")
+            print(f"   Taille: {size_mb:.1f} MB")
+            print(f"   ⏳ Indexation en cours...")
+
             response = requests.post(
                 f"{API_BASE_URL}/upload",
                 files=files,
                 data=data,
-                timeout=300  # 5 minutes max
+                timeout=TIMEOUT
             )
 
             if response.status_code == 200:
                 result = response.json()
                 total_chunks = result.get('total_chunks', 0)
-                print(f"   ✅ Succès! {total_chunks} chunks créés")
-                print(f"      Tables: {result.get('table_chunks', 0)}, Texte: {result.get('text_chunks', 0)}")
-                return True
+                table_chunks = result.get('table_chunks', 0)
+                text_chunks = result.get('text_chunks', 0)
+
+                print(f"   ✅ Succès! {total_chunks} chunks")
+                print(f"      Tables: {table_chunks}, Texte: {text_chunks}")
+
+                return (True, "success", collection_name)
             else:
-                print(f"   ❌ Erreur {response.status_code}: {response.text[:200]}")
-                return False
+                error_msg = response.text[:200]
+                print(f"   ❌ Erreur {response.status_code}: {error_msg}")
+
+                return (False, f"HTTP {response.status_code}", collection_name)
 
     except Exception as e:
-        print(f"   ❌ Exception: {str(e)}")
-        return False
+        print(f"   ❌ Exception: {str(e)[:200]}")
+
+        return (False, str(e)[:50], collection_name)
 
 def main():
     print("="*80)
-    print("INDEXATION AUTOMATIQUE DES PDF - RAG-PEA")
+    print("INDEXATION PDF - UN PAR UN")
     print("="*80)
 
     # 1. Vérifier l'API
     print("\n🔍 Vérification de l'API...")
-    if not check_api_health():
+    if not check_api():
         print("❌ L'API n'est pas accessible sur http://localhost:8000")
-        print("   Lancez l'API avec: uvicorn api.main:app --reload")
+        print("   Lancez: cd api && python -m uvicorn main:app --reload")
         sys.exit(1)
     print("✅ API accessible")
 
-    # 2. Lister les collections existantes
-    print("\n📚 Collections existantes:")
-    collections = get_collections()
-    if collections:
-        for col in collections:
-            print(f"   - {col['name']} ({col.get('count', 0)} documents)")
-    else:
-        print("   Aucune collection")
-
-    # 3. Trouver tous les PDF
+    # 2. Trouver tous les PDF
     pdf_dir = Path(__file__).parent.parent / "data" / "context"
     if not pdf_dir.exists():
         print(f"❌ Dossier {pdf_dir} non trouvé")
         sys.exit(1)
 
     pdf_files = sorted(pdf_dir.glob("*.pdf"))
-    print(f"\n📁 {len(pdf_files)} fichiers PDF trouvés dans {pdf_dir}")
+    print(f"\n📁 {len(pdf_files)} fichiers PDF trouvés")
 
     if not pdf_files:
         print("❌ Aucun PDF à indexer")
         sys.exit(0)
 
-    # 4. Demander confirmation
-    print("\n⚠️  L'indexation peut prendre du temps (plusieurs minutes par fichier)")
-    print(f"   Total estimé: {len(pdf_files) * 2:.0f}-{len(pdf_files) * 5:.0f} minutes")
+    # 3. Récupérer collections existantes
+    print("\n📚 Vérification des collections existantes...")
+    existing_collections = {c['name']: c for c in get_collections()}
 
-    response = input("\n❓ Voulez-vous indexer tous les PDF? (o/N): ")
+    if existing_collections:
+        print(f"   {len(existing_collections)} collections déjà indexées")
+        print("   (seront skippées automatiquement)")
+    else:
+        print("   Aucune collection (départ à zéro)")
+
+    # 4. Préparer la liste des PDFs à indexer
+    pdfs_to_index = []
+    skipped = []
+
+    for pdf_path in pdf_files:
+        # Générer le nom de collection (identique à l'API)
+        collection_name = sanitize_collection_name(pdf_path.name)
+
+        # Vérifier si déjà indexé
+        if collection_name in existing_collections:
+            skipped.append((pdf_path.name, collection_name))
+        else:
+            pdfs_to_index.append((pdf_path, collection_name))
+
+    # Afficher résumé
+    print(f"\n📊 RÉSUMÉ:")
+    print(f"   Total PDFs: {len(pdf_files)}")
+    print(f"   À indexer: {len(pdfs_to_index)}")
+    print(f"   Déjà indexés: {len(skipped)}")
+
+    if skipped:
+        print(f"\n⏭️  Collections déjà indexées (skippées):")
+        for pdf_name, col_name in skipped[:10]:  # Max 10 pour pas surcharger
+            print(f"   - {pdf_name} → {col_name}")
+        if len(skipped) > 10:
+            print(f"   ... et {len(skipped) - 10} autres")
+
+    if not pdfs_to_index:
+        print("\n✅ Tous les PDFs sont déjà indexés!")
+        sys.exit(0)
+
+    # 5. Confirmation
+    print(f"\n⚠️  L'indexation peut prendre du temps:")
+    print(f"   - Petits PDFs: ~1-2 min chacun")
+    print(f"   - Gros PDFs (600 pages): ~15-20 min chacun")
+    print(f"   - Temps estimé: {len(pdfs_to_index) * 3}-{len(pdfs_to_index) * 10} minutes")
+
+    response = input(f"\n❓ Indexer {len(pdfs_to_index)} PDFs? (o/N): ")
     if response.lower() not in ['o', 'oui', 'y', 'yes']:
         print("❌ Annulé")
         sys.exit(0)
 
-    # 5. Indexer tous les PDF
+    # 6. Indexation séquentielle
     print("\n🚀 Démarrage de l'indexation...")
     print("="*80)
 
+    start_time = time.time()
     success_count = 0
     failed_count = 0
-    skipped_count = 0
 
-    start_time = time.time()
+    # Traiter chaque PDF un par un
+    for i, (pdf_path, collection_name) in enumerate(pdfs_to_index):
+        try:
+            success, status, col_name = index_pdf(
+                pdf_path,
+                collection_name,
+                i + 1,
+                len(pdfs_to_index)
+            )
 
-    for i, pdf_path in enumerate(pdf_files, 1):
-        print(f"\n[{i}/{len(pdf_files)}] {pdf_path.name}")
+            if success:
+                success_count += 1
+            else:
+                failed_count += 1
 
-        # Déterminer le nom de la collection
-        company = get_company_from_filename(pdf_path.name)
-        year = get_year_from_filename(pdf_path.name)
-
-        # Créer un nom de collection descriptif
-        if "rapport" in pdf_path.name.lower() or "annual" in pdf_path.name.lower():
-            doc_type = "Rapport Annuel"
-        elif "semestriel" in pdf_path.name.lower() or "half" in pdf_path.name.lower():
-            doc_type = "Rapport Semestriel"
-        elif "financier" in pdf_path.name.lower():
-            doc_type = "Documents Financiers"
-        else:
-            doc_type = "Document"
-
-        collection_name = f"{company}_{year}".replace(" ", "_").replace("'", "")
-
-        # Vérifier si déjà indexé
-        existing_collections = [c['name'] for c in get_collections()]
-        if collection_name in existing_collections:
-            print(f"   ⏭️  Collection '{collection_name}' existe déjà, passage au suivant")
-            skipped_count += 1
-            continue
-
-        # Indexer
-        if index_pdf(pdf_path, collection_name):
-            success_count += 1
-            print(f"   📊 Progression: {success_count} réussis, {failed_count} échoués, {skipped_count} ignorés")
-        else:
+        except Exception as e:
+            print(f"\n❌ Erreur inattendue pour {pdf_path.name}: {e}")
             failed_count += 1
 
-        # Pause entre fichiers pour ne pas surcharger
-        if i < len(pdf_files):
-            time.sleep(2)
-
-    # 6. Résumé
+    # 7. Résumé final
     elapsed_time = time.time() - start_time
+
     print("\n" + "="*80)
-    print("RÉSUMÉ DE L'INDEXATION")
+    print("RÉSUMÉ FINAL")
     print("="*80)
-    print(f"✅ Réussis:  {success_count}/{len(pdf_files)}")
-    print(f"❌ Échoués:  {failed_count}/{len(pdf_files)}")
-    print(f"⏭️  Ignorés:  {skipped_count}/{len(pdf_files)}")
+    print(f"✅ Réussis:  {success_count}/{len(pdfs_to_index)}")
+    print(f"❌ Échoués:  {failed_count}/{len(pdfs_to_index)}")
+    print(f"⏭️  Ignorés:  {len(skipped)}/{len(pdf_files)} (déjà indexés)")
     print(f"⏱️  Temps total: {elapsed_time / 60:.1f} minutes")
 
-    # 7. Afficher les collections finales
+    # 8. Collections finales
     print("\n📚 Collections finales:")
     final_collections = get_collections()
+    print(f"   Total: {len(final_collections)} collections")
+
     if final_collections:
-        for col in final_collections:
-            print(f"   - {col['name']} ({col.get('count', 0)} documents)")
+        total_chunks = sum(c.get('total_chunks', 0) for c in final_collections)
+        print(f"   Chunks totaux: {total_chunks:,}")
 
     print("\n🎉 Indexation terminée!")
-    print("\n💡 Vous pouvez maintenant exécuter les tests:")
+
+    if failed_count > 0:
+        print(f"\n⚠️  {failed_count} fichiers ont échoué")
+        print("   Relancez le script pour réessayer (les réussis seront skippés)")
+
+    print("\n💡 Tests disponibles:")
     print("   ./run_tests.sh")
 
 if __name__ == "__main__":
