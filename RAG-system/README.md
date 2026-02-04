@@ -1,13 +1,16 @@
 # RAG-PEA System - Portfolio Intelligent avec IA
 
-**Version 2.0.0** - Production Ready
+**Version 3.0.0** - Production Ready + Bot Telegram
 
 Système complet d'analyse financière et de gestion de portefeuille combinant:
 - **RAG v2 optimisé** (recherche dans documents financiers)
+- **Trésorerie PEA** (gestion cash, dépôts, opportunités IA)
+- **Bot Telegram complet** (onboarding + 22 commandes + rapports automatiques)
 - **Multi-Agent AI** (CrewAI) pour analyses approfondies
 - **Données temps réel** (Yahoo Finance gratuit)
 - **Analyse technique** complète (RSI, MACD, Bollinger, Support/Résistance)
-- **API REST** FastAPI avec 23 endpoints
+- **API REST** FastAPI avec 33 endpoints
+- **Déploiement VPS** (Docker + docker-compose)
 
 ---
 
@@ -51,9 +54,77 @@ curl http://localhost:8000/portfolio?user_id=test_user
 
 ---
 
+## 🤖 Nouveau: Bot Telegram
+
+**Gérez votre PEA directement depuis Telegram !**
+
+```bash
+# 1. Configurer le bot
+cp .env.example .env
+# Ajouter votre TELEGRAM_BOT_TOKEN
+
+# 2. Lancer l'API
+cd api && python -m uvicorn main:app --reload
+
+# 3. Lancer le bot
+python telegram_bot_main.py
+
+# 4. Lancer le scheduler (rapports automatiques)
+python telegram_scheduler.py
+```
+
+**Ou via Docker (recommandé):**
+```bash
+docker-compose up -d
+```
+
+**Commandes principales:**
+- `/start` - Onboarding complet (dépôt + positions)
+- `/portfolio` - Voir le portfolio complet
+- `/balance` - Trésorerie PEA
+- `/opportunities` - Opportunités IA
+- `/buy` / `/sell` - Transactions
+- `/analyze` - Analyse IA complète
+- `/help` - Liste toutes les commandes
+
+**Rapports automatiques:**
+- Quotidien à 9h (si cash disponible > 100€)
+- Hebdomadaire le lundi (santé du portfolio)
+
+Voir **[DEPLOYMENT.md](DEPLOYMENT.md)** pour déployer sur VPS.
+
+---
+
 ## 📚 Fonctionnalités Principales
 
-### 1. RAG v2 - Recherche dans Documents Financiers
+### 1. Trésorerie PEA
+
+**Gérez votre Plan d'Épargne en Actions avec tracking complet:**
+
+```bash
+# Déposer de l'argent (règle PEA: ne peut pas être retiré)
+curl -X POST "http://localhost:8000/portfolio/deposit?amount=10000"
+
+# Consulter la trésorerie
+curl "http://localhost:8000/portfolio/treasury"
+# → total_deposits: 10000€
+# → cash_available: 7000€ (dispo pour investir)
+# → cash_invested: 3000€ (en actions)
+
+# Détecter opportunités IA (si cash disponible)
+curl -X POST "http://localhost:8000/portfolio/opportunities/analyze"
+# → DIVERSIFY: ajouter 2-3 positions
+# → ADD_TO_EXISTING: renforcer positions gagnantes
+# → REBALANCE_CASH: investir le cash stagnant
+```
+
+**Gestion automatique:**
+- ✅ Cash déduit automatiquement lors d'un achat
+- ✅ Cash ajouté automatiquement lors d'une vente
+- ✅ Opportunités IA basées sur le cash disponible
+- ✅ Historique complet des flux de trésorerie
+
+### 2. RAG v2 - Recherche dans Documents Financiers
 
 **Recherche sémantique optimisée dans vos rapports PDF financiers**
 
@@ -79,7 +150,7 @@ curl -X POST http://localhost:8000/query \
 - ✅ Cache embeddings (20x plus rapide)
 - ✅ Cosine similarity
 
-### 2. Portfolio Management
+### 3. Portfolio Management
 
 ```bash
 # Ajouter des positions
@@ -101,7 +172,7 @@ GET /portfolio/rebalance?user_id=your_id
 GET /portfolio/position/{ticker}?user_id=your_id
 ```
 
-### 3. Analyse de Marché
+### 4. Analyse de Marché
 
 ```bash
 # Données en temps réel (gratuit - Yahoo Finance)
@@ -115,7 +186,7 @@ GET /analysis/sentiment/{company}     # Analyse sentiment IA
 GET /analysis/complete/{ticker}       # Analyse complète
 ```
 
-### 4. Agents IA Multi-Agents
+### 5. Agents IA Multi-Agents
 
 ```bash
 # Construire un portfolio optimal (6 agents CrewAI)
@@ -231,7 +302,8 @@ python3 diagnose_rag.py
 ### Fichiers Essentiels
 
 - **README.md** (ce fichier) - Vue d'ensemble et démarrage
-- **GUIDE_UTILISATION.md** - Guide complet d'utilisation de chaque fonctionnalité
+- **GUIDE_UTILISATION.md** - Guide complet (RAG + Portfolio + PEA + Telegram Bot)
+- **DEPLOYMENT.md** - Déploiement sur VPS avec Docker
 - **TROUBLESHOOTING.md** - Tests, diagnostic, résolution de problèmes
 
 ### Documentation Technique
