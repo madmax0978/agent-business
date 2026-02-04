@@ -33,6 +33,7 @@ from __future__ import annotations
 
 from crewai import Agent, Task, Crew
 from .tools import create_rag_tool, create_web_search_tool, create_news_indexer_tool
+from ..llm_selector import get_llm_for_crewai
 from typing import Dict, Any
 from datetime import datetime
 
@@ -54,6 +55,9 @@ def create_financial_analysis_crew(
         Crew configuré
     """
 
+    # Sélectionner le LLM (priorité à Claude)
+    llm = get_llm_for_crewai(temperature=0.7, max_tokens=4000)
+
     # Outils disponibles
     rag_tool = create_rag_tool()
     web_search_tool = create_web_search_tool()
@@ -70,6 +74,7 @@ def create_financial_analysis_crew(
             "financières avec une précision remarquable."
         ),
         tools=[rag_tool],
+        llm=llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -85,6 +90,7 @@ def create_financial_analysis_crew(
             "des informations réellement impactantes pour les investissements."
         ),
         tools=[web_search_tool, news_indexer_tool],
+        llm=llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -100,6 +106,7 @@ def create_financial_analysis_crew(
             "les conditions techniques sont favorables ou défavorables."
         ),
         tools=[],
+        llm=llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -116,6 +123,7 @@ def create_financial_analysis_crew(
             "combinant fondamentaux, technique et actualités."
         ),
         tools=[],
+        llm=llm,
         verbose=True,
         allow_delegation=True,
     )

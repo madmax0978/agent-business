@@ -78,6 +78,9 @@ if __name__ == "__main__":
         create_history_tool,
         create_portfolio_optimizer_tool,
     )
+    # Import du sélecteur LLM
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from llm_selector import get_llm_for_crewai
 else:
     # Import comme module
     from .tools import create_rag_tool, create_web_search_tool
@@ -86,6 +89,8 @@ else:
         create_history_tool,
         create_portfolio_optimizer_tool,
     )
+    # Import du sélecteur LLM
+    from ..llm_selector import get_llm_for_crewai
 
 
 def create_portfolio_builder_crew(
@@ -107,6 +112,9 @@ def create_portfolio_builder_crew(
         Crew configuré pour la construction de portefeuille
     """
 
+    # Sélectionner le LLM (priorité à Claude)
+    llm = get_llm_for_crewai(temperature=0.7, max_tokens=4000)
+
     # Outils disponibles
     rag_tool = create_rag_tool()
     web_search_tool = create_web_search_tool()
@@ -125,6 +133,7 @@ def create_portfolio_builder_crew(
             "de données pour que les analystes puissent faire leur travail."
         ),
         tools=[data_collector_tool, web_search_tool],
+        llm=llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -140,6 +149,7 @@ def create_portfolio_builder_crew(
             "une croissance stable et durable, parfaites pour un investissement PEA long terme (5-10 ans)."
         ),
         tools=[history_tool, rag_tool],
+        llm=llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -155,6 +165,7 @@ def create_portfolio_builder_crew(
             "équilibrés et adaptés au profil de risque de l'investisseur."
         ),
         tools=[portfolio_optimizer_tool, rag_tool],
+        llm=llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -170,6 +181,7 @@ def create_portfolio_builder_crew(
             "et la valorisation. Vous distinguez les vraies opportunités des pièges à valeur."
         ),
         tools=[rag_tool, history_tool],
+        llm=llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -186,6 +198,7 @@ def create_portfolio_builder_crew(
             "des vraies tendances de fond."
         ),
         tools=[],
+        llm=llm,
         verbose=True,
         allow_delegation=False,
     )
@@ -201,6 +214,7 @@ def create_portfolio_builder_crew(
             "Vous fournissez un plan d'action précis avec les ordres d'achat exacts."
         ),
         tools=[],
+        llm=llm,
         verbose=True,
         allow_delegation=True,
     )

@@ -29,6 +29,10 @@ pydantic-settings>=2.0.0
 crewai>=0.28.0
 crewai-tools>=0.2.0
 
+# LangChain pour CrewAI (intégrations LLM)
+langchain-anthropic>=0.1.0
+langchain-openai>=0.1.0
+
 # Utilitaires
 pathlib
 
