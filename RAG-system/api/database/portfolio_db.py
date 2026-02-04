@@ -75,6 +75,80 @@ class PortfolioDatabase:
             )
         """)
 
+        # Table de trésorerie PEA
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS pea_treasury (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL UNIQUE,
+                total_deposits REAL NOT NULL DEFAULT 0,
+                cash_available REAL NOT NULL DEFAULT 0,
+                cash_invested REAL NOT NULL DEFAULT 0,
+                pea_opening_date DATE,
+                last_deposit_date DATE,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                CHECK(total_deposits >= 0),
+                CHECK(cash_available >= 0),
+                CHECK(cash_invested >= 0)
+            )
+        """)
+
+        # Table d'historique des dépôts
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS deposit_history (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                amount REAL NOT NULL,
+                deposit_date DATE NOT NULL,
+                deposit_method TEXT,
+                notes TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                CHECK(amount > 0)
+            )
+        """)
+
+        # Table des flux de trésorerie
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS cash_flow_events (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                event_type TEXT NOT NULL,
+                ticker TEXT,
+                amount REAL NOT NULL,
+                cash_before REAL NOT NULL,
+                cash_after REAL NOT NULL,
+                transaction_id INTEGER,
+                event_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                CHECK(amount > 0),
+                FOREIGN KEY (transaction_id) REFERENCES transactions(id)
+            )
+        """)
+
+        # Table des opportunités d'investissement
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS investment_opportunities (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id TEXT NOT NULL,
+                ticker TEXT NOT NULL,
+                company_name TEXT,
+                recommendation_type TEXT,
+                suggested_amount REAL,
+                suggested_quantity INTEGER,
+                target_price REAL,
+                reasoning TEXT,
+                confidence_score REAL,
+                risk_level TEXT,
+                cash_available_at_time REAL,
+                portfolio_value_at_time REAL,
+                status TEXT DEFAULT 'PENDING',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                expires_at TIMESTAMP,
+                actioned_at TIMESTAMP,
+                CHECK(suggested_amount > 0),
+                CHECK(confidence_score BETWEEN 0 AND 1)
+            )
+        """)
+
         conn.commit()
         conn.close()
 
@@ -87,10 +161,16 @@ class PortfolioDatabase:
         purchase_date: Optional[str] = None,
         user_id: str = "default_user"
     ) -> bool:
-        """Ajoute une position au portefeuille"""
+        """
+        Ajoute une position au portefeuille
+
+        NOUVEAU: Déduit automatiquement le montant du cash disponible
+        """
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
+
+            total_amount = quantity * price
 
             if purchase_date is None:
                 purchase_date = datetime.now().strftime("%Y-%m-%d")
@@ -132,13 +212,34 @@ class PortfolioDatabase:
                 INSERT INTO transactions
                 (user_id, ticker, company_name, transaction_type, quantity, price, total_amount)
                 VALUES (?, ?, ?, 'BUY', ?, ?, ?)
-            """, (user_id, ticker, company_name, quantity, price, quantity * price))
+            """, (user_id, ticker, company_name, quantity, price, total_amount))
+
+            transaction_id = cursor.lastrowid
+
+            # NOUVEAU: Déduire le cash et enregistrer le cash flow
+            self._update_cash_on_buy(cursor, user_id, total_amount, transaction_id, ticker)
+
+            # Recalculer cash_invested
+            cursor.execute("""
+                SELECT SUM(current_value) as invested FROM portfolio WHERE user_id = ?
+            """, (user_id,))
+
+            invested = cursor.fetchone()[0] or 0.0
+
+            cursor.execute("""
+                UPDATE pea_treasury
+                SET cash_invested = ?,
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE user_id = ?
+            """, (invested, user_id))
 
             conn.commit()
             conn.close()
             return True
         except Exception as e:
             print(f"Erreur add_position: {e}")
+            if 'conn' in locals():
+                conn.close()
             return False
 
     def sell_position(
@@ -148,10 +249,16 @@ class PortfolioDatabase:
         price: float,
         user_id: str = "default_user"
     ) -> bool:
-        """Vend (partiellement ou totalement) une position"""
+        """
+        Vend (partiellement ou totalement) une position
+
+        NOUVEAU: Ajoute automatiquement le montant au cash disponible
+        """
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
+
+            total_amount = quantity * price
 
             # Récupérer la position actuelle
             cursor.execute("""
@@ -162,12 +269,14 @@ class PortfolioDatabase:
 
             if not position:
                 print(f"Position {ticker} non trouvée pour user {user_id}")
+                conn.close()
                 return False
 
             pos_id, current_qty, company_name, avg_price, current_price = position
 
             if quantity > current_qty:
                 print(f"Quantité à vendre ({quantity}) supérieure à la quantité détenue ({current_qty})")
+                conn.close()
                 return False
 
             # Mise à jour de la position
@@ -195,13 +304,34 @@ class PortfolioDatabase:
                 INSERT INTO transactions
                 (user_id, ticker, company_name, transaction_type, quantity, price, total_amount)
                 VALUES (?, ?, ?, 'SELL', ?, ?, ?)
-            """, (user_id, ticker, company_name, quantity, price, quantity * price))
+            """, (user_id, ticker, company_name, quantity, price, total_amount))
+
+            transaction_id = cursor.lastrowid
+
+            # NOUVEAU: Ajouter le cash récupéré et enregistrer le cash flow
+            self._update_cash_on_sell(cursor, user_id, total_amount, transaction_id, ticker)
+
+            # Recalculer cash_invested
+            cursor.execute("""
+                SELECT SUM(current_value) as invested FROM portfolio WHERE user_id = ?
+            """, (user_id,))
+
+            invested = cursor.fetchone()[0] or 0.0
+
+            cursor.execute("""
+                UPDATE pea_treasury
+                SET cash_invested = ?,
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE user_id = ?
+            """, (invested, user_id))
 
             conn.commit()
             conn.close()
             return True
         except Exception as e:
             print(f"Erreur sell_position: {e}")
+            if 'conn' in locals():
+                conn.close()
             return False
 
     def get_portfolio(self, user_id: str = "default_user") -> List[Dict]:
@@ -258,13 +388,28 @@ class PortfolioDatabase:
             print(f"Erreur update_current_prices: {e}")
 
     def get_portfolio_summary(self, user_id: str = "default_user") -> Dict:
-        """Résumé du portefeuille"""
+        """
+        Résumé du portefeuille
+
+        NOUVEAU: Inclut les informations de trésorerie PEA
+        """
         portfolio = self.get_portfolio(user_id)
+        treasury = self.get_treasury_status(user_id)
 
         total_value = sum(p['current_value'] or 0 for p in portfolio)
         total_invested = sum(p['avg_price'] * p['quantity'] for p in portfolio)
         total_gain_loss = total_value - total_invested
         total_gain_loss_percent = (total_gain_loss / total_invested * 100) if total_invested > 0 else 0
+
+        # Calculer la valeur totale du PEA
+        pea_total_value = treasury['cash_available'] + total_value
+
+        # Performance globale du PEA
+        pea_gain_loss = pea_total_value - treasury['total_deposits']
+        pea_gain_loss_percent = (
+            (pea_gain_loss / treasury['total_deposits'] * 100)
+            if treasury['total_deposits'] > 0 else 0
+        )
 
         # Calculer la répartition sectorielle (si disponible)
         sectors = {}
@@ -276,13 +421,30 @@ class PortfolioDatabase:
             sectors[sector] += p['current_value'] or 0
 
         return {
+            # Informations portfolio existantes
             "total_positions": len(portfolio),
             "total_value": total_value,
             "total_invested": total_invested,
             "total_gain_loss": total_gain_loss,
             "total_gain_loss_percent": total_gain_loss_percent,
             "sectors": sectors,
-            "positions": portfolio
+            "positions": portfolio,
+
+            # NOUVELLES informations PEA
+            "pea_treasury": {
+                "total_deposits": treasury['total_deposits'],
+                "cash_available": treasury['cash_available'],
+                "cash_invested": treasury['cash_invested'],
+                "pea_total_value": pea_total_value,
+                "pea_gain_loss": pea_gain_loss,
+                "pea_gain_loss_percent": pea_gain_loss_percent,
+                "pea_opening_date": treasury.get('pea_opening_date'),
+                "last_deposit_date": treasury.get('last_deposit_date'),
+            },
+
+            # Ratios utiles
+            "cash_ratio": (treasury['cash_available'] / pea_total_value * 100) if pea_total_value > 0 else 0,
+            "investment_ratio": (total_value / pea_total_value * 100) if pea_total_value > 0 else 0,
         }
 
     def save_analysis(
@@ -373,3 +535,293 @@ class PortfolioDatabase:
         conn.close()
 
         return [dict(row) for row in rows]
+
+    # ==========================================
+    # NOUVELLES MÉTHODES - TRÉSORERIE PEA
+    # ==========================================
+
+    def deposit_cash(
+        self,
+        amount: float,
+        user_id: str = "default_user",
+        deposit_method: str = "ONE_TIME",
+        notes: Optional[str] = None
+    ) -> bool:
+        """
+        Dépose de l'argent sur le PEA
+
+        Args:
+            amount: Montant à déposer (euros)
+            user_id: Identifiant utilisateur
+            deposit_method: Type de dépôt ('INITIAL', 'RECURRING', 'ONE_TIME')
+            notes: Notes optionnelles
+
+        Returns:
+            True si succès, False sinon
+        """
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+
+            # Vérifier si l'utilisateur existe dans pea_treasury
+            cursor.execute("""
+                SELECT cash_available, total_deposits FROM pea_treasury WHERE user_id = ?
+            """, (user_id,))
+
+            result = cursor.fetchone()
+
+            if result:
+                # Mise à jour
+                current_cash, current_deposits = result
+                new_cash = current_cash + amount
+                new_deposits = current_deposits + amount
+
+                cursor.execute("""
+                    UPDATE pea_treasury
+                    SET cash_available = ?,
+                        total_deposits = ?,
+                        last_deposit_date = DATE('now'),
+                        updated_at = CURRENT_TIMESTAMP
+                    WHERE user_id = ?
+                """, (new_cash, new_deposits, user_id))
+
+                cash_before = current_cash
+            else:
+                # Création initiale
+                cursor.execute("""
+                    INSERT INTO pea_treasury
+                    (user_id, cash_available, total_deposits, pea_opening_date, last_deposit_date)
+                    VALUES (?, ?, ?, DATE('now'), DATE('now'))
+                """, (user_id, amount, amount))
+
+                cash_before = 0.0
+
+            # Enregistrer dans deposit_history
+            cursor.execute("""
+                INSERT INTO deposit_history (user_id, amount, deposit_date, deposit_method, notes)
+                VALUES (?, ?, DATE('now'), ?, ?)
+            """, (user_id, amount, deposit_method, notes))
+
+            # Enregistrer le cash flow event
+            cursor.execute("""
+                INSERT INTO cash_flow_events (user_id, event_type, amount, cash_before, cash_after)
+                VALUES (?, 'DEPOSIT', ?, ?, ?)
+            """, (user_id, amount, cash_before, cash_before + amount))
+
+            conn.commit()
+            conn.close()
+            return True
+
+        except Exception as e:
+            print(f"Erreur deposit_cash: {e}")
+            return False
+
+    def get_treasury_status(self, user_id: str = "default_user") -> Dict:
+        """
+        Récupère l'état complet de la trésorerie PEA
+
+        Returns:
+            Dict avec toutes les informations de trésorerie
+        """
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        # Récupérer l'état de trésorerie
+        cursor.execute("""
+            SELECT * FROM pea_treasury WHERE user_id = ?
+        """, (user_id,))
+
+        treasury = cursor.fetchone()
+
+        if not treasury:
+            # Initialiser si n'existe pas
+            conn.close()
+            return {
+                "exists": False,
+                "total_deposits": 0,
+                "cash_available": 0,
+                "cash_invested": 0,
+                "pea_opening_date": None,
+                "last_deposit_date": None
+            }
+
+        # Recalculer cash_invested depuis le portfolio actuel (source of truth)
+        cursor.execute("""
+            SELECT SUM(current_value) as invested
+            FROM portfolio WHERE user_id = ?
+        """, (user_id,))
+
+        invested_result = cursor.fetchone()
+        actual_cash_invested = invested_result['invested'] or 0.0
+
+        # Mettre à jour si nécessaire
+        if abs(actual_cash_invested - treasury['cash_invested']) > 0.01:
+            cursor.execute("""
+                UPDATE pea_treasury
+                SET cash_invested = ?,
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE user_id = ?
+            """, (actual_cash_invested, user_id))
+            conn.commit()
+
+        result = dict(treasury)
+        result['exists'] = True
+        result['cash_invested'] = actual_cash_invested
+
+        conn.close()
+        return result
+
+    def get_deposit_history(
+        self,
+        user_id: str = "default_user",
+        limit: int = 50
+    ) -> List[Dict]:
+        """
+        Récupère l'historique des dépôts
+
+        Returns:
+            Liste des dépôts effectués
+        """
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT * FROM deposit_history
+            WHERE user_id = ?
+            ORDER BY deposit_date DESC
+            LIMIT ?
+        """, (user_id, limit))
+
+        rows = cursor.fetchall()
+        conn.close()
+
+        return [dict(row) for row in rows]
+
+    def get_cash_flow_events(
+        self,
+        user_id: str = "default_user",
+        event_type: Optional[str] = None,
+        limit: int = 100
+    ) -> List[Dict]:
+        """
+        Récupère l'historique des flux de trésorerie
+
+        Args:
+            event_type: Filter par type ('DEPOSIT', 'BUY', 'SELL') ou None pour tous
+
+        Returns:
+            Liste des événements de cash flow
+        """
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        if event_type:
+            cursor.execute("""
+                SELECT * FROM cash_flow_events
+                WHERE user_id = ? AND event_type = ?
+                ORDER BY event_date DESC
+                LIMIT ?
+            """, (user_id, event_type, limit))
+        else:
+            cursor.execute("""
+                SELECT * FROM cash_flow_events
+                WHERE user_id = ?
+                ORDER BY event_date DESC
+                LIMIT ?
+            """, (user_id, limit))
+
+        rows = cursor.fetchall()
+        conn.close()
+
+        return [dict(row) for row in rows]
+
+    def _update_cash_on_buy(
+        self,
+        cursor,
+        user_id: str,
+        amount: float,
+        transaction_id: int,
+        ticker: str
+    ):
+        """
+        Met à jour le cash disponible lors d'un achat (méthode interne)
+
+        Cette méthode est appelée par add_position
+        """
+        # Récupérer le cash actuel
+        cursor.execute("""
+            SELECT cash_available FROM pea_treasury WHERE user_id = ?
+        """, (user_id,))
+
+        result = cursor.fetchone()
+
+        if not result:
+            raise ValueError(f"Aucune trésorerie PEA trouvée pour {user_id}. Effectuez un dépôt d'abord avec /portfolio/deposit")
+
+        cash_available = result[0]
+
+        if cash_available < amount:
+            raise ValueError(
+                f"Cash insuffisant. Disponible: {cash_available:.2f}€, Requis: {amount:.2f}€"
+            )
+
+        # Déduire le cash
+        new_cash = cash_available - amount
+
+        cursor.execute("""
+            UPDATE pea_treasury
+            SET cash_available = ?,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE user_id = ?
+        """, (new_cash, user_id))
+
+        # Enregistrer le cash flow event
+        cursor.execute("""
+            INSERT INTO cash_flow_events
+            (user_id, event_type, ticker, amount, cash_before, cash_after, transaction_id)
+            VALUES (?, 'BUY', ?, ?, ?, ?, ?)
+        """, (user_id, ticker, amount, cash_available, new_cash, transaction_id))
+
+    def _update_cash_on_sell(
+        self,
+        cursor,
+        user_id: str,
+        amount: float,
+        transaction_id: int,
+        ticker: str
+    ):
+        """
+        Met à jour le cash disponible lors d'une vente (méthode interne)
+
+        Cette méthode est appelée par sell_position
+        """
+        # Récupérer le cash actuel
+        cursor.execute("""
+            SELECT cash_available FROM pea_treasury WHERE user_id = ?
+        """, (user_id,))
+
+        result = cursor.fetchone()
+
+        if not result:
+            raise ValueError(f"Aucune trésorerie PEA trouvée pour {user_id}")
+
+        cash_available = result[0]
+        new_cash = cash_available + amount
+
+        # Ajouter le cash récupéré
+        cursor.execute("""
+            UPDATE pea_treasury
+            SET cash_available = ?,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE user_id = ?
+        """, (new_cash, user_id))
+
+        # Enregistrer le cash flow event
+        cursor.execute("""
+            INSERT INTO cash_flow_events
+            (user_id, event_type, ticker, amount, cash_before, cash_after, transaction_id)
+            VALUES (?, 'SELL', ?, ?, ?, ?, ?)
+        """, (user_id, ticker, amount, cash_available, new_cash, transaction_id))
