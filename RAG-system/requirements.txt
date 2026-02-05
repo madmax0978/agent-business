@@ -42,12 +42,11 @@ pathlib
 
 # APIs Financières (Données réelles)
 yfinance>=0.2.30
-pandas>=2.0.0
+pandas>=2.1.1
 numpy>=1.24.0,<2.0.0
 
 # Analyse Technique
-#pandas-ta==0.3.14b0
-https://github.com/twopirllc/pandas-ta/archive/refs/heads/development.zip
+pandas-ta-openbb==0.4.22
 mplfinance>=0.12.10b0
 plotly>=5.18.0
 
