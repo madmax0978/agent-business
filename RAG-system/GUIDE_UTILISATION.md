@@ -640,21 +640,72 @@ curl "http://localhost:8000/portfolio/treasury/cashflow?event_type=SELL"
 - Créer un nouveau bot: `/newbot`
 - Copier le token reçu
 
-**2. Obtenir votre Chat ID:**
-- Parler à [@userinfobot](https://t.me/userinfobot)
-- Le bot vous donnera votre ID numérique
+**2. Obtenir votre User ID Telegram:**
+
+Le bot utilise une **whitelist de sécurité** pour limiter l'accès. Vous devez configurer votre User ID Telegram.
+
+**Comment obtenir votre User ID:**
+1. Sur Telegram, cherchez le bot **@userinfobot**
+2. Démarrez une conversation avec ce bot
+3. Le bot vous répondra avec vos informations, dont votre **User ID** (numérique)
+
+Exemple de réponse de @userinfobot:
+```
+Id: 123456789
+First name: John
+Username: @johndoe
+```
+
+**IMPORTANT:** Utilisez l'**ID numérique** (123456789), PAS le username (@johndoe).
 
 **3. Configurer le fichier `.env`:**
+
 ```env
+# Bot Token (obtenu depuis @BotFather)
 TELEGRAM_BOT_TOKEN=123456789:ABC...
+
+# Chat ID pour les notifications (obtenu depuis @userinfobot)
 TELEGRAM_CHAT_ID=123456789
+
+# SÉCURITÉ: Whitelist des utilisateurs autorisés (OBLIGATOIRE)
+# Utilisez votre User ID obtenu avec @userinfobot
+TELEGRAM_AUTHORIZED_USER_IDS=123456789
+
+# API
 API_BASE_URL=http://localhost:8000
 OPENAI_API_KEY=sk-...
 ```
 
+**SÉCURITÉ - Whitelist Protection:**
+
+Le bot utilise une **whitelist obligatoire** pour protéger vos données financières:
+
+- **Single utilisateur (recommandé):** `TELEGRAM_AUTHORIZED_USER_IDS=123456789`
+- **Multiple utilisateurs:** `TELEGRAM_AUTHORIZED_USER_IDS=123456789,987654321`
+
+**Comportement:**
+- Si `TELEGRAM_AUTHORIZED_USER_IDS` n'est **pas configuré**: Le bot affichera un **WARNING** et sera accessible à TOUS (mode dev uniquement)
+- Si configuré: Seuls les User IDs dans la liste peuvent utiliser le bot
+- Tentative d'accès non autorisé: Message de refus + log d'alerte
+
 **4. Lancer le bot:**
 ```bash
 python telegram_bot_main.py
+```
+
+**5. Vérifier la sécurité:**
+
+Au démarrage, vérifiez les logs:
+```
+INFO - ✅ Handler enregistré: /balance
+INFO - ✅ Handler enregistré: /portfolio
+...
+INFO - 🤖 Bot Telegram démarré !
+```
+
+Si un utilisateur non autorisé tente d'accéder:
+```
+WARNING - 🚨 Unauthorized access attempt: user_id=987654321, username=@attacker, name=Attacker, command=balance_command
 ```
 
 ### Onboarding Initial

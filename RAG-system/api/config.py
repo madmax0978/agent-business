@@ -3,6 +3,7 @@ Configuration centralisée avec Pydantic Settings pour le système RAG-PEA
 
 Ce module gère toute la configuration de l'application avec :
 - Chargement automatique des variables d'environnement
+- Support Docker Secrets pour production sécurisée
 - Validation automatique des types et valeurs
 - Valeurs par défaut intelligentes
 - Type hints complets pour l'autocomplétion IDE
@@ -14,6 +15,9 @@ from pathlib import Path
 from typing import Literal, Optional
 from pydantic import Field, field_validator, ValidationInfo
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+# Import du module de sécurité pour Docker Secrets
+from api.security import get_secret, get_public_config
 
 
 class DatabaseSettings(BaseSettings):
@@ -123,7 +127,12 @@ class YahooFinanceSettings(BaseSettings):
 
 
 class APISettings(BaseSettings):
-    """Configuration des clés API externes"""
+    """
+    Configuration des clés API externes avec support Docker Secrets
+
+    En production: Lit depuis /run/secrets/
+    En développement: Fallback sur variables d'environnement
+    """
 
     anthropic_api_key: Optional[str] = Field(
         default=None,
@@ -149,11 +158,53 @@ class APISettings(BaseSettings):
         default=None,
         description="Chat ID Telegram pour les notifications"
     )
+    jwt_secret_key: Optional[str] = Field(
+        default=None,
+        description="Clé secrète JWT pour authentification API"
+    )
+    api_password: Optional[str] = Field(
+        default=None,
+        description="Mot de passe admin API"
+    )
 
     model_config = SettingsConfigDict(
         env_prefix="",
         case_sensitive=False
     )
+
+    def __init__(self, **data):
+        """
+        Initialisation avec support Docker Secrets
+
+        Charge les secrets depuis /run/secrets/ en priorité,
+        puis fallback sur les variables d'environnement
+        """
+        # Charger les secrets de manière sécurisée
+        secret_mappings = {
+            "anthropic_api_key": "ANTHROPIC_API_KEY",
+            "openai_api_key": "OPENAI_API_KEY",
+            "news_api_key": "NEWSAPI_KEY",
+            "telegram_bot_token": "TELEGRAM_BOT_TOKEN",
+            "jwt_secret_key": "JWT_SECRET_KEY",
+            "api_password": "API_PASSWORD",
+        }
+
+        for field_name, env_var in secret_mappings.items():
+            if field_name not in data or data[field_name] is None:
+                try:
+                    secret_value = get_secret(
+                        field_name,
+                        fallback_env=env_var,
+                        required=False,
+                        validate=True
+                    )
+                    if secret_value:
+                        data[field_name] = secret_value
+                except Exception:
+                    # En cas d'erreur, on laisse la valeur par défaut (None)
+                    pass
+
+        super().__init__(**data)
 
     @field_validator("anthropic_api_key")
     @classmethod
@@ -169,6 +220,22 @@ class APISettings(BaseSettings):
         """Valide que la clé OpenAI commence par sk-"""
         if v and not v.startswith("sk-"):
             raise ValueError("La clé OpenAI doit commencer par 'sk-'")
+        return v
+
+    @field_validator("jwt_secret_key")
+    @classmethod
+    def validate_jwt_secret(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
+        """Valide que la clé JWT contient au moins 32 caractères"""
+        if v and len(v) < 32:
+            raise ValueError("JWT_SECRET_KEY doit contenir au moins 32 caractères")
+        return v
+
+    @field_validator("api_password")
+    @classmethod
+    def validate_api_password(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
+        """Valide que le mot de passe API contient au moins 8 caractères"""
+        if v and len(v) < 8:
+            raise ValueError("API_PASSWORD doit contenir au moins 8 caractères")
         return v
 
 
@@ -396,13 +463,15 @@ class Settings(BaseSettings):
 
         Utile pour le logging et le debugging
         """
+        from api.security import mask_secret
+
         config_dict = self.model_dump()
 
-        # Masquer les clés API
+        # Masquer les clés API avec masquage partiel
         if config_dict.get("api_keys"):
             for key in config_dict["api_keys"]:
                 if config_dict["api_keys"][key]:
-                    config_dict["api_keys"][key] = "***HIDDEN***"
+                    config_dict["api_keys"][key] = mask_secret(config_dict["api_keys"][key])
 
         return config_dict
 

@@ -6,6 +6,12 @@ from database.portfolio_db import PortfolioDatabase
 from services.yahoo_finance_service import YahooFinanceService
 from typing import Dict, List, Optional
 from datetime import datetime
+import sys
+import os
+
+# Import des validateurs
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from validators import validate_financial_amount, ValidationError
 
 
 class PortfolioManager:
@@ -511,7 +517,7 @@ PORTEFEUILLE PEA DE L'UTILISATEUR:
         actual_price: Optional[float] = None
     ) -> Dict:
         """
-        Accepte une opportunité d'investissement et exécute la transaction
+        Accepte une opportunité d'investissement et exécute la transaction avec validation Decimal
 
         Args:
             opportunity_id: ID de l'opportunité
@@ -521,6 +527,9 @@ PORTEFEUILLE PEA DE L'UTILISATEUR:
 
         Returns:
             Dict avec le résultat de la transaction
+
+        Raises:
+            ValidationError: Si les montants sont invalides
         """
         try:
             import sqlite3
@@ -568,6 +577,20 @@ PORTEFEUILLE PEA DE L'UTILISATEUR:
                         "error": "Impossible de récupérer le prix actuel du marché"
                     }
 
+            # VALIDATION DECIMAL du prix
+            try:
+                validate_financial_amount(
+                    actual_price,
+                    min_value=0.01,
+                    max_value=10_000.0,
+                    field_name="Prix d'achat"
+                )
+            except ValidationError as ve:
+                return {
+                    "success": False,
+                    "error": str(ve)
+                }
+
             if actual_quantity is None:
                 # Utiliser la quantité suggérée ou calculer à partir du montant
                 actual_quantity = opportunity['suggested_quantity']
@@ -578,6 +601,21 @@ PORTEFEUILLE PEA DE L'UTILISATEUR:
                 return {
                     "success": False,
                     "error": "Quantité invalide"
+                }
+
+            # VALIDATION DECIMAL du montant total
+            total_amount = actual_quantity * actual_price
+            try:
+                validate_financial_amount(
+                    total_amount,
+                    min_value=0.01,
+                    max_value=150_000.0,  # Plafond PEA
+                    field_name="Montant total de l'achat"
+                )
+            except ValidationError as ve:
+                return {
+                    "success": False,
+                    "error": str(ve)
                 }
 
             # Exécuter la transaction

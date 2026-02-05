@@ -7,6 +7,18 @@ from datetime import datetime
 from typing import List, Dict, Optional
 import json
 from pathlib import Path
+from decimal import Decimal
+import sys
+import os
+
+# Import des validateurs
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from validators import (
+    validate_financial_amount,
+    validate_stock_quantity,
+    validate_stock_price,
+    ValidationError
+)
 
 
 class PortfolioDatabase:
@@ -164,13 +176,21 @@ class PortfolioDatabase:
         """
         Ajoute une position au portefeuille
 
-        NOUVEAU: Déduit automatiquement le montant du cash disponible
+        NOUVEAU: Déduit automatiquement le montant du cash disponible avec validation Decimal stricte
         """
         try:
+            # VALIDATION DECIMAL STRICTE
+            dec_quantity = validate_stock_quantity(quantity, field_name="Quantité")
+            dec_price = validate_stock_price(price, field_name="Prix d'achat")
+            dec_total_amount = dec_quantity * dec_price
+
+            # Convertir en float pour SQLite (mais calculs déjà validés)
+            quantity = float(dec_quantity)
+            price = float(dec_price)
+            total_amount = float(dec_total_amount)
+
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
-
-            total_amount = quantity * price
 
             if purchase_date is None:
                 purchase_date = datetime.now().strftime("%Y-%m-%d")
@@ -252,13 +272,21 @@ class PortfolioDatabase:
         """
         Vend (partiellement ou totalement) une position
 
-        NOUVEAU: Ajoute automatiquement le montant au cash disponible
+        NOUVEAU: Ajoute automatiquement le montant au cash disponible avec validation Decimal stricte
         """
         try:
+            # VALIDATION DECIMAL STRICTE
+            dec_quantity = validate_stock_quantity(quantity, field_name="Quantité à vendre")
+            dec_price = validate_stock_price(price, field_name="Prix de vente")
+            dec_total_amount = dec_quantity * dec_price
+
+            # Convertir en float pour SQLite (mais calculs déjà validés)
+            quantity = float(dec_quantity)
+            price = float(dec_price)
+            total_amount = float(dec_total_amount)
+
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
-
-            total_amount = quantity * price
 
             # Récupérer la position actuelle
             cursor.execute("""
@@ -548,7 +576,7 @@ class PortfolioDatabase:
         notes: Optional[str] = None
     ) -> bool:
         """
-        Dépose de l'argent sur le PEA
+        Dépose de l'argent sur le PEA avec validation Decimal stricte et UPDATE atomique
 
         Args:
             amount: Montant à déposer (euros)
@@ -558,8 +586,20 @@ class PortfolioDatabase:
 
         Returns:
             True si succès, False sinon
+
+        Raises:
+            ValidationError: Si le montant est invalide
         """
         try:
+            # VALIDATION DECIMAL STRICTE
+            dec_amount = validate_financial_amount(
+                amount,
+                min_value=0.01,
+                max_value=150_000.0,  # Plafond PEA
+                field_name="Montant du dépôt"
+            )
+            amount = float(dec_amount)
+
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
 
@@ -571,23 +611,23 @@ class PortfolioDatabase:
             result = cursor.fetchone()
 
             if result:
-                # Mise à jour
-                current_cash, current_deposits = result
-                new_cash = current_cash + amount
-                new_deposits = current_deposits + amount
+                # ATOMIC UPDATE (pas de race condition)
+                cash_before = result[0]
 
                 cursor.execute("""
                     UPDATE pea_treasury
-                    SET cash_available = ?,
-                        total_deposits = ?,
+                    SET cash_available = cash_available + ?,
+                        total_deposits = total_deposits + ?,
                         last_deposit_date = DATE('now'),
                         updated_at = CURRENT_TIMESTAMP
                     WHERE user_id = ?
-                """, (new_cash, new_deposits, user_id))
+                """, (amount, amount, user_id))
 
-                cash_before = current_cash
+                # Vérifier que l'UPDATE a réussi
+                if cursor.rowcount == 0:
+                    raise ValueError("Échec de la mise à jour atomique du dépôt")
             else:
-                # Création initiale
+                # Création initiale (pas de race condition car INSERT unique par user_id)
                 cursor.execute("""
                     INSERT INTO pea_treasury
                     (user_id, cash_available, total_deposits, pea_opening_date, last_deposit_date)
@@ -747,11 +787,17 @@ class PortfolioDatabase:
         ticker: str
     ):
         """
-        Met à jour le cash disponible lors d'un achat (méthode interne)
+        Met à jour le cash disponible lors d'un achat avec ATOMIC UPDATE (thread-safe)
 
         Cette méthode est appelée par add_position
+
+        IMPORTANT: Utilise un UPDATE atomique pour éviter les race conditions
+        entre les 3 containers (api, bot, scheduler) qui accèdent à SQLite.
+
+        Raises:
+            ValueError: Si trésorerie inexistante ou solde insuffisant
         """
-        # Récupérer le cash actuel
+        # Récupérer le cash actuel AVANT l'update (pour cash_flow_events)
         cursor.execute("""
             SELECT cash_available FROM pea_treasury WHERE user_id = ?
         """, (user_id,))
@@ -759,31 +805,46 @@ class PortfolioDatabase:
         result = cursor.fetchone()
 
         if not result:
-            raise ValueError(f"Aucune trésorerie PEA trouvée pour {user_id}. Effectuez un dépôt d'abord avec /portfolio/deposit")
-
-        cash_available = result[0]
-
-        if cash_available < amount:
             raise ValueError(
-                f"Cash insuffisant. Disponible: {cash_available:.2f}€, Requis: {amount:.2f}€"
+                f"Aucune trésorerie PEA trouvée pour {user_id}. "
+                f"Effectuez un dépôt d'abord avec /portfolio/deposit"
             )
 
-        # Déduire le cash
-        new_cash = cash_available - amount
+        cash_before = result[0]
 
+        # ATOMIC UPDATE avec vérification du solde dans la clause WHERE
+        # Si available_cash < amount, la WHERE clause échouera et rowcount = 0
         cursor.execute("""
             UPDATE pea_treasury
-            SET cash_available = ?,
+            SET cash_available = cash_available - ?,
                 updated_at = CURRENT_TIMESTAMP
             WHERE user_id = ?
-        """, (new_cash, user_id))
+              AND cash_available >= ?
+        """, (amount, user_id, amount))
+
+        # Vérifier que l'UPDATE a réussi (rowcount = 1)
+        if cursor.rowcount == 0:
+            # Re-vérifier le cash disponible pour un message d'erreur précis
+            cursor.execute("""
+                SELECT cash_available FROM pea_treasury WHERE user_id = ?
+            """, (user_id,))
+            current_cash = cursor.fetchone()
+            if current_cash:
+                raise ValueError(
+                    f"Cash insuffisant. Disponible: {current_cash[0]:.2f}€, Requis: {amount:.2f}€"
+                )
+            else:
+                raise ValueError(f"Trésorerie introuvable pour {user_id}")
+
+        # Calculer le nouveau solde pour cash_flow_events
+        new_cash = cash_before - amount
 
         # Enregistrer le cash flow event
         cursor.execute("""
             INSERT INTO cash_flow_events
             (user_id, event_type, ticker, amount, cash_before, cash_after, transaction_id)
             VALUES (?, 'BUY', ?, ?, ?, ?, ?)
-        """, (user_id, ticker, amount, cash_available, new_cash, transaction_id))
+        """, (user_id, ticker, amount, cash_before, new_cash, transaction_id))
 
     def _update_cash_on_sell(
         self,
@@ -794,11 +855,17 @@ class PortfolioDatabase:
         ticker: str
     ):
         """
-        Met à jour le cash disponible lors d'une vente (méthode interne)
+        Met à jour le cash disponible lors d'une vente avec ATOMIC UPDATE (thread-safe)
 
         Cette méthode est appelée par sell_position
+
+        IMPORTANT: Utilise un UPDATE atomique pour éviter les race conditions
+        entre les 3 containers (api, bot, scheduler) qui accèdent à SQLite.
+
+        Raises:
+            ValueError: Si trésorerie inexistante
         """
-        # Récupérer le cash actuel
+        # Récupérer le cash actuel AVANT l'update (pour cash_flow_events)
         cursor.execute("""
             SELECT cash_available FROM pea_treasury WHERE user_id = ?
         """, (user_id,))
@@ -808,20 +875,26 @@ class PortfolioDatabase:
         if not result:
             raise ValueError(f"Aucune trésorerie PEA trouvée pour {user_id}")
 
-        cash_available = result[0]
-        new_cash = cash_available + amount
+        cash_before = result[0]
 
-        # Ajouter le cash récupéré
+        # ATOMIC UPDATE pour ajouter le cash récupéré
         cursor.execute("""
             UPDATE pea_treasury
-            SET cash_available = ?,
+            SET cash_available = cash_available + ?,
                 updated_at = CURRENT_TIMESTAMP
             WHERE user_id = ?
-        """, (new_cash, user_id))
+        """, (amount, user_id))
+
+        # Vérifier que l'UPDATE a réussi
+        if cursor.rowcount == 0:
+            raise ValueError(f"Échec de la mise à jour atomique pour {user_id}")
+
+        # Calculer le nouveau solde pour cash_flow_events
+        new_cash = cash_before + amount
 
         # Enregistrer le cash flow event
         cursor.execute("""
             INSERT INTO cash_flow_events
             (user_id, event_type, ticker, amount, cash_before, cash_after, transaction_id)
             VALUES (?, 'SELL', ?, ?, ?, ?, ?)
-        """, (user_id, ticker, amount, cash_available, new_cash, transaction_id))
+        """, (user_id, ticker, amount, cash_before, new_cash, transaction_id))

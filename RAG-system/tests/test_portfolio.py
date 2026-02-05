@@ -21,7 +21,7 @@ class TestPortfolioManagement:
         # Cleanup après chaque test si nécessaire
         # Note: Pour nettoyer complètement, supprimer data/portfolio.db avant les tests
 
-    def test_add_position(self, api_base_url, check_api_running):
+    def test_add_position(self, api_base_url, check_api_running, auth_headers):
         """
         Test l'ajout d'une position au portefeuille.
 
@@ -38,7 +38,7 @@ class TestPortfolioManagement:
             "user_id": self.test_user_id
         }
 
-        response = requests.post(f"{api_base_url}/portfolio/add", json=position_data)
+        response = requests.post(f"{api_base_url}/portfolio/add", json=position_data, headers=auth_headers)
         assert response.status_code == 200, "L'ajout de position doit réussir"
 
         data = response.json()
@@ -49,7 +49,7 @@ class TestPortfolioManagement:
         print(f"  {position_data['company_name']}: {position_data['quantity']} actions @ {position_data['price']}€")
         print(f"  Investissement: {position_data['quantity'] * position_data['price']}€")
 
-    def test_add_multiple_positions(self, api_base_url, check_api_running):
+    def test_add_multiple_positions(self, api_base_url, check_api_running, auth_headers):
         """
         Test l'ajout de plusieurs positions.
 
@@ -64,11 +64,11 @@ class TestPortfolioManagement:
 
         for pos in positions:
             pos["user_id"] = self.test_user_id
-            response = requests.post(f"{api_base_url}/portfolio/add", json=pos)
+            response = requests.post(f"{api_base_url}/portfolio/add", json=pos, headers=auth_headers)
             assert response.status_code == 200, f"Ajout de {pos['company_name']} doit réussir"
 
         # Vérifier le portefeuille
-        response = requests.get(f"{api_base_url}/portfolio", params={"user_id": self.test_user_id})
+        response = requests.get(f"{api_base_url}/portfolio", params={"user_id": self.test_user_id}, headers=auth_headers)
         assert response.status_code == 200
 
         portfolio = response.json()
@@ -79,7 +79,7 @@ class TestPortfolioManagement:
         print(f"  Valeur totale: {portfolio['total_value']:,.2f}€")
         print(f"  Montant investi: {portfolio['total_invested']:,.2f}€")
 
-    def test_pru_calculation(self, api_base_url, check_api_running):
+    def test_pru_calculation(self, api_base_url, check_api_running, auth_headers):
         """
         Test le calcul du Prix de Revient Unitaire (PRU).
 
@@ -108,7 +108,7 @@ class TestPortfolioManagement:
         assert response.status_code == 200
 
         # Vérifier le PRU
-        response = requests.get(f"{api_base_url}/portfolio", params={"user_id": self.test_user_id})
+        response = requests.get(f"{api_base_url}/portfolio", params={"user_id": self.test_user_id}, headers=auth_headers)
         portfolio = response.json()
 
         lvmh_position = next((p for p in portfolio["positions"] if p["ticker"] == "MC.PA"), None)
@@ -126,7 +126,7 @@ class TestPortfolioManagement:
         print(f"  PRU calculé: {actual_pru:.2f}€ (attendu: {expected_pru:.2f}€) ✓")
         print(f"  Quantité totale: {lvmh_position['quantity']}")
 
-    def test_sell_position(self, api_base_url, check_api_running):
+    def test_sell_position(self, api_base_url, check_api_running, auth_headers):
         """
         Test la vente d'une position (partielle ou totale).
 
@@ -158,7 +158,7 @@ class TestPortfolioManagement:
         assert "message" in data
 
         # Vérifier la position restante
-        response = requests.get(f"{api_base_url}/portfolio", params={"user_id": self.test_user_id})
+        response = requests.get(f"{api_base_url}/portfolio", params={"user_id": self.test_user_id}, headers=auth_headers)
         portfolio = response.json()
 
         lvmh_position = next((p for p in portfolio["positions"] if p["ticker"] == "MC.PA"), None)
@@ -171,7 +171,7 @@ class TestPortfolioManagement:
         print(f"  Quantité restante: {lvmh_position['quantity']}")
         print(f"  Plus-value réalisée: {10 * (750 - 700)}€")
 
-    def test_portfolio_summary(self, api_base_url, check_api_running):
+    def test_portfolio_summary(self, api_base_url, check_api_running, auth_headers):
         """
         Test le récapitulatif du portefeuille.
 
@@ -190,10 +190,10 @@ class TestPortfolioManagement:
 
         for pos in positions:
             pos["user_id"] = self.test_user_id
-            requests.post(f"{api_base_url}/portfolio/add", json=pos)
+            requests.post(f"{api_base_url}/portfolio/add", json=pos, headers=auth_headers)
 
         # Récupérer le résumé
-        response = requests.get(f"{api_base_url}/portfolio", params={"user_id": self.test_user_id})
+        response = requests.get(f"{api_base_url}/portfolio", params={"user_id": self.test_user_id}, headers=auth_headers)
         assert response.status_code == 200
 
         summary = response.json()
@@ -212,7 +212,7 @@ class TestPortfolioManagement:
         print(f"  Investi: {summary['total_invested']:,.2f}€")
         print(f"  +/- value: {summary['total_gain_loss']:+,.2f}€ ({summary['total_gain_loss_percent']:+.2f}%)")
 
-    def test_portfolio_health_score(self, api_base_url, check_api_running):
+    def test_portfolio_health_score(self, api_base_url, check_api_running, auth_headers):
         """
         Test le calcul du score de santé du portefeuille.
 
@@ -233,10 +233,10 @@ class TestPortfolioManagement:
 
         for pos in positions:
             pos["user_id"] = self.test_user_id
-            requests.post(f"{api_base_url}/portfolio/add", json=pos)
+            requests.post(f"{api_base_url}/portfolio/add", json=pos, headers=auth_headers)
 
         # Récupérer le score de santé
-        response = requests.get(f"{api_base_url}/portfolio/health", params={"user_id": self.test_user_id})
+        response = requests.get(f"{api_base_url}/portfolio/health", params={"user_id": self.test_user_id}, headers=auth_headers)
         assert response.status_code == 200
 
         health = response.json()
@@ -254,7 +254,7 @@ class TestPortfolioManagement:
             for issue in health["issues"][:3]:
                 print(f"    - {issue}")
 
-    def test_rebalance_recommendations(self, api_base_url, check_api_running):
+    def test_rebalance_recommendations(self, api_base_url, check_api_running, auth_headers):
         """
         Test les recommandations de rééquilibrage.
 
@@ -281,7 +281,7 @@ class TestPortfolioManagement:
         })
 
         # Vérifier les recommandations
-        response = requests.get(f"{api_base_url}/portfolio/rebalance", params={"user_id": self.test_user_id})
+        response = requests.get(f"{api_base_url}/portfolio/rebalance", params={"user_id": self.test_user_id}, headers=auth_headers)
         assert response.status_code == 200
 
         rebalance = response.json()
@@ -298,7 +298,7 @@ class TestPortfolioManagement:
                 company = rec.get("company", rec.get("reason", "N/A"))
                 print(f"    - {action}: {company}")
 
-    def test_position_details(self, api_base_url, check_api_running):
+    def test_position_details(self, api_base_url, check_api_running, auth_headers):
         """
         Test la récupération des détails d'une position.
 
@@ -319,9 +319,8 @@ class TestPortfolioManagement:
 
         # Récupérer les détails
         response = requests.get(
-            f"{api_base_url}/portfolio/position/MC.PA",
-            params={"user_id": self.test_user_id}
-        )
+            f"{api_base_url}/portfolio/position/MC.PA", params={"user_id": self.test_user_id}
+        , headers=auth_headers)
         assert response.status_code == 200
 
         details = response.json()
@@ -338,7 +337,7 @@ class TestPortfolioManagement:
             if "transactions" in details:
                 print(f"  Historique transactions: {len(details['transactions'])}")
 
-    def test_portfolio_context_for_ai(self, api_base_url, check_api_running):
+    def test_portfolio_context_for_ai(self, api_base_url, check_api_running, auth_headers):
         """
         Test la génération du contexte portefeuille pour l'IA.
 
@@ -353,10 +352,10 @@ class TestPortfolioManagement:
 
         for pos in positions:
             pos["user_id"] = self.test_user_id
-            requests.post(f"{api_base_url}/portfolio/add", json=pos)
+            requests.post(f"{api_base_url}/portfolio/add", json=pos, headers=auth_headers)
 
         # Récupérer le contexte
-        response = requests.get(f"{api_base_url}/portfolio/context", params={"user_id": self.test_user_id})
+        response = requests.get(f"{api_base_url}/portfolio/context", params={"user_id": self.test_user_id}, headers=auth_headers)
         assert response.status_code == 200
 
         data = response.json()
@@ -371,7 +370,7 @@ class TestPortfolioManagement:
         print(f"  Longueur: {len(context)} caractères")
         print(f"  Extrait: {context[:200]}...")
 
-    def test_error_handling_portfolio(self, api_base_url, check_api_running):
+    def test_error_handling_portfolio(self, api_base_url, check_api_running, auth_headers):
         """
         Test la gestion d'erreurs pour le portefeuille.
 

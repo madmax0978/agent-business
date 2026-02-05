@@ -66,3 +66,7 @@ python-telegram-bot>=20.7
 
 # Configuration
 python-dotenv>=1.0.0
+
+# JWT Authentication
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4

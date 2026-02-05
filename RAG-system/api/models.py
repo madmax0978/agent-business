@@ -128,3 +128,27 @@ class PositionSellRequest(BaseModel):
     quantity: float = Field(..., description="Nombre d'actions à vendre", gt=0)
     price: float = Field(..., description="Prix de vente unitaire", gt=0)
     user_id: str = Field("default_user", description="ID de l'utilisateur")
+
+
+# ==========================================
+# AUTH MODELS
+# ==========================================
+
+class LoginRequest(BaseModel):
+    """Requête de login"""
+    username: str = Field(..., description="Nom d'utilisateur")
+    password: str = Field(..., description="Mot de passe")
+
+
+class TokenResponse(BaseModel):
+    """Réponse contenant le token JWT"""
+    access_token: str = Field(..., description="Token JWT")
+    token_type: str = Field("bearer", description="Type de token")
+    expires_in_days: int = Field(30, description="Durée de validité en jours")
+
+
+class TokenVerifyResponse(BaseModel):
+    """Réponse de vérification de token"""
+    valid: bool = Field(..., description="Token valide ou non")
+    username: Optional[str] = Field(None, description="Nom d'utilisateur si token valide")
+    expires_at: Optional[str] = Field(None, description="Date d'expiration du token")

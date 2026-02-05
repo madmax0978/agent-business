@@ -32,6 +32,57 @@ def check_api_running(api_base_url):
 
 
 @pytest.fixture(scope="session")
+def auth_token(api_base_url):
+    """
+    Obtient un token JWT pour authentifier les requêtes de test.
+
+    Utilise les credentials par défaut (admin/changeme) depuis .env
+    Le token est valide 30 jours pour les tests.
+    """
+    import os
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
+    # Credentials depuis .env
+    username = os.getenv("API_USERNAME", "admin")
+    password = os.getenv("API_PASSWORD", "changeme")
+
+    try:
+        response = requests.post(
+            f"{api_base_url}/auth/login",
+            json={"username": username, "password": password},
+            timeout=5
+        )
+
+        if response.status_code == 200:
+            token = response.json()["access_token"]
+            return token
+        else:
+            pytest.skip(f"Authentification échouée: {response.status_code} - {response.text}")
+
+    except requests.exceptions.RequestException as e:
+        pytest.skip(f"Impossible de s'authentifier: {e}")
+
+
+@pytest.fixture(scope="session")
+def auth_headers(auth_token):
+    """
+    Headers d'authentification JWT pour les requêtes de test.
+
+    Utilise le token obtenu via auth_token().
+    À inclure dans toutes les requêtes protégées.
+
+    Usage:
+        requests.get(f"{api_base_url}/portfolio", headers=auth_headers)
+    """
+    return {
+        "Authorization": f"Bearer {auth_token}",
+        "Content-Type": "application/json"
+    }
+
+
+@pytest.fixture(scope="session")
 def test_tickers():
     """Liste de tickers pour tests réels"""
     return {

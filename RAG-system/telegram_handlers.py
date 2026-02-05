@@ -5,6 +5,8 @@ Contient tous les handlers pour interagir avec l'API du portfolio
 
 import requests
 import os
+import logging
+from functools import wraps
 from typing import Optional, Dict, List
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ContextTypes
@@ -13,8 +15,91 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Configuration logging
+logger = logging.getLogger(__name__)
+
 # Configuration API
 API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
+
+
+# ==========================================
+# SÉCURITÉ - Whitelist Protection
+# ==========================================
+
+def get_authorized_user_ids() -> set:
+    """
+    Récupère la liste des IDs Telegram autorisés depuis l'environnement.
+
+    Returns:
+        set: Ensemble des IDs autorisés (vide si non configuré)
+    """
+    ids_str = os.getenv("TELEGRAM_AUTHORIZED_USER_IDS", "")
+    if not ids_str:
+        logger.warning("⚠️ TELEGRAM_AUTHORIZED_USER_IDS not set - bot accessible to all!")
+        return set()
+
+    try:
+        return {int(uid.strip()) for uid in ids_str.split(",") if uid.strip()}
+    except ValueError as e:
+        logger.error(f"Invalid TELEGRAM_AUTHORIZED_USER_IDS format: {e}")
+        return set()
+
+
+def authorized_only(func):
+    """
+    Decorator qui vérifie que l'utilisateur est autorisé à utiliser le bot.
+
+    Usage:
+        @authorized_only
+        async def my_command(update, context):
+            # commande protégée
+
+    Behavior:
+        - Si TELEGRAM_AUTHORIZED_USER_IDS non configuré: WARNING mais autorise (dev mode)
+        - Si utilisateur non autorisé: Refuse avec message + log WARNING
+        - Si utilisateur autorisé: Exécute la commande normalement
+    """
+    @wraps(func)
+    async def wrapper(update, context, *args, **kwargs):
+        user = update.effective_user
+        user_id = user.id
+        username = user.username or "unknown"
+        first_name = user.first_name or ""
+
+        authorized_ids = get_authorized_user_ids()
+
+        # Si aucun ID configuré, logger warning mais laisser passer (dev mode)
+        if not authorized_ids:
+            logger.warning(
+                f"⚠️ No whitelist configured - allowing user {user_id} (@{username})"
+            )
+            return await func(update, context, *args, **kwargs)
+
+        # Vérifier l'autorisation
+        if user_id not in authorized_ids:
+            logger.warning(
+                f"🚨 Unauthorized access attempt: "
+                f"user_id={user_id}, username=@{username}, name={first_name}, "
+                f"command={func.__name__}"
+            )
+
+            await update.message.reply_text(
+                "⛔ *Accès refusé*\n\n"
+                "Ce bot est privé et réservé à son propriétaire.\n"
+                "Si vous pensez qu'il s'agit d'une erreur, contactez l'administrateur.\n\n"
+                f"_Votre ID Telegram: `{user_id}`_",
+                parse_mode='Markdown'
+            )
+            return
+
+        # Utilisateur autorisé, exécuter la commande
+        logger.info(
+            f"✅ Authorized access: user_id={user_id}, username=@{username}, "
+            f"command={func.__name__}"
+        )
+        return await func(update, context, *args, **kwargs)
+
+    return wrapper
 
 
 # ==========================================
@@ -50,6 +135,7 @@ def get_user_id(update: Update) -> str:
 # TRÉSORERIE PEA
 # ==========================================
 
+@authorized_only
 async def balance_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /balance - Affiche la trésorerie PEA"""
     user_id = get_user_id(update)
@@ -110,6 +196,7 @@ async def balance_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def deposit_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /deposit <amount> - Dépose de l'argent sur le PEA"""
     user_id = get_user_id(update)
@@ -169,6 +256,7 @@ async def deposit_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def history_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /history - Historique des dépôts"""
     user_id = get_user_id(update)
@@ -220,6 +308,7 @@ async def history_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def cashflow_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /cashflow - Flux de trésorerie (dépôts, achats, ventes)"""
     user_id = get_user_id(update)
@@ -290,6 +379,7 @@ async def cashflow_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # PORTFOLIO
 # ==========================================
 
+@authorized_only
 async def portfolio_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /portfolio - Vue complète du portfolio"""
     user_id = get_user_id(update)
@@ -372,6 +462,7 @@ async def portfolio_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def positions_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /positions - Liste simplifiée des positions"""
     user_id = get_user_id(update)
@@ -408,6 +499,7 @@ async def positions_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def health_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /health - Analyse la santé du portfolio"""
     user_id = get_user_id(update)
@@ -471,6 +563,7 @@ async def health_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def rebalance_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /rebalance - Vérifie si rééquilibrage nécessaire"""
     user_id = get_user_id(update)
@@ -541,6 +634,7 @@ Continuez le suivi régulier !
 # OPPORTUNITÉS
 # ==========================================
 
+@authorized_only
 async def opportunities_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /opportunities - Analyse les opportunités d'investissement"""
     user_id = get_user_id(update)
@@ -609,6 +703,7 @@ Cash disponible: {format_currency(data['cash_available'])}
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def pending_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /pending - Opportunités en attente de décision"""
     user_id = get_user_id(update)
@@ -666,6 +761,7 @@ async def pending_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def accept_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /accept <id> - Accepte une opportunité"""
     user_id = get_user_id(update)
@@ -717,6 +813,7 @@ async def accept_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def reject_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /reject <id> [raison] - Rejette une opportunité"""
     user_id = get_user_id(update)
@@ -768,6 +865,7 @@ async def reject_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # TRANSACTIONS
 # ==========================================
 
+@authorized_only
 async def buy_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /buy <ticker> <qty> <price> - Achète des actions"""
     user_id = get_user_id(update)
@@ -831,6 +929,7 @@ async def buy_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def sell_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /sell <ticker> <qty> <price> - Vend des actions"""
     user_id = get_user_id(update)
@@ -895,6 +994,7 @@ async def sell_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ANALYSES
 # ==========================================
 
+@authorized_only
 async def analyze_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /analyze <ticker> - Analyse complète avec l'IA"""
     if not context.args or len(context.args) < 1:
@@ -1000,6 +1100,7 @@ async def analyze_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def news_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /news <company> - Actualités récentes"""
     if not context.args or len(context.args) < 1:
@@ -1055,6 +1156,7 @@ async def news_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def technical_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /technical <ticker> - Analyse technique"""
     if not context.args or len(context.args) < 1:
@@ -1131,6 +1233,7 @@ Période: {period}
 # MARKET DATA
 # ==========================================
 
+@authorized_only
 async def stock_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /stock <ticker> - Informations de marché"""
     if not context.args or len(context.args) < 1:
@@ -1183,6 +1286,7 @@ async def stock_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ Erreur: {str(e)}")
 
 
+@authorized_only
 async def history_stock_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /history <ticker> - Historique des cours"""
     if not context.args or len(context.args) < 1:

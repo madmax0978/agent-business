@@ -31,6 +31,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Importer le decorator de sécurité
+from telegram_handlers import authorized_only
+
 # États de conversation pour onboarding
 (ASKING_INITIAL_CASH, ASKING_HAS_POSITIONS,
  ASKING_POSITION_TICKER, ASKING_POSITION_QUANTITY,
@@ -45,6 +48,7 @@ API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
 # ONBOARDING - Première utilisation
 # ==========================================
 
+@authorized_only
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /start - Lance l'onboarding"""
     user = update.effective_user
@@ -352,6 +356,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # COMMANDES PRINCIPALES
 # ==========================================
 
+@authorized_only
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /help - Affiche l'aide"""
     help_text = """
@@ -399,6 +404,7 @@ _Tapez /usecases pour des exemples détaillés_
     await update.message.reply_text(help_text, parse_mode='Markdown')
 
 
+@authorized_only
 async def usecases_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Commande /usecases - Explique tous les cas d'usage"""
     usecases_text = """
