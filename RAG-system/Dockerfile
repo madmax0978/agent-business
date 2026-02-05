@@ -1,5 +1,5 @@
 # Dockerfile pour Agent PEA
-FROM python:3.11-slim
+FROM python:3.10
 
 # Variables d'environnement
 ENV PYTHONUNBUFFERED=1 \
