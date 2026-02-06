@@ -7,7 +7,11 @@ docling-core>=2.0.0
 # Transformers et tokenization
 transformers>=4.30.0
 sentence-transformers>=2.2.0
-torch>=2.0.0
+# PyTorch CPU-only (léger pour VPS sans GPU)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.0.0+cpu
+torchvision>=0.15.0+cpu
+torchaudio>=2.0.0+cpu
 
 # Interface utilisateur
 rich>=13.0.0
@@ -74,9 +78,9 @@ passlib[bcrypt]>=1.7.4
 # MACHINE LEARNING - PHASE 3
 # ==========================================
 
-# Deep Learning Framework
-tensorflow>=2.13.0
-keras>=2.13.0
+# Deep Learning Framework (CPU-only pour VPS sans GPU)
+tensorflow-cpu>=2.13.0
+# keras est inclus dans tensorflow>=2.13
 
 # Prophet pour séries temporelles
 prophet>=1.1.5
