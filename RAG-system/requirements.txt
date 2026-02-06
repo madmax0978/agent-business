@@ -80,7 +80,8 @@ passlib[bcrypt]>=1.7.4
 
 # Deep Learning Framework (CPU-only pour VPS sans GPU)
 tensorflow-cpu>=2.13.0
-# keras est inclus dans tensorflow>=2.13
+# tf-keras pour compatibilité avec transformers (Keras 2 backward-compatible)
+tf-keras>=2.13.0
 
 # Prophet pour séries temporelles
 prophet>=1.1.5
