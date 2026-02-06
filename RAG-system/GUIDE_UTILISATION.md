@@ -2,6 +2,8 @@
 
 Guide complet pour utiliser toutes les fonctionnalités du système.
 
+**Version 3.0** - Avec Machine Learning et Backtesting
+
 ---
 
 ## Table des Matières
@@ -10,9 +12,11 @@ Guide complet pour utiliser toutes les fonctionnalités du système.
 2. [Portfolio Management](#2-portfolio-management)
 3. [Analyse de Marché](#3-analyse-de-marché)
 4. [Agents IA Multi-Agents](#4-agents-ia-multi-agents)
-5. [API Reference Rapide](#5-api-reference-rapide)
-6. [Exemples Pratiques](#6-exemples-pratiques)
-7. [Roadmap](#7-roadmap)
+5. **[🆕 Machine Learning - Prédictions](#5-machine-learning---prédictions)** ⭐
+6. **[🆕 Backtesting - Test Stratégies](#6-backtesting---test-stratégies)** ⭐
+7. **[🆕 Intelligence - Analyse Complète](#7-intelligence---analyse-complète)** 🔥
+8. [API Reference Rapide](#8-api-reference-rapide)
+9. [Exemples Pratiques](#9-exemples-pratiques)
 
 ---
 
@@ -345,7 +349,307 @@ curl -X POST http://localhost:8000/analyze/financial-report \
 
 ---
 
-## 5. API Reference Rapide
+## 5. Machine Learning - Prédictions
+
+### Introduction
+
+Le module ML permet de prédire les prix futurs d'actions en utilisant des modèles LSTM (deep learning) et Prophet (séries temporelles de Facebook).
+
+**Cas d'usage:**
+- Anticiper les mouvements de prix à 30 jours
+- Identifier les tendances (BULLISH/BEARISH/NEUTRAL)
+- Obtenir des recommandations BUY/HOLD/SELL basées sur ML
+- Évaluer la qualité des prédictions (MAE, RMSE, Direction Accuracy)
+
+### Entraîner un Modèle
+
+```bash
+# Entraîner un modèle ensemble (LSTM + Prophet)
+curl -X POST "http://localhost:8000/ml/train/MC.PA" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ticker": "MC.PA",
+    "model_type": "ensemble",
+    "period": "2y",
+    "epochs": 100,
+    "save_model": true
+  }'
+```
+
+**Réponse:**
+```json
+{
+  "success": true,
+  "ticker": "MC.PA",
+  "model_type": "ensemble",
+  "trained_at": "2026-02-06T10:30:00Z",
+  "training_metrics": {
+    "mae": 12.5,
+    "rmse": 18.3,
+    "mape": 2.1,
+    "direction_accuracy": 0.68
+  }
+}
+```
+
+⏱ **Durée**: 2-5 minutes
+
+### Prédire les Prix
+
+```bash
+# Prédire 30 jours
+curl -X GET "http://localhost:8000/ml/predict/MC.PA?horizon=30" \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+**Réponse:**
+```json
+{
+  "ticker": "MC.PA",
+  "current_price": 730.0,
+  "predictions": [
+    {
+      "date": "2026-02-07",
+      "price": 735.0,
+      "confidence_low": 720.0,
+      "confidence_high": 750.0
+    }
+  ],
+  "expected_return_30d": 3.2,
+  "trend": "BULLISH",
+  "recommendation": "BUY",
+  "confidence_avg": 0.75
+}
+```
+
+### Types de Modèles
+
+- **lstm**: LSTM deep learning (TensorFlow/Keras)
+- **prophet**: Facebook Prophet (séries temporelles)
+- **ensemble**: Combinaison LSTM + Prophet (recommandé)
+
+### Métriques de Qualité
+
+- **MAE** (Mean Absolute Error): Erreur moyenne en € (plus bas = meilleur)
+- **RMSE**: Erreur quadratique moyenne
+- **MAPE**: Erreur en pourcentage
+- **Direction Accuracy**: % de prédictions correctes de la direction (haut/bas)
+
+---
+
+## 6. Backtesting - Test Stratégies
+
+### Introduction
+
+Le backtesting permet de tester des stratégies de trading sur des données historiques pour évaluer leur performance.
+
+**Cas d'usage:**
+- Tester une stratégie avant de l'utiliser en réel
+- Comparer plusieurs stratégies
+- Optimiser les paramètres d'une stratégie
+- Évaluer les risques (drawdown, volatilité)
+
+### Stratégies Disponibles
+
+1. **ma_crossover**: Croisement de moyennes mobiles
+2. **rsi_strategy**: RSI (survente/surachat)
+3. **macd**: MACD (momentum)
+4. **bollinger**: Bandes de Bollinger
+5. **momentum**: Stratégie momentum
+6. **buy_and_hold**: Référence passive
+
+### Lancer un Backtest
+
+```bash
+curl -X POST "http://localhost:8000/backtesting/run" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ticker": "MC.PA",
+    "strategy": "ma_crossover",
+    "params": {
+      "fast_period": 20,
+      "slow_period": 50
+    },
+    "start_date": "2021-01-01",
+    "end_date": "2026-01-01",
+    "initial_capital": 10000.0,
+    "commission": 0.001,
+    "slippage": 0.0005
+  }'
+```
+
+**Réponse:**
+```json
+{
+  "backtest_id": "a7f3c2d9e1b4",
+  "strategy": "Moving Average Crossover",
+  "ticker": "MC.PA",
+  "performance": {
+    "total_return": 45.3,
+    "annualized_return": 8.2,
+    "sharpe_ratio": 1.35,
+    "sortino_ratio": 1.82,
+    "max_drawdown": -15.7,
+    "win_rate": 0.58,
+    "profit_factor": 1.65,
+    "num_trades": 28
+  },
+  "trades": [...]
+}
+```
+
+### Comparer Plusieurs Stratégies
+
+```bash
+curl -X POST "http://localhost:8000/backtesting/compare" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ticker": "MC.PA",
+    "strategies": ["ma_crossover", "rsi_strategy", "macd"],
+    "start_date": "2021-01-01",
+    "end_date": "2026-01-01"
+  }'
+```
+
+### Optimiser les Paramètres
+
+```bash
+curl -X POST "http://localhost:8000/backtesting/optimize" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ticker": "MC.PA",
+    "strategy": "ma_crossover",
+    "param_grid": {
+      "fast_period": [10, 20, 30],
+      "slow_period": [40, 50, 60]
+    },
+    "start_date": "2021-01-01",
+    "end_date": "2026-01-01"
+  }'
+```
+
+**Réponse** (meilleurs paramètres):
+```json
+{
+  "best_params": {"fast_period": 20, "slow_period": 50},
+  "best_sharpe_ratio": 1.42,
+  "best_performance": {
+    "total_return": 48.5,
+    "sharpe_ratio": 1.42,
+    "max_drawdown": -14.2
+  }
+}
+```
+
+### Métriques Clés
+
+- **Total Return**: Rendement total en %
+- **Sharpe Ratio**: Rendement/risque (>1 = bon, >2 = excellent)
+- **Max Drawdown**: Perte maximale depuis le pic (en %)
+- **Win Rate**: % de trades gagnants
+- **Profit Factor**: Gains/Pertes (>1.5 = bon)
+
+---
+
+## 7. Intelligence - Analyse Complète
+
+### Introduction
+
+L'endpoint Intelligence combine ML, Backtesting, Analyse Technique et Fondamentale pour fournir une recommandation d'investissement complète.
+
+**🔥 C'est l'endpoint le plus puissant du système.**
+
+### Utilisation
+
+```bash
+curl -X POST "http://localhost:8000/intelligence/analyze/MC.PA" \
+  -H "Authorization: Bearer $TOKEN" \
+  -d "include_ml=true&include_backtesting=true&include_technical=true&backtest_period=5Y"
+```
+
+**Réponse:**
+```json
+{
+  "ticker": "MC.PA",
+  "current_price": 730.0,
+
+  "ml_prediction": {
+    "expected_return_30d": 3.2,
+    "trend": "BULLISH",
+    "confidence_avg": 0.75
+  },
+
+  "backtesting": {
+    "best_strategy": "rsi_strategy",
+    "sharpe_ratio": 1.68,
+    "total_return": 52.3
+  },
+
+  "technical_analysis": {
+    "rsi": 65.2,
+    "macd": "BUY",
+    "signal": "BUY"
+  },
+
+  "aggregated_recommendation": {
+    "decision": "BUY",
+    "confidence": 0.78,
+    "target_price": 803.0,
+    "stop_loss": 693.5,
+    "expected_return": 10.0,
+    "risk_level": "MODERATE",
+    "reasoning": "ML: +3.2% | Backtesting: Sharpe 1.68 | Technical: BUY"
+  },
+
+  "signals": [
+    {
+      "source": "ML",
+      "decision": "BUY",
+      "confidence": 0.75,
+      "reasoning": "ML predicts +3.2% over 30 days (BULLISH)"
+    },
+    {
+      "source": "BACKTESTING",
+      "decision": "BUY",
+      "confidence": 0.85,
+      "reasoning": "rsi_strategy (Sharpe: 1.68, Return: +52.3%)"
+    },
+    {
+      "source": "TECHNICAL",
+      "decision": "BUY",
+      "confidence": 0.70,
+      "reasoning": "RSI: 65.2, MACD: BUY"
+    }
+  ]
+}
+```
+
+### Pipeline d'Analyse
+
+1. **Données marché** (yfinance) - Prix actuel
+2. **ML Predictions** - Prédictions 30 jours
+3. **Backtesting** - Test 3 meilleures stratégies
+4. **Analyse Technique** - RSI, MACD, Bollinger
+5. **Agrégation** - Vote pondéré par confiance
+6. **Recommandation** - BUY/HOLD/SELL finale
+
+### Interprétation
+
+**Decision**: BUY/HOLD/SELL
+**Confidence**: 0-1 (plus haut = plus fiable)
+**Target Price**: Prix cible (+10% par défaut pour BUY)
+**Stop Loss**: Prix stop loss (-5% par défaut pour BUY)
+**Risk Level**: LOW/MODERATE/HIGH
+
+⏱ **Temps d'exécution**: 10-20 secondes
+
+---
+
+## 8. API Reference Rapide
 
 ### Portfolio
 

@@ -1,0 +1,22 @@
+# Backtesting Module Requirements
+
+# Core dependencies
+yfinance>=0.2.31
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Visualization
+plotly>=5.17.0
+
+# API (already in main requirements)
+fastapi>=0.104.0
+pydantic>=2.0.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Optional: For advanced features
+# scikit-learn>=1.3.0  # For ML-based strategies
+# ta-lib>=0.4.26       # For more technical indicators

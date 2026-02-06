@@ -67,6 +67,15 @@ from services.sentiment_analyzer import SentimentAnalyzer
 from services.news_aggregator import NewsAggregator
 from services.technical_analysis import TechnicalAnalyzer
 
+# Import du router backtesting
+from backtesting.routes import router as backtesting_router
+
+# Import du router ML
+from ml.serving import ml_router
+
+# Import du service Intelligence
+from services.intelligence_service import IntelligenceService
+
 # Logger au lieu de print
 logger = get_logger(__name__)
 
@@ -93,6 +102,13 @@ app.add_middleware(
 
 # INSTALLER LES ERROR HANDLERS (CRITIQUE)
 install_error_handlers(app)
+
+# Inclure les routers
+app.include_router(backtesting_router)
+app.include_router(ml_router)
+
+# Initialiser les services
+intelligence_service = IntelligenceService()
 
 # Initialiser le gestionnaire RAG
 rag_manager = RAGManager()
@@ -1056,6 +1072,82 @@ async def complete_analysis(ticker: str, company_name: str, current_user: str = 
         }
 
     except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur lors de l'analyse: {str(e)}")
+
+
+# ==========================================
+# INTELLIGENCE - ML + BACKTESTING + AGENTS
+# ==========================================
+
+@app.post("/intelligence/analyze/{ticker}", tags=["Intelligence"])
+async def intelligence_analyze(
+    ticker: str,
+    include_ml: bool = True,
+    include_backtesting: bool = True,
+    include_technical: bool = True,
+    include_fundamental: bool = False,
+    backtest_period: str = "5Y",
+    current_user: str = Depends(get_current_user)
+):
+    """
+    Analyse d'investissement complète combinant ML predictions, backtesting, analyse technique et fondamentale
+
+    **Outils utilisés**:
+    - **ML**: PricePredictor (LSTM/Prophet ensemble) - Prédictions 30 jours
+    - **Backtesting**: BacktestEngine (6+ stratégies) - Test historique performance
+    - **Technical**: RSI, MACD, Bollinger Bands - Indicateurs techniques
+    - **Fundamental**: CrewAI agents (optionnel, coûteux) - Analyse fondamentale IA
+
+    **Retourne**: Rapport complet avec recommandation BUY/HOLD/SELL agrégée
+
+    **Exemple**:
+    ```
+    POST /intelligence/analyze/MC.PA?include_ml=true&include_backtesting=true
+    ```
+
+    **Paramètres**:
+    - ticker: Symbole boursier (ex: MC.PA, AAPL)
+    - include_ml: Inclure prédictions ML (défaut: true)
+    - include_backtesting: Inclure backtesting (défaut: true)
+    - include_technical: Inclure analyse technique (défaut: true)
+    - include_fundamental: Inclure analyse fondamentale agents IA (défaut: false)
+    - backtest_period: Période backtesting - 1Y, 2Y, 5Y (défaut: 5Y)
+    """
+    try:
+        report = await intelligence_service.analyze_ticker(
+            ticker=ticker,
+            include_ml=include_ml,
+            include_backtesting=include_backtesting,
+            include_technical=include_technical,
+            include_fundamental=include_fundamental,
+            backtest_period=backtest_period
+        )
+
+        # Convertir dataclass en dict pour JSON
+        return {
+            "ticker": report.ticker,
+            "timestamp": report.timestamp,
+            "current_price": report.current_price,
+            "ml_prediction": report.ml_prediction,
+            "backtesting": report.backtesting,
+            "technical_analysis": report.technical_analysis,
+            "fundamental_analysis": report.fundamental_analysis,
+            "aggregated_recommendation": report.aggregated_recommendation,
+            "reasoning": report.reasoning,
+            "signals": [
+                {
+                    "source": s.source,
+                    "decision": s.decision,
+                    "confidence": s.confidence,
+                    "reasoning": s.reasoning,
+                    "metadata": s.metadata
+                }
+                for s in report.signals
+            ]
+        }
+
+    except Exception as e:
+        logger.error(f"Erreur analyse intelligence {ticker}: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Erreur lors de l'analyse: {str(e)}")
 
 

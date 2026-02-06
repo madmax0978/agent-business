@@ -1,15 +1,18 @@
 # RAG-PEA System - Portfolio Intelligent avec IA
 
-**Version 3.0.0** - Production Ready + Bot Telegram
+**Version 3.0.0** - Production Ready + ML + Backtesting
 
 Système complet d'analyse financière et de gestion de portefeuille combinant:
 - **RAG v2 optimisé** (recherche dans documents financiers)
+- **🆕 Machine Learning** (LSTM/Prophet - Prédictions de prix 30 jours)
+- **🆕 Backtesting** (6+ stratégies - Test performance historique)
+- **🆕 Intelligence Service** (Agrégation ML + Backtesting + Technical + Fundamental)
 - **Trésorerie PEA** (gestion cash, dépôts, opportunités IA)
 - **Bot Telegram complet** (onboarding + 22 commandes + rapports automatiques)
 - **Multi-Agent AI** (CrewAI) pour analyses approfondies
 - **Données temps réel** (Yahoo Finance gratuit)
 - **Analyse technique** complète (RSI, MACD, Bollinger, Support/Résistance)
-- **API REST** FastAPI avec 33 endpoints
+- **API REST** FastAPI avec 48 endpoints (33 existants + 15 nouveaux ML/Backtesting)
 - **Déploiement VPS** (Docker + docker-compose)
 
 ---
@@ -203,6 +206,161 @@ POST /build-portfolio
 POST /analyze/financial-report
 ```
 
+### 6. 🆕 Machine Learning - Prédictions de Prix
+
+**Entraîner et utiliser des modèles LSTM/Prophet pour prédire les prix futurs**
+
+```bash
+# Entraîner un modèle (LSTM + Prophet ensemble)
+POST /ml/train/MC.PA
+{
+  "model_type": "ensemble",
+  "period": "2y",
+  "epochs": 100
+}
+# ⏱ Durée: 2-5 minutes
+# Métri ques: MAE, RMSE, MAPE, Direction Accuracy
+
+# Prédire les prix (30 jours par défaut)
+GET /ml/predict/MC.PA?horizon=30&model_type=ensemble
+
+# Réponse:
+{
+  "current_price": 730.0,
+  "predictions": [...],  # Prix jour par jour
+  "expected_return_30d": 3.2,  # +3.2% attendu
+  "confidence_avg": 0.75,
+  "trend": "BULLISH",
+  "recommendation": "BUY"
+}
+
+# Évaluer un modèle
+GET /ml/evaluate/MC.PA
+# → MAE: 12.5, Direction Accuracy: 68%
+
+# Lister tous les modèles
+GET /ml/models
+```
+
+**Outils utilisés:**
+- TensorFlow/Keras (LSTM deep learning)
+- Prophet (Facebook time series)
+- pandas-ta (feature engineering: RSI, MACD, SMA)
+- scikit-learn (métriques)
+
+### 7. 🆕 Backtesting - Test de Stratégies
+
+**Tester des stratégies de trading sur données historiques**
+
+```bash
+# Lancer un backtest
+POST /backtesting/run
+{
+  "ticker": "MC.PA",
+  "strategy": "ma_crossover",
+  "params": {"fast_period": 20, "slow_period": 50},
+  "start_date": "2021-01-01",
+  "end_date": "2026-01-01",
+  "initial_capital": 10000.0
+}
+
+# Réponse:
+{
+  "performance": {
+    "total_return": 45.3,  # +45.3%
+    "sharpe_ratio": 1.35,
+    "max_drawdown": -15.7,
+    "win_rate": 0.58,
+    "num_trades": 28
+  },
+  "trades": [...]  # Historique des trades
+}
+
+# Comparer plusieurs stratégies
+POST /backtesting/compare
+{
+  "ticker": "MC.PA",
+  "strategies": ["ma_crossover", "rsi_strategy", "macd"]
+}
+
+# Optimiser les paramètres (Grid Search)
+POST /backtesting/optimize
+{
+  "ticker": "MC.PA",
+  "strategy": "ma_crossover",
+  "param_grid": {
+    "fast_period": [10, 20, 30],
+    "slow_period": [40, 50, 60]
+  }
+}
+
+# Lister toutes les stratégies disponibles
+GET /backtesting/strategies
+# → 6 stratégies: MA Crossover, RSI, MACD, Bollinger, Momentum, Buy&Hold
+```
+
+**Outils utilisés:**
+- BacktestEngine custom
+- yfinance (données historiques)
+- numpy/pandas (calculs vectorisés)
+- plotly (visualisations)
+
+### 8. 🔥 Intelligence - Analyse Complète
+
+**Endpoint principal combinant ML + Backtesting + Technical + Fundamental**
+
+```bash
+# Analyse d'investissement complète
+POST /intelligence/analyze/MC.PA?include_ml=true&include_backtesting=true
+
+# Réponse agrégée:
+{
+  "ticker": "MC.PA",
+  "current_price": 730.0,
+
+  "ml_prediction": {
+    "expected_return_30d": 3.2,  # ML: +3.2% sur 30j
+    "trend": "BULLISH"
+  },
+
+  "backtesting": {
+    "best_strategy": "rsi_strategy",
+    "sharpe_ratio": 1.68,
+    "total_return": 52.3
+  },
+
+  "technical_analysis": {
+    "rsi": 65.2,
+    "macd": "BUY",
+    "signal": "BUY"
+  },
+
+  "aggregated_recommendation": {
+    "decision": "BUY",  # Vote pondéré
+    "confidence": 0.78,
+    "target_price": 803.0,
+    "stop_loss": 693.5,
+    "risk_level": "MODERATE"
+  },
+
+  "signals": [
+    {"source": "ML", "decision": "BUY", "confidence": 0.75},
+    {"source": "BACKTESTING", "decision": "BUY", "confidence": 0.85},
+    {"source": "TECHNICAL", "decision": "BUY", "confidence": 0.70}
+  ]
+}
+```
+
+**Pipeline:**
+1. Récupération données marché (yfinance)
+2. ML Predictions (LSTM/Prophet) - 30 jours
+3. Backtesting (test 3 meilleures stratégies)
+4. Analyse technique (RSI, MACD, Bollinger)
+5. Agrégation vote pondéré
+6. Recommandation finale BUY/HOLD/SELL
+
+⏱ **Temps d'exécution**: 10-20 secondes (sans ML training)
+
 ---
 
 ## 🏗️ Architecture Simple
@@ -210,18 +368,39 @@ POST /analyze/financial-report
 ```
 RAG-system/
 ├── api/
-│   ├── main.py                    # API FastAPI (23 endpoints)
+│   ├── main.py                    # API FastAPI (48 endpoints)
 │   ├── rag_manager_v2.py          # RAG optimisé (v2 uniquement)
 │   ├── models.py                  # Modèles Pydantic
 │   ├── agents/                    # Agents CrewAI
 │   │   ├── portfolio_builder_crew.py   # 6 agents construction portfolio
 │   │   └── financial_crew.py           # 4 agents analyse
 │   ├── services/                  # Services métier
+│   │   ├── intelligence_service.py     # 🆕 Agrégation ML + Backtesting
 │   │   ├── yahoo_finance_service.py    # Données gratuites
 │   │   ├── technical_analysis.py       # Indicateurs techniques
 │   │   ├── sentiment_analyzer.py       # Analyse sentiment IA
 │   │   ├── portfolio_manager.py        # Gestion portfolio
-│   │   └── backtesting_engine.py       # Backtesting stratégies
+│   │   └── data_fetcher.py             # Fetcher données marché
+│   ├── ml/                        # 🆕 Machine Learning
+│   │   ├── price_predictor.py          # Prédicteur LSTM/Prophet/Ensemble
+│   │   ├── data_loader.py              # Chargement données yfinance
+│   │   ├── feature_engineering.py      # Indicateurs techniques
+│   │   ├── evaluation.py               # Métriques ML
+│   │   ├── serving.py                  # API routes ML (8 endpoints)
+│   │   └── models/                     # Modèles sauvegardés
+│   ├── backtesting/               # 🆕 Backtesting
+│   │   ├── engine.py                   # Moteur backtesting
+│   │   ├── strategies/                 # 6 stratégies trading
+│   │   │   ├── ma_crossover.py
+│   │   │   ├── rsi_strategy.py
+│   │   │   ├── macd.py
+│   │   │   ├── bollinger.py
+│   │   │   ├── momentum.py
+│   │   │   └── buy_and_hold.py
+│   │   ├── portfolio.py                # Portfolio virtuel
+│   │   ├── metrics.py                  # Métriques performance
+│   │   ├── visualization.py            # Graphiques Plotly
+│   │   └── routes.py                   # API routes (6 endpoints)
 │   └── database/
 │       └── portfolio_db.py             # SQLite
 ├── data/
