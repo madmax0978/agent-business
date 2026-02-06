@@ -53,7 +53,8 @@ git pull origin main
 ```
 
 **Changements appliqués**:
-- `torch>=2.0.0` → `torch>=2.0.0+cpu` (4GB → 200MB)
+- Ajout `--extra-index-url https://download.pytorch.org/whl/cpu` → Force installation CPU
+- `torch>=2.0.0` depuis l'index CPU (4GB → 200MB)
 - `tensorflow>=2.13.0` → `tensorflow-cpu>=2.13.0` (2GB → 400MB)
 - Économie totale: **~5.5GB → ~600MB**
 
