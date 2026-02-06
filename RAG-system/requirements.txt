@@ -9,9 +9,9 @@ transformers>=4.30.0
 sentence-transformers>=2.2.0
 # PyTorch CPU-only (léger pour VPS sans GPU)
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch>=2.0.0+cpu
-torchvision>=0.15.0+cpu
-torchaudio>=2.0.0+cpu
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
 
 # Interface utilisateur
 rich>=13.0.0
