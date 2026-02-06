@@ -33,7 +33,7 @@ from __future__ import annotations
 
 from crewai import Agent, Task, Crew
 from .tools import create_rag_tool, create_web_search_tool, create_news_indexer_tool
-from ..llm_selector import get_llm_for_crewai
+from llm_selector import get_llm_for_crewai  # Import absolu pour Docker
 from typing import Dict, Any
 from datetime import datetime
 

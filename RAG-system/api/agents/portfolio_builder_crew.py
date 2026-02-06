@@ -89,8 +89,8 @@ else:
         create_history_tool,
         create_portfolio_optimizer_tool,
     )
-    # Import du sélecteur LLM
-    from ..llm_selector import get_llm_for_crewai
+    # Import du sélecteur LLM (import absolu pour Docker)
+    from llm_selector import get_llm_for_crewai
 
 
 def create_portfolio_builder_crew(
