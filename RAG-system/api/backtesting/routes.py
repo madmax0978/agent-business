@@ -12,7 +12,7 @@ import hashlib
 from .engine import BacktestEngine
 from .strategies import AVAILABLE_STRATEGIES
 from .visualization import BacktestVisualizer
-from ..auth import get_current_user
+from auth import get_current_user  # Import absolu pour Docker
 
 # Router pour les endpoints de backtesting
 router = APIRouter(prefix="/backtesting", tags=["Backtesting"])

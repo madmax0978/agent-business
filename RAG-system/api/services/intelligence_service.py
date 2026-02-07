@@ -10,12 +10,12 @@ from datetime import datetime, timedelta
 from dataclasses import dataclass
 import logging
 
-# Imports des modules d'analyse
-from ..ml.price_predictor import PricePredictor
-from ..backtesting.engine import BacktestEngine
-from ..backtesting.strategies import AVAILABLE_STRATEGIES
-from ..services.data_fetcher import DataFetcher
-from ..services.portfolio_manager import PortfolioManager
+# Imports des modules d'analyse (absolus pour Docker)
+from ml.price_predictor import PricePredictor
+from backtesting.engine import BacktestEngine
+from backtesting.strategies import AVAILABLE_STRATEGIES
+from services.data_fetcher import DataFetcher
+from services.portfolio_manager import PortfolioManager
 
 logger = logging.getLogger(__name__)
 
