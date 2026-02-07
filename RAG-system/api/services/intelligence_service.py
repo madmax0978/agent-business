@@ -14,7 +14,8 @@ import logging
 from ml.price_predictor import PricePredictor
 from backtesting.engine import BacktestEngine
 from backtesting.strategies import AVAILABLE_STRATEGIES
-from services.data_fetcher import DataFetcher
+from services.yahoo_finance_service import YahooFinanceService
+from services.technical_analysis import TechnicalAnalyzer
 from services.portfolio_manager import PortfolioManager
 
 logger = logging.getLogger(__name__)
@@ -81,7 +82,8 @@ class IntelligenceService:
         """Initialise tous les composants d'analyse"""
         self.ml_predictor = PricePredictor(model_type='ensemble')
         self.backtest_engine = BacktestEngine(initial_capital=10000.0)
-        self.data_fetcher = DataFetcher()
+        self.yahoo_service = YahooFinanceService()
+        self.technical_analyzer = TechnicalAnalyzer()
         self.portfolio_manager = PortfolioManager()
 
         logger.info("IntelligenceService initialisé")
@@ -120,8 +122,8 @@ class IntelligenceService:
 
         try:
             # 1. Récupérer données marché actuelles
-            current_data = self.data_fetcher.get_current_price(ticker)
-            report.current_price = current_data.get('price', 0.0)
+            current_data = self.yahoo_service.get_realtime_quote(ticker)
+            report.current_price = current_data.get('price', 0.0) if current_data else 0.0
 
             # 2. ML Predictions (si demandé)
             if include_ml:
@@ -299,20 +301,35 @@ class IntelligenceService:
         try:
             logger.info(f"  📉 Analyse Technique pour {ticker}")
 
-            # Récupérer indicateurs techniques
-            indicators = self.data_fetcher.get_technical_indicators(ticker)
+            # Récupérer données historiques
+            hist_data = self.yahoo_service.get_historical_data(ticker, period="6mo")
+            if hist_data is None or hist_data.empty:
+                logger.warning(f"Pas de données historiques pour {ticker}")
+                return None
+
+            # Calculer indicateurs techniques
+            df_with_indicators = self.technical_analyzer.calculate_indicators(hist_data)
+            latest = df_with_indicators.iloc[-1]
 
             # RSI
-            rsi = indicators.get('rsi', 50)
+            rsi = latest.get('RSI', 50)
             rsi_signal = "BUY" if rsi < 35 else ("SELL" if rsi > 65 else "HOLD")
 
             # MACD
-            macd = indicators.get('macd', {})
-            macd_signal = macd.get('signal', 'NEUTRAL')
+            macd_value = latest.get('MACD', 0)
+            macd_signal_value = latest.get('MACD_signal', 0)
+            macd_signal = "BUY" if macd_value > macd_signal_value else ("SELL" if macd_value < macd_signal_value else "HOLD")
 
             # Bollinger Bands
-            bollinger = indicators.get('bollinger', {})
-            bb_signal = bollinger.get('signal', 'NEUTRAL')
+            close_price = latest.get('Close', 0)
+            bb_upper = latest.get('BB_upper', close_price)
+            bb_lower = latest.get('BB_lower', close_price)
+            if close_price < bb_lower:
+                bb_signal = "BUY"
+            elif close_price > bb_upper:
+                bb_signal = "SELL"
+            else:
+                bb_signal = "HOLD"
 
             # Agrégation technique
             signals = [rsi_signal, macd_signal, bb_signal]
@@ -328,6 +345,12 @@ class IntelligenceService:
             else:
                 decision = "HOLD"
                 confidence = 0.5
+
+            indicators = {
+                'rsi': float(rsi),
+                'macd': {'value': float(macd_value), 'signal': macd_signal},
+                'bollinger': {'upper': float(bb_upper), 'lower': float(bb_lower), 'signal': bb_signal}
+            }
 
             signal = Signal(
                 source="TECHNICAL",
