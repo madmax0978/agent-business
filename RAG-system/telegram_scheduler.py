@@ -228,8 +228,8 @@ async def check_api_health():
         return False
 
 
-def main():
-    """Lance le scheduler"""
+async def async_main():
+    """Lance le scheduler avec asyncio"""
 
     if not BOT_TOKEN or not CHAT_ID:
         logger.error("❌ TELEGRAM_BOT_TOKEN ou TELEGRAM_CHAT_ID non configuré")
@@ -237,7 +237,7 @@ def main():
 
     # Vérifier l'API au démarrage
     logger.info("🔍 Vérification de l'API...")
-    if not asyncio.run(check_api_health()):
+    if not await check_api_health():
         logger.error("❌ API non accessible. Assurez-vous qu'elle tourne sur " + API_BASE_URL)
         return
 
@@ -290,10 +290,19 @@ def main():
 
     # Garder le programme en vie
     try:
-        asyncio.get_event_loop().run_forever()
+        # Attendre indéfiniment
+        await asyncio.Event().wait()
     except (KeyboardInterrupt, SystemExit):
         logger.info("⏹️ Arrêt du scheduler")
         scheduler.shutdown()
+
+
+def main():
+    """Point d'entrée du programme"""
+    try:
+        asyncio.run(async_main())
+    except KeyboardInterrupt:
+        logger.info("⏹️ Programme interrompu")
 
 
 if __name__ == '__main__':
