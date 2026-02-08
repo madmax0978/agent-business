@@ -64,6 +64,7 @@ newsapi-python>=0.2.7
 
 # Telegram Notifications
 python-telegram-bot>=20.7
+apscheduler>=3.10.0
 
 # Database
 # sqlalchemy>=2.0.25  # Optionnel - Si besoin de migrations
