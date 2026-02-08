@@ -592,6 +592,21 @@ curl -X POST http://localhost:8000/query \
 
 ---
 
+## 📚 Documentation Complète
+
+| Fichier | Description | Public | Temps |
+|---------|-------------|--------|-------|
+| **ORDRE_LECTURE.md** | Ordre optimal de lecture | Tous | 2 min |
+| **GUIDE_UTILISATION.md** | Guide pratique avec exemples | Utilisateurs | 10 min |
+| **API_ENDPOINTS.md** | Référence complète des 48 endpoints | Développeurs | 30 min |
+| **DEPLOYMENT.md** | Déploiement VPS avec Docker | DevOps | 20 min |
+| **TROUBLESHOOTING.md** | Résolution de tous les problèmes | DevOps | 30 min |
+| **AMELIORATIONS_FUTURES.md** | Roadmap et contributions | Contributeurs | 10 min |
+
+👉 **Commencez par [ORDRE_LECTURE.md](ORDRE_LECTURE.md)** pour le parcours optimal.
+
+---
+
 ## 📝 Disclaimer
 
 Ce logiciel est à but éducatif et informatif uniquement. Il ne constitue pas un conseil financier. Faites toujours vos propres recherches et consultez un conseiller financier agréé avant de prendre des décisions d'investissement.
