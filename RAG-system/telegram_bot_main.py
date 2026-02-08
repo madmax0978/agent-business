@@ -42,6 +42,48 @@ from telegram_handlers import authorized_only
 # Configuration
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
+API_USERNAME = os.getenv("API_USERNAME", "admin")
+API_PASSWORD = os.getenv("API_PASSWORD")
+
+# Cache du token JWT
+_auth_token = None
+
+
+# ==========================================
+# AUTHENTICATION
+# ==========================================
+
+def get_auth_headers():
+    """Récupère les headers d'authentification avec token JWT"""
+    global _auth_token
+    import requests
+
+    # Si pas de credentials configurés, retourner headers vides
+    if not API_USERNAME or not API_PASSWORD:
+        logger.warning("⚠️ API_USERNAME ou API_PASSWORD non configuré")
+        return {}
+
+    # Si token en cache, l'utiliser
+    if _auth_token:
+        return {"Authorization": f"Bearer {_auth_token}"}
+
+    # Sinon, obtenir un nouveau token
+    try:
+        response = requests.post(
+            f"{API_BASE_URL}/token",
+            data={"username": API_USERNAME, "password": API_PASSWORD}
+        )
+
+        if response.status_code == 200:
+            _auth_token = response.json()["access_token"]
+            logger.info("✅ Token JWT obtenu")
+            return {"Authorization": f"Bearer {_auth_token}"}
+        else:
+            logger.error(f"❌ Erreur auth: {response.status_code} - {response.text}")
+            return {}
+    except Exception as e:
+        logger.error(f"❌ Erreur obtention token: {e}")
+        return {}
 
 
 # ==========================================
@@ -260,10 +302,14 @@ async def finalize_onboarding(update: Update, context: ContextTypes.DEFAULT_TYPE
         await update.message.reply_text("⏳ Configuration en cours...")
 
     try:
+        # Obtenir les headers d'authentification
+        auth_headers = get_auth_headers()
+
         # 1. Déposer le cash
         response = requests.post(
             f"{API_BASE_URL}/portfolio/deposit",
-            params={"amount": initial_cash, "notes": "Dépôt initial onboarding"}
+            params={"amount": initial_cash, "notes": "Dépôt initial onboarding"},
+            headers=auth_headers
         )
 
         if response.status_code != 200:
@@ -279,14 +325,15 @@ async def finalize_onboarding(update: Update, context: ContextTypes.DEFAULT_TYPE
                     "company_name": pos['company_name'],
                     "quantity": pos['quantity'],
                     "price": pos['price']
-                }
+                },
+                headers=auth_headers
             )
 
             if response.status_code == 200:
                 total_invested += pos['quantity'] * pos['price']
 
         # 3. Récupérer le résumé
-        response = requests.get(f"{API_BASE_URL}/portfolio")
+        response = requests.get(f"{API_BASE_URL}/portfolio", headers=auth_headers)
         summary = response.json()
 
         # Message de succès
