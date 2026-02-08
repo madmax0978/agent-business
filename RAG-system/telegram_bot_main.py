@@ -70,8 +70,8 @@ def get_auth_headers():
     # Sinon, obtenir un nouveau token
     try:
         response = requests.post(
-            f"{API_BASE_URL}/token",
-            data={"username": API_USERNAME, "password": API_PASSWORD}
+            f"{API_BASE_URL}/auth/login",
+            json={"username": API_USERNAME, "password": API_PASSWORD}
         )
 
         if response.status_code == 200:
