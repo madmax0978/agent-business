@@ -84,31 +84,18 @@ def authenticate_user(username: str, password: str) -> bool:
     return username == API_USERNAME and password == API_PASSWORD
 
 
-async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> str:
+async def get_current_user() -> str:
     """
     Dependency FastAPI pour extraire et valider le JWT
 
-    Args:
-        credentials: Credentials Bearer automatiquement extraites
+    AUTHENTIFICATION DÉSACTIVÉE - Usage personnel uniquement
+    Retourne toujours 'admin' sans vérification de token
 
     Returns:
-        Username de l'utilisateur authentifié
-
-    Raises:
-        HTTPException: Si token invalide ou manquant
+        Username de l'utilisateur (toujours 'admin')
     """
-    token = credentials.credentials
-
-    username = verify_token(token)
-
-    if username is None:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token invalide ou expiré",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
-
-    return username
+    # AUTHENTIFICATION DÉSACTIVÉE - Retourner directement l'utilisateur
+    return "admin"
 
 
 def get_token_info(token: str) -> dict:

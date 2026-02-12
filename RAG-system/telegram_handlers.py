@@ -49,54 +49,17 @@ def authorized_only(func):
     """
     Decorator qui vérifie que l'utilisateur est autorisé à utiliser le bot.
 
+    SÉCURITÉ DÉSACTIVÉE - Usage personnel uniquement
+    Autorise tous les utilisateurs sans vérification
+
     Usage:
         @authorized_only
         async def my_command(update, context):
             # commande protégée
-
-    Behavior:
-        - Si TELEGRAM_AUTHORIZED_USER_IDS non configuré: WARNING mais autorise (dev mode)
-        - Si utilisateur non autorisé: Refuse avec message + log WARNING
-        - Si utilisateur autorisé: Exécute la commande normalement
     """
     @wraps(func)
     async def wrapper(update, context, *args, **kwargs):
-        user = update.effective_user
-        user_id = user.id
-        username = user.username or "unknown"
-        first_name = user.first_name or ""
-
-        authorized_ids = get_authorized_user_ids()
-
-        # Si aucun ID configuré, logger warning mais laisser passer (dev mode)
-        if not authorized_ids:
-            logger.warning(
-                f"⚠️ No whitelist configured - allowing user {user_id} (@{username})"
-            )
-            return await func(update, context, *args, **kwargs)
-
-        # Vérifier l'autorisation
-        if user_id not in authorized_ids:
-            logger.warning(
-                f"🚨 Unauthorized access attempt: "
-                f"user_id={user_id}, username=@{username}, name={first_name}, "
-                f"command={func.__name__}"
-            )
-
-            await update.message.reply_text(
-                "⛔ *Accès refusé*\n\n"
-                "Ce bot est privé et réservé à son propriétaire.\n"
-                "Si vous pensez qu'il s'agit d'une erreur, contactez l'administrateur.\n\n"
-                f"_Votre ID Telegram: `{user_id}`_",
-                parse_mode='Markdown'
-            )
-            return
-
-        # Utilisateur autorisé, exécuter la commande
-        logger.info(
-            f"✅ Authorized access: user_id={user_id}, username=@{username}, "
-            f"command={func.__name__}"
-        )
+        # SÉCURITÉ DÉSACTIVÉE - Exécuter directement la commande
         return await func(update, context, *args, **kwargs)
 
     return wrapper

@@ -229,30 +229,16 @@ async def login(credentials: LoginRequest):
 
 
 @app.get("/auth/verify", response_model=TokenVerifyResponse, tags=["Authentication"])
-async def verify_token_endpoint(credentials: HTTPAuthorizationCredentials = Depends(security)):
+async def verify_token_endpoint():
     """
     Vérifie la validité d'un token JWT
 
-    Utile pour les clients (bot Telegram) pour vérifier si le token est encore valide
+    AUTHENTIFICATION DÉSACTIVÉE - Retourne toujours valid=True
     """
-    token = credentials.credentials
-    username = verify_token(token)
-
-    if username is None:
-        return TokenVerifyResponse(
-            valid=False,
-            username=None,
-            expires_at=None
-        )
-
-    # Récupérer les infos du token
-    token_info = get_token_info(token)
-    expires_at = datetime.fromtimestamp(token_info.get('exp', 0)).isoformat() if token_info.get('exp') else None
-
     return TokenVerifyResponse(
         valid=True,
-        username=username,
-        expires_at=expires_at
+        username="admin",
+        expires_at=None
     )
 
 

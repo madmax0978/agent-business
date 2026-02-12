@@ -54,36 +54,14 @@ _auth_token = None
 # ==========================================
 
 def get_auth_headers():
-    """Récupère les headers d'authentification avec token JWT"""
-    global _auth_token
-    import requests
+    """
+    Récupère les headers d'authentification avec token JWT
 
-    # Si pas de credentials configurés, retourner headers vides
-    if not API_USERNAME or not API_PASSWORD:
-        logger.warning("⚠️ API_USERNAME ou API_PASSWORD non configuré")
-        return {}
-
-    # Si token en cache, l'utiliser
-    if _auth_token:
-        return {"Authorization": f"Bearer {_auth_token}"}
-
-    # Sinon, obtenir un nouveau token
-    try:
-        response = requests.post(
-            f"{API_BASE_URL}/auth/login",
-            json={"username": API_USERNAME, "password": API_PASSWORD}
-        )
-
-        if response.status_code == 200:
-            _auth_token = response.json()["access_token"]
-            logger.info("✅ Token JWT obtenu")
-            return {"Authorization": f"Bearer {_auth_token}"}
-        else:
-            logger.error(f"❌ Erreur auth: {response.status_code} - {response.text}")
-            return {}
-    except Exception as e:
-        logger.error(f"❌ Erreur obtention token: {e}")
-        return {}
+    AUTHENTIFICATION DÉSACTIVÉE - Retourne toujours des headers vides
+    L'API n'exige plus d'authentification pour usage personnel
+    """
+    # AUTHENTIFICATION DÉSACTIVÉE
+    return {}
 
 
 # ==========================================
