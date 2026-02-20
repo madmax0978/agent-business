@@ -12,7 +12,6 @@ import hashlib
 from .engine import BacktestEngine
 from .strategies import AVAILABLE_STRATEGIES
 from .visualization import BacktestVisualizer
-from auth import get_current_user  # Import absolu pour Docker
 
 # Router pour les endpoints de backtesting
 router = APIRouter(prefix="/backtesting", tags=["Backtesting"])
@@ -84,7 +83,7 @@ class OptimizeRequest(BaseModel):
 # ==========================================
 
 @router.post("/run", response_model=BacktestResponse)
-async def run_backtest(request: BacktestRequest, current_user: str = Depends(get_current_user)):
+async def run_backtest(request: BacktestRequest):
     """
     Lance un backtest pour une stratégie donnée
 
@@ -154,7 +153,7 @@ async def run_backtest(request: BacktestRequest, current_user: str = Depends(get
 
 
 @router.get("/strategies")
-async def list_strategies(current_user: str = Depends(get_current_user)):
+async def list_strategies():
     """
     Liste toutes les stratégies disponibles avec leurs paramètres
 
@@ -181,7 +180,7 @@ async def list_strategies(current_user: str = Depends(get_current_user)):
 
 
 @router.post("/compare")
-async def compare_strategies(request: CompareRequest, current_user: str = Depends(get_current_user)):
+async def compare_strategies(request: CompareRequest):
     """
     Compare plusieurs stratégies sur les mêmes données
 
@@ -240,7 +239,7 @@ async def compare_strategies(request: CompareRequest, current_user: str = Depend
 
 
 @router.post("/optimize")
-async def optimize_strategy(request: OptimizeRequest, current_user: str = Depends(get_current_user)):
+async def optimize_strategy(request: OptimizeRequest):
     """
     Optimise les paramètres d'une stratégie via Grid Search
 
@@ -295,7 +294,7 @@ async def optimize_strategy(request: OptimizeRequest, current_user: str = Depend
 
 
 @router.get("/results/{backtest_id}")
-async def get_backtest_results(backtest_id: str, current_user: str = Depends(get_current_user)):
+async def get_backtest_results(backtest_id: str):
     """
     Récupère les résultats complets d'un backtest
 
@@ -317,7 +316,7 @@ async def get_backtest_results(backtest_id: str, current_user: str = Depends(get
 
 
 @router.get("/visualization/{backtest_id}")
-async def get_visualization(backtest_id: str, chart_type: str = "equity", current_user: str = Depends(get_current_user)):
+async def get_visualization(backtest_id: str, chart_type: str = "equity"):
     """
     Génère une visualisation pour un backtest
 

@@ -243,7 +243,7 @@ async def verify_token_endpoint():
 
 
 @app.get("/collections", response_model=List[CollectionInfo], tags=["Collections"])
-async def list_collections(current_user: str = Depends(get_current_user)):
+async def list_collections():
     """Liste toutes les collections disponibles"""
     collections = rag_manager.list_collections()
     collection_infos = []
@@ -259,7 +259,7 @@ async def list_collections(current_user: str = Depends(get_current_user)):
 
 
 @app.get("/collections/{collection_name}", response_model=CollectionInfo, tags=["Collections"])
-async def get_collection(collection_name: str, current_user: str = Depends(get_current_user)):
+async def get_collection(collection_name: str):
     """Récupère les informations d'une collection spécifique"""
     try:
         info = rag_manager.get_collection_info(collection_name)
@@ -271,8 +271,7 @@ async def get_collection(collection_name: str, current_user: str = Depends(get_c
 @app.post("/upload", response_model=IndexingResponse, tags=["Documents"])
 async def upload_document(
     file: UploadFile = File(...),
-    collection_name: str = None,
-    current_user: str = Depends(get_current_user)
+    collection_name: str = None
 ):
     """
     Upload et indexe un document PDF
@@ -308,7 +307,7 @@ async def upload_document(
 
 
 @app.post("/index", response_model=IndexingResponse, tags=["Documents"])
-async def index_existing_document(doc: DocumentUpload, current_user: str = Depends(get_current_user)):
+async def index_existing_document(doc: DocumentUpload):
     """
     Indexe un document existant depuis un chemin
     """
@@ -335,7 +334,7 @@ async def index_existing_document(doc: DocumentUpload, current_user: str = Depen
 
 
 @app.post("/query", response_model=QueryResponse, tags=["Query"])
-async def query_rag(request: QueryRequest, current_user: str = Depends(get_current_user)):
+async def query_rag(request: QueryRequest):
     """
     Effectue une requête RAG sur une collection
     """
@@ -392,7 +391,7 @@ async def query_rag(request: QueryRequest, current_user: str = Depends(get_curre
 
 
 @app.delete("/collections/{collection_name}", tags=["Collections"])
-async def delete_collection(collection_name: str, current_user: str = Depends(get_current_user)):
+async def delete_collection(collection_name: str):
     """Supprime une collection"""
     try:
         rag_manager.chroma_client.delete_collection(name=collection_name)
@@ -403,8 +402,7 @@ async def delete_collection(collection_name: str, current_user: str = Depends(ge
 
 @app.post("/analyze/financial-report", response_model=FinancialAnalysisResponse, tags=["Financial Analysis"])
 async def generate_financial_analysis(
-    request: FinancialAnalysisRequest,
-    current_user: str = Depends(get_current_user)
+    request: FinancialAnalysisRequest
 ):
     """
     Génère un rapport d'analyse financière complet avec recommandations d'investissement
@@ -460,8 +458,7 @@ async def generate_financial_analysis(
 
 @app.post("/build-portfolio", response_model=PortfolioBuildResponse, tags=["Portfolio Building"])
 async def build_portfolio_from_scratch(
-    request: PortfolioBuildRequest,
-    current_user: str = Depends(get_current_user)
+    request: PortfolioBuildRequest
 ):
     """
     Construit un portefeuille PEA optimal de zéro avec collecte automatique de données
@@ -536,7 +533,7 @@ async def build_portfolio_from_scratch(
 # ==========================================
 
 @app.post("/portfolio/add", tags=["Portfolio"])
-async def add_position(request: PositionAddRequest, current_user: str = Depends(get_current_user)):
+async def add_position(request: PositionAddRequest):
     """Ajoute une position au portefeuille"""
     try:
         db = PortfolioDatabase()
@@ -564,7 +561,7 @@ async def add_position(request: PositionAddRequest, current_user: str = Depends(
 
 
 @app.post("/portfolio/sell", tags=["Portfolio"])
-async def sell_position(request: PositionSellRequest, current_user: str = Depends(get_current_user)):
+async def sell_position(request: PositionSellRequest):
     """Vend une position (partiellement ou totalement)"""
     try:
         db = PortfolioDatabase()
@@ -586,7 +583,7 @@ async def sell_position(request: PositionSellRequest, current_user: str = Depend
 
 
 @app.get("/portfolio", tags=["Portfolio"])
-async def get_portfolio(user_id: str = "default_user", current_user: str = Depends(get_current_user)):
+async def get_portfolio(user_id: str = "default_user"):
     """Récupère le portefeuille complet avec prix à jour"""
     db = PortfolioDatabase()
     db.update_current_prices(user_id)
@@ -595,7 +592,7 @@ async def get_portfolio(user_id: str = "default_user", current_user: str = Depen
 
 
 @app.get("/portfolio/context", tags=["Portfolio"])
-async def get_portfolio_context(user_id: str = "default_user", current_user: str = Depends(get_current_user)):
+async def get_portfolio_context(user_id: str = "default_user"):
     """Contexte du portefeuille formaté pour l'IA"""
     manager = PortfolioManager()
     context = manager.get_portfolio_context_for_ai(user_id)
@@ -603,7 +600,7 @@ async def get_portfolio_context(user_id: str = "default_user", current_user: str
 
 
 @app.get("/portfolio/health", tags=["Portfolio"])
-async def check_portfolio_health(user_id: str = "default_user", current_user: str = Depends(get_current_user)):
+async def check_portfolio_health(user_id: str = "default_user"):
     """Analyse la santé du portefeuille (score 0-100)"""
     manager = PortfolioManager()
     health = manager.get_portfolio_health_score(user_id)
@@ -611,7 +608,7 @@ async def check_portfolio_health(user_id: str = "default_user", current_user: st
 
 
 @app.get("/portfolio/rebalance", tags=["Portfolio"])
-async def check_rebalance(user_id: str = "default_user", current_user: str = Depends(get_current_user)):
+async def check_rebalance(user_id: str = "default_user"):
     """Vérifie si le portefeuille nécessite un rééquilibrage"""
     manager = PortfolioManager()
     result = manager.should_rebalance(user_id)
@@ -619,7 +616,7 @@ async def check_rebalance(user_id: str = "default_user", current_user: str = Dep
 
 
 @app.get("/portfolio/position/{ticker}", tags=["Portfolio"])
-async def get_position_details(ticker: str, user_id: str = "default_user", current_user: str = Depends(get_current_user)):
+async def get_position_details(ticker: str, user_id: str = "default_user"):
     """Récupère tous les détails d'une position"""
     manager = PortfolioManager()
     details = manager.get_position_details(ticker, user_id)
@@ -634,8 +631,7 @@ async def get_position_details(ticker: str, user_id: str = "default_user", curre
 async def deposit_cash_to_pea(
     amount: float,
     user_id: str = "default_user",
-    notes: Optional[str] = None,
-    current_user: str = Depends(get_current_user)
+    notes: Optional[str] = None
 ):
     """
     Dépose de l'argent sur le PEA
@@ -670,7 +666,7 @@ async def deposit_cash_to_pea(
 
 
 @app.get("/portfolio/treasury", tags=["Portfolio - Treasury"])
-async def get_treasury_status(user_id: str = "default_user", current_user: str = Depends(get_current_user)):
+async def get_treasury_status(user_id: str = "default_user"):
     """
     Récupère l'état complet de la trésorerie PEA
 
@@ -683,7 +679,7 @@ async def get_treasury_status(user_id: str = "default_user", current_user: str =
 
 
 @app.get("/portfolio/treasury/deposits", tags=["Portfolio - Treasury"])
-async def get_deposit_history(user_id: str = "default_user", limit: int = 50, current_user: str = Depends(get_current_user)):
+async def get_deposit_history(user_id: str = "default_user", limit: int = 50):
     """Récupère l'historique des dépôts effectués sur le PEA"""
     db = PortfolioDatabase()
     deposits = db.get_deposit_history(user_id, limit=limit)
@@ -698,8 +694,7 @@ async def get_deposit_history(user_id: str = "default_user", limit: int = 50, cu
 async def get_cash_flow(
     user_id: str = "default_user",
     event_type: Optional[str] = None,
-    limit: int = 100,
-    current_user: str = Depends(get_current_user)
+    limit: int = 100
 ):
     """
     Récupère l'historique des flux de trésorerie
@@ -723,7 +718,7 @@ async def get_cash_flow(
 # ==========================================
 
 @app.post("/portfolio/opportunities/analyze", tags=["Portfolio - Opportunities"])
-async def analyze_investment_opportunities(user_id: str = "default_user", current_user: str = Depends(get_current_user)):
+async def analyze_investment_opportunities(user_id: str = "default_user"):
     """
     Analyse le cash disponible et suggère des opportunités d'investissement
 
@@ -744,8 +739,7 @@ async def analyze_investment_opportunities(user_id: str = "default_user", curren
 @app.get("/portfolio/opportunities/pending", tags=["Portfolio - Opportunities"])
 async def get_pending_opportunities(
     user_id: str = "default_user",
-    include_expired: bool = False,
-    current_user: str = Depends(get_current_user)
+    include_expired: bool = False
 ):
     """
     Récupère toutes les opportunités en attente de décision
@@ -778,8 +772,7 @@ async def create_opportunity(
     target_price: Optional[float] = None,
     confidence_score: float = 0.7,
     risk_level: str = "MEDIUM",
-    expires_in_days: int = 7,
-    current_user: str = Depends(get_current_user)
+    expires_in_days: int = 7
 ):
     """
     Crée une nouvelle opportunité d'investissement
@@ -821,8 +814,7 @@ async def accept_opportunity(
     opportunity_id: int,
     user_id: str = "default_user",
     actual_quantity: Optional[int] = None,
-    actual_price: Optional[float] = None,
-    current_user: str = Depends(get_current_user)
+    actual_price: Optional[float] = None
 ):
     """
     Accepte une opportunité et exécute la transaction
@@ -856,8 +848,7 @@ async def accept_opportunity(
 async def reject_opportunity(
     opportunity_id: int,
     user_id: str = "default_user",
-    reason: Optional[str] = None,
-    current_user: str = Depends(get_current_user)
+    reason: Optional[str] = None
 ):
     """
     Rejette une opportunité d'investissement
@@ -888,8 +879,7 @@ async def reject_opportunity(
 @app.get("/portfolio/opportunities/{opportunity_id}", tags=["Portfolio - Opportunities"])
 async def get_opportunity_details(
     opportunity_id: int,
-    user_id: str = "default_user",
-    current_user: str = Depends(get_current_user)
+    user_id: str = "default_user"
 ):
     """
     Récupère les détails d'une opportunité spécifique
@@ -919,7 +909,7 @@ async def get_opportunity_details(
 # ==========================================
 
 @app.get("/market/stock/{ticker}", tags=["Market Data"])
-async def get_stock_info(ticker: str, current_user: str = Depends(get_current_user)):
+async def get_stock_info(ticker: str):
     """Récupère les informations de marché d'une action"""
     service = YahooFinanceService()
     info = service.get_stock_info(ticker)
@@ -934,8 +924,7 @@ async def get_stock_info(ticker: str, current_user: str = Depends(get_current_us
 async def get_stock_history(
     ticker: str,
     period: str = "1y",
-    interval: str = "1d",
-    current_user: str = Depends(get_current_user)
+    interval: str = "1d"
 ):
     """
     Récupère l'historique des cours
@@ -966,7 +955,7 @@ async def get_stock_history(
 # ==========================================
 
 @app.get("/analysis/news/{company_name}", tags=["Analysis"])
-async def get_company_news(company_name: str, days_back: int = 7, current_user: str = Depends(get_current_user)):
+async def get_company_news(company_name: str, days_back: int = 7):
     """Récupère les actualités récentes d'une entreprise"""
     aggregator = NewsAggregator()
     news = aggregator.get_company_news(company_name, days_back=days_back)
@@ -974,7 +963,7 @@ async def get_company_news(company_name: str, days_back: int = 7, current_user: 
 
 
 @app.get("/analysis/sentiment/{company_name}", tags=["Analysis"])
-async def analyze_sentiment(company_name: str, days_back: int = 7, current_user: str = Depends(get_current_user)):
+async def analyze_sentiment(company_name: str, days_back: int = 7):
     """Analyse le sentiment des actualités pour une entreprise"""
     aggregator = NewsAggregator()
     analyzer = SentimentAnalyzer(provider="claude")
@@ -986,7 +975,7 @@ async def analyze_sentiment(company_name: str, days_back: int = 7, current_user:
 
 
 @app.get("/analysis/technical/{ticker}", tags=["Analysis"])
-async def analyze_technical(ticker: str, period: str = "6mo", current_user: str = Depends(get_current_user)):
+async def analyze_technical(ticker: str, period: str = "6mo"):
     """Analyse technique complète d'une action"""
     yf_service = YahooFinanceService()
     analyzer = TechnicalAnalyzer()
@@ -1018,7 +1007,7 @@ async def analyze_technical(ticker: str, period: str = "6mo", current_user: str 
 
 
 @app.get("/analysis/complete/{ticker}", tags=["Analysis"])
-async def complete_analysis(ticker: str, company_name: str, current_user: str = Depends(get_current_user)):
+async def complete_analysis(ticker: str, company_name: str):
     """Analyse complète: Market Data + News + Sentiment + Technique"""
     yf_service = YahooFinanceService()
     aggregator = NewsAggregator()
@@ -1072,8 +1061,7 @@ async def intelligence_analyze(
     include_backtesting: bool = True,
     include_technical: bool = True,
     include_fundamental: bool = False,
-    backtest_period: str = "5Y",
-    current_user: str = Depends(get_current_user)
+    backtest_period: str = "5Y"
 ):
     """
     Analyse d'investissement complète combinant ML predictions, backtesting, analyse technique et fondamentale
